@@ -87,45 +87,45 @@
 
         <% end %>
 
-      <!-- 数量入力用モーダル -->
-      <div class="modal fade" id="count_Modal" tabindex="-1" role="dialog" aria-labelledby="count_ModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <%= form_with url: count_path do |f| %>
-              <h4 class="modal-title" id="comment_ModalLabel">数量入力欄</h4>
+        <!-- 数量入力用モーダル -->
+        <div class="modal fade" id="count_Modal" tabindex="-1" role="dialog" aria-labelledby="count_ModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <%= form_with url: count_path do |f| %>
+                <h4 class="modal-title" id="comment_ModalLabel">数量入力欄</h4>
+                  <div class="modal-body">
+                    <%= hidden_field_tag :note_id, "", {id: "count_id"} %>
+                    <%= f.select :count, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10]],
+                        { include_blank: true, selected: 1 }, { id: "user_id", class: "user_class" } %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
+                    <%= f.submit "投稿する", class: "btn btn-primary" %>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- コメント入力用モーダル -->
+        <div class="modal fade" id="comment_Modal" tabindex="-1" role="dialog" aria-labelledby="comment_ModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <%= form_with url: comment_path do |f| %>
+                <h4 class="modal-title" id="comment_ModalLabel">コメント入力欄</h4>
                 <div class="modal-body">
-                  <%= hidden_field_tag :note_id, "", {id: "count_id"} %>
-                  <%= f.select :count, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10]],
-                      { include_blank: true, selected: 1 }, { id: "user_id", class: "user_class" } %>
+                  <%= hidden_field_tag :note_id, "", {id: "comment_id"} %>
+                  <%= f.text_area :content, size: "10x5", class: "form-control" %>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">戻る</button>
                   <%= f.submit "投稿する", class: "btn btn-primary" %>
                 </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- コメント入力用モーダル -->
-      <div class="modal fade" id="comment_Modal" tabindex="-1" role="dialog" aria-labelledby="comment_ModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <%= form_with url: comment_path do |f| %>
-              <h4 class="modal-title" id="comment_ModalLabel">コメント入力欄</h4>
-              <div class="modal-body">
-                <%= hidden_field_tag :note_id, "", {id: "comment_id"} %>
-                <%= f.text_area :content, size: "10x5", class: "form-control" %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
-                <%= f.submit "投稿する", class: "btn btn-primary" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-  </div>
   <div class="form_body">
     <%= form_with url: notes_path do |f| %>
 

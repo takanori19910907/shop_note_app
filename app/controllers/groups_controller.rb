@@ -42,7 +42,6 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     Group.find(params[:id]).destroy
     flash[:success] = "グループを削除しました"
     redirect_to root_path
