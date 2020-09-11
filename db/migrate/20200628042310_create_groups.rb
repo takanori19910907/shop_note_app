@@ -5,7 +5,7 @@ class CreateGroups < ActiveRecord::Migration[5.1]
       t.integer :admin_user_id,   null: false
       t.text :profile
       t.string :image
-      t.timestamps                null: false
+      t.timestamps null: false
     end
   end
 end

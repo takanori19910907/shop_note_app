@@ -11,7 +11,7 @@
         </div>
 
         <div class="col-md-8 chatroom_info">
-　　　　　  <div class="row info group_title">
+          <div class="row info group_title">
             <div class="col-12">
           <%= "ルーム名：#{@group.name}" %>
             <% if @group.image.present? %>
@@ -81,15 +81,9 @@
                       <li><button type="button" class="btn btn-secondary js_count_btn" data-toggle="modal" data-target="#count_Modal" value="<%= note.id %>" id="js_count"><i class="fa fa-sort" aria-hidden="true"></i></button></li>
                       <li><button type="button" class="btn btn-secondary js_comment_btn" data-toggle="modal" data-target="#comment_Modal" value="<%= note.id %>" id="js_comment"><i class="fa fa-pencil" aria-hidden="true"></i></button></li>
                     </ul>
-                    <div class="comment">
-                      <% note.comments.each do |comment| %>
-                        <div class="comment_list">
-                          <%= link_to comment.content ,"/comments/#{comment.id}", method: :delete,data:{confirm: "本当に削除しますか?"} %>
-                            <span> : </span>
-                          <%= comment.user.name %>
-                        </div>
-                      <% end %>
-                    </div>
+                    
+                    <%= render 'layouts/comments_field', note: note %>
+
                   </div>
 
 
@@ -139,7 +133,7 @@
 <div class="modal fade" id="comment_Modal" tabindex="-1" role="dialog" aria-labelledby="comment_ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_with url: comment_path do |f| %>
+      <%= form_with url: comments_path do |f| %>
         <h4 class="modal-title" id="comment_ModalLabel">コメント入力欄</h4>
         <div class="modal-body">
           <%= hidden_field_tag :note_id, "", {id: "comment_id"} %>
@@ -158,8 +152,8 @@
     <%= form_with url: notes_path do |f| %>
       <div class="form_body">
         <%= f.hidden_field :group_id, :value => @group.id %>
-        <%= f.text_field :content,class:'form form-control' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %>　
-        <div class="note_form_contents">　　　
+        <%= f.text_field :content,class:'form form-control' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %>
+        <div class="note_form_contents">
           <%= f.label :image, class:'image_form' do %>
           <label>
             <i class="fa fa-image btn btn-dark "></i>

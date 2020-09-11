@@ -35,15 +35,9 @@
                   <li><button type="button" class="btn btn-secondary js_count_btn" data-toggle="modal" data-target="#count_Modal" value="<%= note.id %>" id="js_count"><i class="fa fa-sort" aria-hidden="true"></i></button></li>
                   <li><button type="button" class="btn btn-secondary js_comment_btn" data-toggle="modal" data-target="#comment_Modal" value="<%= note.id %>" id="js_comment"><i class="fa fa-pencil" aria-hidden="true"></i></button></li>
                 </ul>
-                <div class="comment">
-                  <% note.comments.each do |comment| %>
-                    <div class="comment_list">
-                      <%= link_to comment.content ,"/comments/#{comment.id}", method: :delete,data:{confirm: "本当に削除しますか?"} %>
-                        <span> : </span>
-                      <%= comment.user.name %>
-                    </div>
-                  <% end %>
-                </div>
+
+                <%= render 'layouts/comments_field', note: note %>
+
               </div>
 
               <div class="time"><%= note.created_at.to_s(:datetime) %></div>
@@ -95,7 +89,7 @@
     <div class="modal fade" id="comment_Modal" tabindex="-1" role="dialog" aria-labelledby="comment_ModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <%= form_with url: comment_path do |f| %>
+          <%= form_with url: comments_path do |f| %>
             <h4 class="modal-title" id="comment_ModalLabel">コメント入力欄</h4>
             <div class="modal-body">
               <%= hidden_field_tag :note_id, "", {id: "comment_id"} %>

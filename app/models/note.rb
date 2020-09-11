@@ -10,7 +10,7 @@ class Note < ApplicationRecord
 
   private
 
-    def content_blank?
-      self.content == "" && self.image.present?
-    end
+  def content_blank?
+    content == '' && image.present?
+  end
 end
