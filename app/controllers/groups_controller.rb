@@ -8,22 +8,26 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
-    @group.admin_user_id = current_user.id
-    if @group.save
-      @group.group_members.build(user_id: current_user.id, activated: true).save
-      url = Rails.application.routes.recognize_path(request.referrer)
-      if url == {controller: 'home', action: 'tutorial_group_create'}
-        flash[:success] = '登録に成功しました！ページ下にて招待したいユーザーを検索して招待しましょう！'
-        redirect_to group_path(@group)
-      else
-        flash[:success] = 'グループを作成しました'
-        redirect_to group_path(@group)
-      end
-    else
-      flash[:danger] = 'グループ作成に失敗しました。再度やり直してください'
-      render 'groups/new'
+    ActiveRecord::Base.transaction do
+      @group = Group.new(group_params)
+      @group.admin_user_id = current_user.id
+      @group.save!
+      group_member = @group.group_members.build(user_id: current_user.id, activated: true)
+      group_member.save!
     end
+      if @group.save
+        url = Rails.application.routes.recognize_path(request.referrer)
+        if url == {controller: 'home', action: 'tutorial_group_create'}
+          flash[:success] = '登録に成功しました！ページ下にて招待したいユーザーを検索して招待しましょう！'
+          redirect_to group_path(@group)
+        else
+          flash[:success] = 'グループを作成しました'
+          redirect_to group_path(@group)
+        end
+      else
+        flash[:danger] = 'グループ作成に失敗しました。再度やり直してください'
+        render 'groups/new'
+      end
   end
 
   def edit
