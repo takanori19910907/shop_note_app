@@ -42,15 +42,9 @@
                     <li><button type="button" class="btn btn-secondary js_count_btn" data-toggle="modal" data-target="#count_Modal" value="<%= note.id %>" id="js_count"><i class="fa fa-sort" aria-hidden="true"></i></button></li>
                     <li><button type="button" class="btn btn-secondary js_comment_btn" data-toggle="modal" data-target="#comment_Modal" value="<%= note.id %>" id="js_comment"><i class="fa fa-pencil" aria-hidden="true"></i></button></li>
                   </ul>
-                  <div class="comment">
-                    <% note.comments.each do |comment| %>
-                      <div class="comment_list">
-                        <%= link_to comment.content ,"/comments/#{comment.id}", method: :delete,data:{confirm: "本当に削除しますか?"} %>
-                          <span> : </span>
-                        <%= comment.user.name %>
-                      </div>
-                    <% end %>
-                  </div>
+                  
+                  <%= render 'layouts/comments_field', note: note %>
+
                 </div>
           <div class="time"><%= note.created_at.to_s(:datetime) %></div>
               <% end %>
@@ -98,7 +92,7 @@
       <div class="modal fade" id="comment_Modal" tabindex="-1" role="dialog" aria-labelledby="comment_ModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <%= form_with url: comment_path do |f| %>
+            <%= form_with url: comments_path do |f| %>
               <h4 class="modal-title" id="comment_ModalLabel">コメント入力欄</h4>
               <div class="modal-body">
                 <%= hidden_field_tag :note_id, "", {id: "comment_id"} %>
@@ -116,19 +110,19 @@
   <div class="form_body">
     <%= form_with url: notes_path do |f| %>
 
-        <%= f.text_field :content,class:'form form-control' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %>　
-        <div class="note_form_contents">　　　
-        <%= f.label :image, class:'image_form' do %>
-        <label>
-          <i class="fa fa-image btn btn-dark "></i>
-          <%= f.file_field :image, class: "file_field" %>
-        </label>
-        <% end %>
-        <%= link_to favorite_items_path, class:"btn btn-dark" do %>
-        <i class="fa fa-star" aria-hidden="true"></i>
-        <% end %>
-        <%= f.submit "投稿", class: "btn btn-primary form-btn " %>
-      </div>
+        <%= f.text_field :content,class:'form form-control' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %>
+        <div class="note_form_contents">
+          <%= f.label :image, class:'image_form' do %>
+          <label>
+            <i class="fa fa-image btn btn-dark "></i>
+            <%= f.file_field :image, class: "file_field" %>
+          </label>
+          <% end %>
+          <%= link_to favorite_items_path, class:"btn btn-dark" do %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          <%= f.submit "投稿", class: "btn btn-primary form-btn " %>
+        </div>
     <% end %>
   </div>
 
@@ -147,7 +141,7 @@
     有吉の買い物メモ<br>アプリへようこそ
   </h1>
 
-<h3><a <%= link_to "ユーザー登録して利用開始！",signup_path %></a></h3><br />
+<h3><a <%= link_to "ユーザー登録して利用開始！",new_user_registration_path %></a></h3><br />
 <h5><a <%= link_to "登録済みの方はコチラから",new_user_session_path %></a></h5>
 
 <% end %>

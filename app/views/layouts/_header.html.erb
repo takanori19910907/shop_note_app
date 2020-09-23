@@ -25,7 +25,7 @@
           <div class="dropdown-divider"></div>
           <a class= "dropdown-item"<%= link_to "ユーザー検索",users_index_path %></a>
           <div class="dropdown-divider"></div>
-          <a class= "dropdown-item"<%= link_to "ログアウト",logout_path %></a>
+          <a class= "dropdown-item"<%= link_to "ログアウト",destroy_user_session_path %></a>
         </div>
 
       <li class="nav-item dropdown">
@@ -47,7 +47,7 @@
               <div class="nav_item_title">チャットルーム一覧</div>
                 <% @group_lists.each do |group| %>
                   <ul>
-                    <li class="nav-link" id="group_list"><a class="group_name"><%= link_to group.group.name,chatroom_group_path(group.group.id) %></a>
+                    <li class="nav-link" id="group_list"><a class="group_name"><%= link_to group.name,chatroom_group_path(group.id) %></a>
                     </li>
                   </ul>
                 <% end %>
@@ -59,7 +59,7 @@
   <% else %>
 
     <li class="nav-item"><a class= "nav-link" <%= link_to "ホーム",root_path %></a></li>
-    <li class="nav-item"><a class= "nav-link" <%= link_to "新規登録",signup_path %></a><li>
+    <li class="nav-item"><a class= "nav-link" <%= link_to "新規登録",new_user_registration_path %></a><li>
     <li class="nav-item"><a class= "nav-link" <%= link_to "ログイン",new_user_session_path %></a><li>
 
   <% end %>

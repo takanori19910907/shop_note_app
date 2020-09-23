@@ -30,15 +30,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 1025,
-    :user_name => "takanori30907@gmail.com",
-    :password => "pwynyhmqskmulcum",
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    address: 'smtp.gmail.com',
+    port: 1025,
+    user_name: 'takanori30907@gmail.com',
+    password: 'pwynyhmqskmulcum',
+    authentication: :plain,
+    enable_starttls_auto: true
   }
 
-    # Don't care if the mailer can't send.
+  # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false

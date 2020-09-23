@@ -2,24 +2,24 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    if params[:content].present? or params[:image].present?
+    if params[:content].present? || params[:image].present?
 
       params[:content].split(/[[:blank:]]+/).each do |note|
         current_user.notes.create(content: note, group_id: params[:group_id], image: params[:image])
       end
-      if params[:image].present? && params[:content] == ""
-        current_user.notes.create(content: "", group_id: params[:group_id],image: params[:image])
+      if params[:image].present? && params[:content] == ''
+        current_user.notes.create(content: '', group_id: params[:group_id], image: params[:image])
       end
       url = Rails.application.routes.recognize_path(request.referrer)
-      if url == {:controller=>"home", :action=>"tutorial_note"}
-        flash[:success] = "投稿に成功しました！"
+      if url == {controller: 'home', action: 'tutorial_note'}
+        flash[:success] = '投稿に成功しました！'
         redirect_to request.referrer || root_url
       else
         redirect_to request.referrer || root_url
       end
     else
-      flash[:danger] = "投稿に失敗しました"
-        redirect_to request.referrer || root_url
+      flash[:danger] = '投稿に失敗しました'
+      redirect_to request.referrer || root_url
     end
   end
 
@@ -29,7 +29,7 @@ class NotesController < ApplicationController
     if @count.save
       redirect_to request.referrer || root_url
     else
-      flash[:danger] = "投稿に失敗しました"
+      flash[:danger] = '投稿に失敗しました'
       render 'home/index'
 
     end
@@ -45,8 +45,8 @@ class NotesController < ApplicationController
   private
 
   def note_params
-      params.permit(:content,:group_id,:image)
-    end
+    params.permit(:content, :group_id, :image)
+  end
 
   def count_params
     params.permit(:count)

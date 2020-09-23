@@ -5,22 +5,22 @@
   </small>
 </div>
 
-  <%= form_with url: favorite_items_destroy_path do |f| %>
+  <%= form_with url: favorite_items_path, method: :delete do |f| %>
 
 
-  　<p>-あ行-</p>
+    <p>-あ行-</p>
       <% @A_line.each do |item| %>
         <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
         <%= item.name %>
       <% end %><br/>
 
-  　<p>-か行-</p>
+    <p>-か行-</p>
       <% @K_line.each do |item| %>
         <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
         <%= item.name %>
       <% end %><br/>
 
-  　<p>-さ行-</p>
+    <p>-さ行-</p>
       <% @S_line.each do |item| %>
         <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
         <%= item.name %>

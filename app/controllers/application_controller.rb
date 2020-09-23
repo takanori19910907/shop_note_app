@@ -6,31 +6,31 @@ class ApplicationController < ActionController::Base
   before_action :group_badge
 
   protected
-    def configure_permitted_parameters
-      added_attrs = [ :name, :email, :password, :password_confirmation　]
-      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-      devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-      devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:image])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:image])
-    end
 
-    private
+  def configure_permitted_parameters
+    added_attrs = %i[name email password password_confirmation]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+    devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:image])
+  end
 
-    def group_list
-      if user_signed_in?
-        @group_lists = current_user.group_members.includes([:group]).where(activated: true)
-        if @group_lists.present?
-          @group_lists
-        else
-          @group_lists = []
-        end
+  private
+
+  def group_list
+    if user_signed_in?
+      # @group_lists = current_user.group_members.includes([:group]).where(activated: true)
+      @group_lists = current_user.groups
+      if @group_lists.present?
+        @group_lists
+      else
+        @group_lists = []
       end
     end
+  end
 
-    def group_badge
-      if user_signed_in?
-        @request = current_user.group_members.where(activated: false)
-      end
-    end
+  def group_badge
+    @request = current_user.group_members.where(activated: false) if user_signed_in?
+  end
 end

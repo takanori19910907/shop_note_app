@@ -3,7 +3,7 @@
 <p>所属グループ一覧</p>
 
   <% @groups.each do |group| %>
-  　<ul class="group_info">
+    <ul class="group_info">
     <% if group.image.present? %>
       <li class="group_name"><img src= "<%= group.image %>" class="image_icon">
     <% else %>

@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def index
-    @user = User.page(params[:page]).per(5).order("name")
+    @user = User.page(params[:page]).per(5).order('name')
   end
 
   # GET /resource/sign_up
