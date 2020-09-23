@@ -17,9 +17,6 @@ Rails.application.routes.draw do
     post 'count', to: 'notes#count'
     get 'index', to: 'searches#index'
 
-    devise_scope :user do
-    end
-
     resources :comments, only: %i[create destroy]
 
     resources :groups do
