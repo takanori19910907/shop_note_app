@@ -1,33 +1,36 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_user, only: %i[edit update destroy]
+  before_action :admin_user, only: [:edit,:update,:destroy]
   before_action :correct_user, only: [:join]
 
   def index
     @groups = current_user.groups
   end
 
+  def new
+    @group = current_user.own_groups.new
+  end
+
   def create
     ActiveRecord::Base.transaction do
-      @group = Group.new(group_params)
-      @group.admin_user_id = current_user.id
+      binding.pry
+      @group = current_user.own_groups.new(group_params)
+      # @group = Group.find(params[:id])
       @group.save!
       group_member = @group.group_members.build(user_id: current_user.id, activated: true)
       group_member.save!
     end
-      if @group.save
-        url = Rails.application.routes.recognize_path(request.referrer)
+      url = Rails.application.routes.recognize_path(request.referrer)
         if url == {controller: 'home', action: 'tutorial_group_create'}
           flash[:success] = '登録に成功しました！ページ下にて招待したいユーザーを検索して招待しましょう！'
-          redirect_to group_path(@group)
         else
           flash[:success] = 'グループを作成しました'
-          redirect_to group_path(@group)
         end
-      else
-        flash[:danger] = 'グループ作成に失敗しました。再度やり直してください'
-        render 'groups/new'
-      end
+        redirect_to group_path(@group)
+
+        rescue => e
+          flash[:danger] = 'グループ作成に失敗しました。再度やり直してください'
+          render 'groups/new'
   end
 
   def edit
@@ -36,16 +39,17 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    if @group.update(name: params[:group][:name], profile: params[:group][:profile], image: params[:group][:image])
-      redirect_to group_path(@group)
+    if @group.update(group_params)
+      flash[:success] = "グループ情報を変更しました"
     else
-      render 'groups/edit'
+      flash[:danger] = "グループ情報変更に失敗しました。再度やり直してください"
     end
+      redirect_to group_path(@group)
   end
 
   def destroy
     Group.find(params[:id]).destroy
-    flash[:success] = "グループを\u001D削除しました"
+    flash[:success] = "グループを削除しました"
     redirect_to root_path
   end
 
@@ -106,7 +110,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.permit(:image, :name, :profile)
+    params.require(:group).permit(:image, :name, :profile)
   end
 
   def join_params
