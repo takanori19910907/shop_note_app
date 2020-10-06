@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
+    # get 'users/index', to: 'users/registrations#index'
   }
     root 'home#index'
-    get 'users/index', to: 'users/registrations#index'
     get '/tutorial_top', to: 'home#tutorial_top'
     get '/tutorial_note', to: 'home#tutorial_note'
     get '/tutorial_note_index', to: 'home#tutorial_note_index'
@@ -15,9 +15,10 @@ Rails.application.routes.draw do
     post 'notes', to: 'notes#create'
     post 'note', to: 'notes#destroy'
     post 'count', to: 'notes#count'
-    get 'index', to: 'searches#index'
+    get 'search_top', to: 'searches#top'
+    get 'search_index', to: 'searches#index'
 
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: [:create, :destroy]
 
     resources :groups do
       collection do
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :favorite_items, only: %i[index create new] do
+    resources :favorite_items, only: [:index, :create, :new] do
       collection do
         delete :destroy
         post :post

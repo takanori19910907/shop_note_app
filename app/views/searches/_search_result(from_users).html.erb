@@ -2,21 +2,20 @@
   <% @search_users.each do |user| %>
     <div class="users_list">
       <ul>
-        <p>グループを選択してリクエスト</p>
         <li class="s_users_info"><%= user.name %></li>
         <li class="s_users_info">ID : <%= user.id %></li>
         <li>
           <% if current_user.groups.present? %>
-
+            <p>グループを選択してリクエスト</p>
             <%= form_with url:invite_group_path(user.id) do |f| %>
 
-    　　　　   <%= f.hidden_field :user_id, :value => user.id %>
+            <%= f.hidden_field :user_id, :value => user.id %>
 
               <%= f.collection_select :group_id,current_user.groups.order(id: :desc),:id,:name %>
 
               <%= f.submit "グループ招待する",class: "btn btn-primary" %>
 
-  　　　　　　<% end %>
+            <% end %>
           <% end %>
         </li>
       </ul>

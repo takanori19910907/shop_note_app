@@ -16,14 +16,13 @@
 
 <p>指定されたユーザーは存在しません</p>
 
-<p><%= link_to "ユーザー一覧",signup_path %>を表示</p>
 
 <% end %>
 
 <div class="form_body" id="searches_form">
   <div class="form_title">招待したいユーザーを検索</div>
 
-  <%= form_with url: index_path, method: :get, local: true do |f| %>
+  <%= form_with url: search_index_path, method: :get, local: true do |f| %>
     <%= f.text_field :name,class:'form-control search_form', placeholder: "ユーザー名を入力" %>
     <%= f.submit "検索", class: "btn btn-light" %>
   <% end %>
