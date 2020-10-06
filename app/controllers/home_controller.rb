@@ -7,19 +7,13 @@ class HomeController < ApplicationController
                  end
   end
 
-  def help; end
-
-  def tutorial_top; end
-
-  def tutorial_note_index
-    @own_notes = if current_user.present?
-                   current_user.notes.all
-                 else
-                   []
-                 end
+  def help
   end
 
-  def tutorial_note
+  def t_top
+  end
+
+  def t_post
     @own_notes = if current_user.notes.present?
                    current_user.notes
                  else
@@ -27,7 +21,16 @@ class HomeController < ApplicationController
                  end
   end
 
-  def tutorial_create_f_item
+  def t_index
+    @own_notes = if current_user.present?
+                   current_user.notes.all
+                 else
+                   []
+                 end
+  end
+
+
+  def t_create
     @favorite_item = current_user.favorite_items.new
     @favorite_items = current_user.favorite_items.all
     @A_line = []
@@ -106,7 +109,7 @@ class HomeController < ApplicationController
     end
   end
 
-  def tutorial_index_f_item
+  def t_favItem_post
     @favorite_items = current_user.favorite_items.all
     @A_line = []
     @K_line = []

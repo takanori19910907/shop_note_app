@@ -19,9 +19,9 @@ class FavoriteItemsController < ApplicationController
         end
       end
       url = Rails.application.routes.recognize_path(request.referrer)
-      if url == { controller: 'home', action: 'tutorial_create_f_item' }
+      if url == { controller: 'home', action: 't_create' }
         flash[:success] = '登録に成功しました！ページ下部のリンクから次のページへ進みましょう！'
-        redirect_to tutorial_create_f_item_path
+        redirect_to tutorial_2_path
       else
         flash[:success] = 'お気に入り商品を登録しました'
         redirect_to request.referrer || favorite_items_path
@@ -50,9 +50,9 @@ class FavoriteItemsController < ApplicationController
       redirect_to chatroom_group_path(params[:group_id])
     else
       url = Rails.application.routes.recognize_path(request.referrer)
-      if url == { controller: 'home', action: 'tutorial_index_f_item' }
+      if url == { controller: 'home', action: 't_favItem_post' }
         flash[:success] = 'これでチュートリアルは終了！ページ下のボタンで移動し、アプリを使いはじめましょう！'
-        redirect_to tutorial_note_index_path
+        redirect_to tutorial_4_path
       else
         flash[:success] = '投稿しました'
         redirect_to root_url

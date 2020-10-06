@@ -2,15 +2,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
-    # get 'users/index', to: 'users/registrations#index'
   }
     root 'home#index'
-    get '/tutorial_top', to: 'home#tutorial_top'
-    get '/tutorial_note', to: 'home#tutorial_note'
-    get '/tutorial_note_index', to: 'home#tutorial_note_index'
-    get '/tutorial_create_f_item', to: 'home#tutorial_create_f_item'
-    get '/tutorial_index_f_item', to: 'home#tutorial_index_f_item'
-    get '/tutorial_group_create', to: 'home#tutorial_group_create'
+    get '/tutorial_top', to: 'home#t_top'
+    get '/tutorial_1', to: 'home#t_post'
+    get '/tutorial_2', to: 'home#t_create'
+    get '/tutorial_3', to: 'home#t_favItem_post'
+    get '/tutorial_4', to: 'home#t_index'
     get '/help', to: 'home#help'
     post 'notes', to: 'notes#create'
     post 'note', to: 'notes#destroy'
