@@ -34,7 +34,7 @@ class FavoriteItemsController < ApplicationController
 
   def destroy
     params[:item][:id].each do |item_id|
-      current_user.favorite_items.find_by(id: item_id).delete
+      current_user.favorite_items.find_by(id: item_id).destroy
     end
     flash[:warning] = 'お気に入り商品を削除しました'
     redirect_to request.referrer || new_favorite_item_path
