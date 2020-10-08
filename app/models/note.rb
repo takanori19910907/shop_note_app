@@ -5,13 +5,17 @@ class Note < ApplicationRecord
   has_many :own_comments, class_name: 'Comment', foreign_key: :note_id
 
   validates :user_id, presence: true
-  validates :content, presence: true, unless: :content_blank?, length: { maximum: 30 }
+  validates :content, presence: true, unless: :has_imageData?, length: { maximum: 30 }
 
   mount_uploader :image, ImageUploader
 
-  private
+  def set_url
+    @count = 1
+  end
 
-  def content_blank?
+  private
+  #画像のみの投稿を有効にするため、contentが空かつimageがあるときにバリデーションを回避する
+  def has_imageData?
     content == '' && image.present?
   end
 end
