@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_reviews, only: [:edit,:update,:destroy]
 
   def index
     @reviews = Review.all
@@ -23,27 +24,30 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
   end
 
   def update
-    @review = Review.find(params[:id])
-    if @review.update(title: params[:review][:title], content: params[:review][:content], rate: params[:review][:rate])
+    if @review.update(review_params)
       flash[:success] = 'レビュー内容を変更しました'
-      redirect_to reviews_path
+      # redirect_to reviews_path
     else
       flash[:danger] = 'レビュー内容を変更出来ませんでした、お手数ですが再度お試しください'
-      render 'reviews/edit'
+      # render 'reviews/edit'
     end
+    redirect_to reviews_path
   end
 
   def destroy
-    Review.find_by(id: params[:id]).delete
+    @review.destroy
     flash[:success] = 'レビューを削除しました'
     redirect_to request.referrer || root_url
   end
 
   private
+
+  def set_reviews
+    @review = Review.find(params[:id])
+  end
 
   def review_params
     params.require(:review).permit(:title, :content, :rate)

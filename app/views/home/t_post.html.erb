@@ -1,0 +1,65 @@
+<% if @own_notes.present? %>
+ <div class="alert alert-dark">
+  <small>
+    1.投稿の削除は、消したい投稿にチェックを入れて、画面下に表示される[購入しました]ボタンを押してください！<br>
+    2.投稿には数量やコメントをつけることも出来ます！右側のアイコンをタップして試してみましょう♪<br/>
+    (コメントは、削除したいものをタップすることで削除することが出来ます)<br/>
+    3.画像投稿を行うことも可能です！投稿フォーム下のアイコンをタップして試してみましょう♪
+  </small>
+</div>
+<p>メモの投稿/削除方法が確認出来たら次のページへ！</p>
+<% end %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+
+          <div class="col-md-2">
+          </div>
+
+          <div class="col-md-8 chatroom_info">
+          <%= form_with url: note_path do |f| %>
+
+            <% if @own_notes.present? %>
+
+              <% @own_notes.each do |note| %>
+
+                  <%= render 'shared/note_content', note: note %>
+
+              <% end %>
+
+                <%= f.submit '購入しました', class: 'btn btn btn-warning destroy' %>
+
+          <% else %>
+            <div class="alert alert-success">まずはメモの投稿！ページ下の入力フォームに商品名を入力して[投稿]ボタンを押してください</div>
+
+          <% end %>
+
+        <ul>
+          <li><%= link_to "お気に入り商品 の説明に進む",tutorial_2_path, class:"btn btn-warning" %></li>
+          <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
+        </ul>
+
+        </div>
+
+        <div class="col-md-2">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+        <% end %>
+
+  <%= render 'shared/note_modal' %>
+
+  <%= render 'shared/note_form' %>
+
+  <script type="text/javascript">
+  $('.js_count_btn').click(function() {
+  $('#count_id').val(this.value);
+  });
+  $('.js_comment_btn').on('click', function () {
+  $('#comment_id').val(this.value);
+  })
+  </script>

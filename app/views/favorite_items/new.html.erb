@@ -4,71 +4,7 @@
 
   <%= form_with url: favorite_items_path, method: :delete do |f| %>
 
-    <p>-あ行-</p>
-      <% @A_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-か行-</p>
-      <% @K_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-さ行-</p>
-      <% @S_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-た行-</p>
-      <% @T_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-な行-</p>
-      <% @N_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-は行-</p>
-      <% @H_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-ま行-</p>
-      <% @M_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-や行-</p>
-      <% @Y_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-ら行-</p>
-      <% @R_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-わ行-</p>
-      <% @W_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-    <p>-その他-</p>
-      <% @other_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %><br />
-      <% end %>
+  <%= render 'shared/favItem_list' %>
 
     <div class="f_item_link"><%= link_to "戻る",:back , class:"btn btn-dark favorite_back_btn" %></div>
 

@@ -1,4 +1,8 @@
 class SearchesController < ApplicationController
+
+  def top
+  end
+
   def index
     if params[:group_id].present?
       @group = Group.find_by(id: params[:group_id])

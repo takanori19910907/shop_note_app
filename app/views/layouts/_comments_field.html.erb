@@ -1,9 +1,0 @@
-<div class="comment">
-  <% note.comments.each do |comment| %>
-    <div class="comment_list">
-      <%= link_to comment.content ,comment_path(comment.id), method: :delete,data:{confirm: "本当に削除しますか?"} %>
-        <span> : </span>
-      <%= comment.user.name %>
-    </div>
-  <% end %>
-</div>

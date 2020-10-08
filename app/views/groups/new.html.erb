@@ -4,7 +4,7 @@
 
 <div class="group_form">
 
-  <%= form_with url: groups_path do |f| %>
+  <%= form_with model: @group do |f| %>
 
     <div>
       <%= f.label :"名前" %><i>(必須)</i>

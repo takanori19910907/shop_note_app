@@ -1,0 +1,33 @@
+<%= check_box_tag 'note[id][]', note.id, checked = false, :id => "note_#{note.id} " %>
+
+<div class="btn btn-dark note">
+  <ul>
+    <li>
+      <div class="note_body">
+        <div class="note_content">
+          <%= note.content %>
+          <% if note.image.present? %>
+            <img src="<%= note.image %>"class="note_image" >
+          <% end %>
+          <%= note.count %>
+            <% if note.count.present? %>
+              <span>個</span>
+            <% end %>
+        </div>
+      </div>
+    </li>
+    <li><button type="button" class="btn btn-secondary js_count_btn" data-toggle="modal" data-target="#count_Modal" value="<%= note.id %>" id="js_count"><i class="fa fa-sort" aria-hidden="true"></i></button></li>
+    <li><button type="button" class="btn btn-secondary js_comment_btn" data-toggle="modal" data-target="#comment_Modal" value="<%= note.id %>" id="js_comment"><i class="fa fa-pencil" aria-hidden="true"></i></button></li>
+  </ul>
+
+  <div class="comment">
+    <% note.comments.each do |comment| %>
+      <div class="comment_list">
+        <%= link_to comment.content ,comment_path(comment.id), method: :delete,data:{confirm: "本当に削除しますか?"} %>
+          <span> : </span>
+        <%= comment.user.name %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="time"><%= note.created_at.to_s(:datetime) %></div>
