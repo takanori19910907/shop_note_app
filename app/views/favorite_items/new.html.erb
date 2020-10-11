@@ -6,36 +6,25 @@
 
   <%= render 'shared/favItem_list' %>
 
-    <div class="f_item_link"><%= link_to "戻る",:back , class:"btn btn-dark favorite_back_btn" %></div>
-
     <%= f.submit "商品をまとめて削除",class:"btn btn-warning destroy" %>
 
   <% end %>
 
-  <div class= "form_body" id="favorite_form">
-
-      <div class="f_item_form">
-        <p class="form_title">一覧に追加したい商品を入力してください</p>
-        <%= form_with model: @favorite_item do |f| %>
-          <%= f.text_field :name, class: "form-control", placeholder:'商品名を入力(複数ある場合は間に空白を入れて入力してください)' %>
-          <%= f.submit "登録",class:"btn btn-primary" %>
-        <% end %>
-      </div>
-  </div>
 
 <% else %>
 
   <p>現在お気に入り商品はありません</p>
+
+<% end %>
+
   <ul>
     <li><%= link_to "戻る",:back , class:"btn btn-dark" %></li>
   </ul>
-  <div class= "form_body" id="favorite_form">
+  <div class= "form_body">
       <div class="f_item_form">
-        <p class="form_title">一覧に追加したい商品を入力してください</p>
         <%= form_with model: @favorite_item do |f| %>
-          <%= f.text_field :name, class: "form-control", placeholder:'商品名を入力(複数ある場合は間に空白を入れて入力してください)' %>
-          <%= f.submit "登録",class:"btn btn-primary" %>
+          <%= f.text_field :name, class: "form", placeholder:'商品名を入力(複数ある場合は間に空白を入れて入力してください)' %>
+          <%= f.submit "登録",class:"btn btn-light" %>
         <% end %>
       </div>
   </div>
-<% end %>

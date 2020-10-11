@@ -4,7 +4,7 @@
   <%= form_with url: post_favorite_items_path do |f| %>
 
   <%= render 'shared/favItem_list' %>
-  
+
       <ul class="f_item_link">
         <li><%= link_to "登録ページへ移動",new_favorite_item_path, class:"btn btn-dark favorite_back_btn" %></li>
         <li><%= link_to "戻る",:back , class:"btn btn-dark favorite_back_btn" %></li>
@@ -16,12 +16,10 @@
 
     <% end %>
 
-  <div class= "form_body" id="searches_form">
-    <div class="form_title">投稿したい商品を選択し、投稿ボタンを押してください</div>
-
-      <div class="f_item_form">
-      <%= f.submit "投稿",class:"btn btn-primary" %>
-      </div>
+  <div class= "form_body">
+      <!-- <div class="f_item_form"> -->
+      <%= f.submit "選択したお気に入り商品を投稿",class:"btn btn-primary" %>
+      <!-- </div> -->
       <% end %>
   </div>
 

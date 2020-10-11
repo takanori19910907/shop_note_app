@@ -13,7 +13,7 @@
 
               <%= f.collection_select :group_id,current_user.groups.order(id: :desc),:id,:name %>
 
-              <%= f.submit "グループ招待する",class: "btn btn-primary" %>
+              <%= f.submit "グループ招待する",class: "btn btn-light" %>
 
             <% end %>
           <% end %>

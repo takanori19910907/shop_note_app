@@ -2,15 +2,21 @@
   <div class="row">
     <div class="col-md-12">
       <div class="row">
-
-        <div class="col-12 d-block d-md-none promotion_sm">
+        <div class="col-12 d-block d-md-none promo_sm">
           <p>広告スペース(小)</p>
         </div>
-        <div class="col-md-2 d-none d-md-block promotion_bg">
+      </div>
+      <div class="row">
+        <div class="col-md-2 d-none d-md-block promo_bg left">
           <p>広告スペース(大)</p>
         </div>
+        <div class="col-md-2 d-none d-md-block promo_bg right">
+          <p>広告スペース(大)</p>
+        </div>
+      </div>
 
-        <div class="col-md-8 chatroom_info">
+      <div class="row chatroom_info">
+        <div class="col-md-12 chatroom_info">
           <div class="row info group_title">
             <div class="col-12">
               <%= "ルーム名：#{@group.name}" %>
@@ -21,26 +27,18 @@
               <% end %><br/>
             </div>
           </div>
+        </div>
+      </div>
 
             <%= form_with url: note_path do |f| %>
               <% if @group_notes.present? %>
                 <% @group_notes.each do |note| %>
 
-                  <ul class="row info">
-                  <% unless note.user.name == current_user.name %>
-                    <li class="col-6 namespace_left">
-                      <%= note.user.name %>
-                      <% if note.user.image.present? %>
-                        <img src="<%= note.user.image %>" class="user_icon" >
-                      <% else %>
-                        <img src="/assets/default_user_icon.jpg" class="user_icon" >
-                      <% end %>
-                    </li>
-                  <% else %>
-                    <li class="col-6"></li>
-                  <% end %>
-                  <% if note.user.name == current_user.name %>
+                  <ul class="row">
+
+                  <% unless note.user == current_user %>
                     <li class="col-6">
+                    <li class="col-6 namespace">
                       <%= note.user.name %>
                       <% if note.user.image.present? %>
                         <img src="<%= note.user.image %>" class="user_icon" >
@@ -48,8 +46,7 @@
                         <img src="/assets/default_user_icon.jpg" class="user_icon" >
                       <% end %>
                     </li>
-                  <% else %>
-                    <li class="col-6 namespace_right"></li>
+
                   <% end %>
                   </ul>
 
@@ -69,36 +66,32 @@
         </div>
         <% end %>
 
-        <div class="col-md-2 d-none d-md-block promotion_bg">
-          <p>広告スペース(大)</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
 <%= render 'shared/note_modal' %>
 
-  <div class="forms">
+<ul class="form_body">
     <%= form_with url: notes_path do |f| %>
-      <div class="form_body">
         <%= f.hidden_field :group_id, :value => @group.id %>
-        <%= f.text_field :content,class:'form form-control' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %>
-        <div class="note_form_contents">
+
+        <li><%= f.text_field :content,class:'form' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %></li>
+        <li>
           <%= f.label :image, class:'image_form' do %>
-          <label>
-            <i class="fa fa-image btn btn-dark "></i>
-            <%= f.file_field :image, class: "file_field" %>
-          </label>
-          <% end %>
-          <%= link_to favorite_items_path(group_id: @group.id), class:"btn btn-dark" do %>
+        <label>
+          <button class="btn"><i class="fa fa-image"></i></button>
+          <%= f.file_field :image, class: "file_field" %>
+        </label>
+        <% end %>
+        </li>
+        <li>
+          <%= link_to favorite_items_path(group_id: @group.id), class:"btn" do %>
           <i class="fa fa-star" aria-hidden="true"></i>
           <% end %>
-          <%= f.submit "投稿", class: "btn btn-primary form-btn " %>
-        </div>
-      </div>
+          <%= f.submit "投稿", class: "btn btn-light form-btn" %>
+        </li>
     <% end %>
-  </div>
+  </ul>
 
 
 <script type="text/javascript">

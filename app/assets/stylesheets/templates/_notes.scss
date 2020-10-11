@@ -1,0 +1,93 @@
+.note-field {
+  position: relative;
+  top: 30px;
+}
+
+.own_note {
+  // min-width: 300px;
+  // min-height: 15px;
+  // max-width: 400px;
+  border-radius: 20px;
+  color: #111111;
+  background-color: #FFE299;
+  position: relative;
+  border-style: none;
+}
+
+// .own_note::before {
+//   content: "";
+//   position: absolute;
+//   margin: 0;
+//   bottom: 55px;
+//   right: 18px;
+//   width: 0;
+//   height: 0;
+//   border-top: 40px solid #FFE299;
+//   border-left: 12px solid transparent;
+//   border-right: 12px solid transparent;
+//   transform: rotate(-150deg);
+// }
+// //
+// .left_side .own_note::before {
+//   top: 12px;
+//   left: -16px;
+//   border-bottom-color: #fff;
+// }
+
+.other_note {
+  // min-width: 300px;
+  // min-height: 15px;
+  // max-width: 400px;
+  border-radius: 20px;
+  background-color: #FFFFE0;
+  border: 1px solid #111111;
+  position: relative;
+}
+
+// .other_note::before {
+//   content: "";
+//   width: 0;
+//   height: 0;
+//   border: 8px solid red;
+//   position: absolute;
+//   bottom:4px;
+// }
+
+.note_body {
+  min-width: 160px;
+  min-height: 20px;
+}
+
+.note_content {
+  font-size: 20px;
+  border-bottom: solid 1px black;
+  min-height: 40px;
+}
+
+.note {
+  color: rgba(255, 255, 255, 0.5);
+  &:hover {
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 0.6;
+  }
+}
+
+.comment {
+  font-size: 10px;
+}
+
+.comment_list {
+  list-style: none;
+  text-align: left;
+}
+
+.drop-hover:hover > .dropdown-menu {
+  display: block !important;
+}
+
+.note_image {
+  height :65px;
+  width :65px;
+  border-radius: 15px;
+  padding-bottom: 5px;
+}

@@ -11,7 +11,7 @@
         <li>
           <%= form_with url:join_group_path(request.group_id) do |f| %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.submit "グループに入る",class: "btn btn-primary" %>
+            <%= f.submit "グループに入る",class: "btn btn-light" %>
           <% end %>
         </li>
     </ul>

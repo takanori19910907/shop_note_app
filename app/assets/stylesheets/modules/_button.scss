@@ -1,0 +1,37 @@
+
+.btn-light {
+  border: none;
+  margin: 0;
+    background-color: #ffd700;
+  &:hover {
+    background-color: #F9CB57;
+    opacity: 0.8;
+  }
+}
+
+#js_count {
+  width: 40px;
+  height: 40px;
+}
+
+#js_comment {
+  width: 40px;
+  height: 40px;
+}
+
+.delete_link a {
+  color: #111111;
+}
+
+.destroy {
+  position: fixed;
+  left: 50%;
+  bottom: 100px;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 2;
+}
+
+input[type=checkbox]:checked ~ .destroy {
+  display: block;
+}

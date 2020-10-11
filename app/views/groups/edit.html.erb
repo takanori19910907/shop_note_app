@@ -1,8 +1,6 @@
 <p>グループ情報編集</p>
-
 <p>下記項目を入力してグループ情報変更ボタンを押してください</p>
-
-<div class="group_form">
+<div class="form">
 
   <%= form_with model: @group do |f| %>
 
@@ -23,11 +21,11 @@
     </div>
 
     <div>
-      <br /><%= f.submit "グループ情報変更", class:"btn btn-primary" %>
+      <br /><%= f.submit "グループ情報変更", class:"btn btn-light" %>
     </div>
   <% end %>
 
-<button class="btn btn-warning"><%= link_to "削除", group_path(@group.id), method: :delete,data:{confirm: "本当に削除しますか?"} %></button>
+<button class="btn btn-danger delete_link"><%= link_to "削除", group_path(@group.id), method: :delete,data:{confirm: "本当に削除しますか?"} %></button>
 
 </div>
 

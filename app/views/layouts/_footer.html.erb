@@ -1,19 +1,28 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark footer">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-md navbar-light bg-light footer">
+  <div class="container">
     <div class="row footer_item">
       <div class="col-12">
         <div class="row">
-
-        <div class="col-3"><a class= "nav-link" <%= link_to "レビュー一覧",reviews_path %></a></div>
-        <div class="col-3"><a class= "nav-link" <%= link_to "レビュー投稿",new_review_path %><span class="footer_title">↑ご協力お願いします！</span></a></div>
-        <div class="col-6 contact">
-          - 製作者 有吉貴紀 -　<br/>
-          - Email takanori20200229@gmail.com - <br/>
-            何かあれば 上記emailアドレス宛にご連絡ください
+        <div class="col-6 d-block d-md-none">
+          <a class= "nav-link f-item" <%= link_to "レビュー一覧",reviews_path %></a>
         </div>
-  </div>
+        <div class="col-6 d-block d-md-none">
+          <a class= "nav-link f-item" <%= link_to "レビュー投稿",new_review_path %><span class="footer_title">↑ご協力お願いします！</span></a>
+        </div>
+        <div class="col-12 d-block d-md-none">
+            - 製作者 有吉貴紀 -<br/>
+            - Email takanori20200229@gmail.com - <br/>
+              本アプリの問い合わせは上記E-mailアドレス宛にお願い致します
+        </div>
+        <div class="col-md-3 d-none d-md-block"><a class= "nav-link f-item" <%= link_to "レビュー一覧",reviews_path %></a></div>
+        <div class="col-md-3 d-none d-md-block"><a class= "nav-link f-item" <%= link_to "レビュー投稿",new_review_path %><span class="footer_title">↑ご協力お願いします！</span></a></div>
+        <div class="col-md-6 d-none d-md-block">
+          - 製作者 有吉貴紀 -<br/>
+          - Email takanori20200229@gmail.com - <br/>
+            本アプリの問い合わせは上記E-mailアドレス宛にお願い致します
+        </div>
+     </div>
+    </div>
   </div>
 </div>
 </nav>
-  <div class="f_body">
-  <div>

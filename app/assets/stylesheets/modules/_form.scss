@@ -1,0 +1,38 @@
+.form {
+  margin: auto;
+  width: 80%;
+}
+
+.form_body {
+ position: fixed;
+ bottom: 0;
+ width: 100%;
+ height: 100px;
+ z-index: 1;
+ background-color: #f8f9fa;
+ border-top: thin solid #dcdcdc;
+}
+
+.file_field {
+  display: none;
+}
+
+.note_form_contents {
+  position: relative;
+  right: 15px;
+}
+
+.search_form {
+  display: inline-block;
+  width: 200px;
+}
+
+.modal-footer {
+  border: none;
+}
+
+@media (min-width: 767px) {
+  input.form {
+    width: 500px;
+  }
+}
