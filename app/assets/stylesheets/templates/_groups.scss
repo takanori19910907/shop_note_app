@@ -1,6 +1,7 @@
 
 .group_info {
-  border-bottom: 1px solid white;
+  border-bottom: thin solid #dcdcdc;
+  margin: 10px;
   height: 50px;
 }
 
@@ -20,7 +21,6 @@
   left: 40%;
   width: 500px;
   height: 50px;
-  background-color: #666666;
   border-radius: 5%;
   overflow: scroll;
   }
@@ -30,7 +30,6 @@
   width: 300px;
   padding-left: 5px;
   display: inline-block;
-  background-color: #666666;
   border-radius: 5%;
   overflow: scroll;
   text-align: left;
@@ -52,12 +51,21 @@
   bottom: 30px;
 }
 
-// .namespace_left {
-//   font-size: 10px;
-//   margin-right: 20px;
-// }
-//
-// .namespace_right {
-//   font-size: 10px;
-//   margin-left: 20px;
-// }
+.chatroom_info {
+  padding-top: 30px;
+}
+
+.namespace {
+  height: 20px;
+  font-size: 8px;
+  text-align: right;
+}
+
+@media (min-width: 767px) {
+
+  .namespace {
+    height: 20px;
+    font-size: 16px;
+    text-align: center;
+  }
+}

@@ -1,41 +1,45 @@
 <%if user_signed_in? %>
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="row">
-
-          <div class="col-12 d-block d-md-none promotion_sm">
+          <div class="col-12 d-block d-md-none promo_sm">
             <p>広告スペース(小)</p>
           </div>
-          <div class="col-md-2 d-none d-md-block promotion_bg">
+        </div>
+        <div class="row">
+          <div class="col-md-2 d-none d-md-block promo_bg left">
             <p>広告スペース(大)</p>
           </div>
-
-          <div class="col-md-8 chatroom_info">
-          <%= form_with url: note_path do |f| %>
-
-            <% if @own_notes.present? %>
-
-              <% @own_notes.each do |note| %>
-
-                  <%= render 'shared/note_content', note: note %>
-
-              <% end %>
-
-              <%= f.submit '購入しました', class: 'btn btn btn-warning destroy' %>
-
-            <% else %>
-
-              <p>現在買うものはありません</p>
-
-            <% end %>
-          </div>
-          <% end %>
-          <div class="col-md-2 d-none d-md-block promotion_bg">
+          <div class="col-md-2 d-none d-md-block promo_bg right">
             <p>広告スペース(大)</p>
           </div>
         </div>
+
+          <div class="row">
+            <div class="col-md-12 note-field">
+            <%= form_with url: note_path do |f| %>
+
+              <% if @own_notes.present? %>
+
+                <% @own_notes.each do |note| %>
+
+                    <%= render 'shared/note_content', note: note %>
+
+                <% end %>
+
+                <%= f.submit '購入しました', class: 'btn btn btn-warning destroy' %>
+
+              <% else %>
+
+                <p>現在買うものはありません</p>
+
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
       </div>
     </div>
   </div>

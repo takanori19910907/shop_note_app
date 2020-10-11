@@ -1,13 +1,13 @@
 <p>グループ作成</p>
-
 <p>下記項目を入力してグループ登録完了ボタンを押してください</p>
+<div class="form">
 
 <div class="group_form">
 
   <%= form_with model: @group do |f| %>
 
     <div>
-      <%= f.label :"名前" %><i>(必須)</i>
+      <%= f.label :"名前(必須)" %>
       <%= f.text_field :name, class:'form-control',placeholder: "例:○○家のおつかいリスト" %>
     </div>
 
@@ -17,8 +17,8 @@
     </div>
 
     <div>
-      <br /><%= f.submit "グループ登録完了", class:"btn btn-primary" %>
+      <br /><%= f.submit "グループ登録完了", class:"btn btn-light" %>
     </div>
   <% end %>
-
+</div>
 </div>

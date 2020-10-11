@@ -26,12 +26,11 @@
 
 <p><%= link_to "グループ情報編集",edit_group_path(@group.id) %></p>
 
-<div class="form_body" id="searches_form">
-  <div class="form_title">招待したいユーザーを検索</div>
+<div class="form_body">
 
   <%= form_with url: search_index_path, method: :get, local: true do |f| %>
       <%= f.hidden_field :group_id, :value => @group.id %>
-      <%= f.text_field :name,class:'form-control search_form', placeholder: "ユーザー名を入力" %>
+      <%= f.text_field :name,class:'form', placeholder: "招待したいユーザーを入力" %>
       <%= f.submit "検索", class: "btn btn-light" %>
   <% end %>
 </div>

@@ -1,0 +1,37 @@
+ul.navbar-nav {
+  background-color: #f8f9fa;
+  border-radius: 3%;
+  border: 1px solid #111111;
+}
+
+.page_title {
+ text-align: center;
+}
+
+.navbar.fixed-top {
+  height: 70px;
+}
+
+
+.navbar-collapse {
+  bottom: 10px;
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa;
+}
+
+.dropdown-divider {
+}
+
+.nav_item_title {
+  position: relative;
+  left: 25px;
+}
+
+@media (min-width: 767px) {
+
+  ul.navbar-nav {
+  border: none;
+  }
+}

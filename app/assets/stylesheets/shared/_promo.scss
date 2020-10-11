@@ -1,0 +1,25 @@
+.promo_sm {
+  position: fixed;
+  border: 1px solid;
+  border-color: #dcdcdc;
+  border-radius: 5px;
+  top: 70px;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.promo_bg {
+  position: fixed;
+  border: 1px solid;
+  border-color: #111111;
+  border-radius: 5px;
+  height: 400px;
+}
+
+.promo_bg.left {
+ left: 10px;
+}
+
+.promo_bg.right {
+ right: 10px;
+}
