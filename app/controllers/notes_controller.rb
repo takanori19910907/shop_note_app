@@ -35,7 +35,7 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    params[:note][:id].each do |note_id|
+    params[:note_ids].each do |note_id|
       Note.find_by(id: note_id).destroy
     end
     redirect_to request.referrer || root_url

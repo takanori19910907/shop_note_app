@@ -1,24 +1,22 @@
-<%= check_box_tag 'note[id][]', note.id, checked = false, :id => "note_#{note.id} " %>
+
+<%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
 <% if note.user == current_user %>
-<!-- <ul> -->
-  <!-- <li class="left_side"> -->
 
   <div class="btn btn-dark own_note">
 
     <%= render 'shared/note', note: note %>
 
   </div>
-  <!-- </li> -->
-  <!-- <ul> -->
+
 <% else %>
 
   <div class="btn btn-light other_note">
 
-   <%= render 'shared/note', note: note %>
+   <%= render 'shared/note', note: note, f: f %>
 
   </div>
 
-<% end %>
+  <% end %>
 
 <div class="time"><%= note.created_at.to_s(:datetime) %></div>
