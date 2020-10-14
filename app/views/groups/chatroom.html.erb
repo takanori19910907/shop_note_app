@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-md-12">
       <div class="row">
@@ -16,7 +16,7 @@
       </div>
 
       <div class="row chatroom_info">
-        <div class="col-md-12 chatroom_info">
+        <div class="col-12 chatroom_info">
           <div class="row info group_title">
             <div class="col-12">
               <%= "ルーム名：#{@group.name}" %>
@@ -29,13 +29,11 @@
           </div>
         </div>
       </div>
-
-            <%= form_with url: note_path do |f| %>
               <% if @group_notes.present? %>
                 <% @group_notes.each do |note| %>
 
-                  <ul class="row">
-
+                  <!-- <div class="row group_member_name"> -->
+                  <ul>
                   <% unless note.user == current_user %>
                     <li class="col-6">
                     <li class="col-6 namespace">
@@ -49,8 +47,10 @@
 
                   <% end %>
                   </ul>
+                  <!-- </div> -->
+        <%# <%= form_with url: note_path do |f| %>
 
-                  <%= render 'shared/note_content', note: note, f: f %>
+                  <%= render 'shared/note_content', note: note %>
 
                 <% end %>
 
@@ -60,11 +60,8 @@
 
               <% end %>
 
-          <div class = "destroy">
-            <%= f.submit '購入しました', class: 'btn btn-warning' %>
-          </div>
         </div>
-        <% end %>
+        <%# <% end %>
 
   </div>
 </div>
@@ -79,17 +76,19 @@
         <li>
           <%= f.label :image, class:'image_form' do %>
         <label>
-          <button class="btn"><i class="fa fa-image"></i></button>
+          <i class="fa fa-image btn"></i>
           <%= f.file_field :image, class: "file_field" %>
         </label>
         <% end %>
         </li>
         <li>
-          <%= link_to favorite_items_path(group_id: @group.id), class:"btn" do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
+          <%= link_to favorite_items_path(group_id: @group.id) do %>
+          <i class="fa fa-star btn" aria-hidden="true"></i>
           <% end %>
-          <%= f.submit "投稿", class: "btn btn-light form-btn" %>
         </li>
+
+        <li><%= f.submit "投稿", class: "btn btn-light form-btn" %></li>
+
     <% end %>
   </ul>
 

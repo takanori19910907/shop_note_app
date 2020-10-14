@@ -13,6 +13,10 @@
  border-top: thin solid #dcdcdc;
 }
 
+.form_body li {
+  display: inline-flex;
+}
+
 .file_field {
   display: none;
 }
