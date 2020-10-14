@@ -9,10 +9,6 @@ class Note < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  def set_url
-    @count = 1
-  end
-
   private
   #画像のみの投稿を有効にするため、contentが空かつimageがあるときにバリデーションを回避する
   def has_imageData?
