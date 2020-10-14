@@ -6,13 +6,13 @@
         <li>
           <%= f.label :image, class:'image_form' do %>
         <label>
-          <button class="btn"><i class="fa fa-image"></i></button>
+          <i class="fa fa-image"></i>
           <%= f.file_field :image, class: "file_field" %>
         </label>
         <% end %>
         </li>
         <li>
-        <%= link_to favorite_items_path, class:"btn" do %>
+        <%= link_to favorite_items_path do %>
         <i class="fa fa-star" aria-hidden="true"></i>
         <% end %>
         <%= f.submit "投稿", class: "btn btn-light form-btn " %>

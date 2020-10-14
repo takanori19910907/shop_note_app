@@ -31,7 +31,3 @@
   display: none;
   z-index: 2;
 }
-
-input[type=checkbox]:checked ~ .destroy {
-  display: block;
-}

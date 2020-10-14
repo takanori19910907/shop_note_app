@@ -1,4 +1,5 @@
-
+<%= f.label :note_ids do %>
+<label>
 <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
 <% if note.user == current_user %>
@@ -16,7 +17,20 @@
    <%= render 'shared/note', note: note, f: f %>
 
   </div>
-
+</label>
+<% end %>
   <% end %>
+
+  <script>
+$(function(){
+    $('input[type=checkbox]').click(function() {
+        if ($(this).prop('checked')) {
+            $('.destroy').show();
+        } else {
+            $('.destroy').hide();
+        }
+    });
+});
+</script>
 
 <div class="time"><%= note.created_at.to_s(:datetime) %></div>
