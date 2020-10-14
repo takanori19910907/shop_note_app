@@ -1,22 +1,20 @@
 <ul class="form_body">
-  <div class="form">
   <%= form_with url: notes_path do |f| %>
 
         <li><%= f.text_field :content,class:'form form-control' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %></li>
         <li>
           <%= f.label :image, class:'image_form' do %>
         <label>
-          <i class="fa fa-image"></i>
+          <i class="fa fa-image btn"></i>
           <%= f.file_field :image, class: "file_field" %>
         </label>
         <% end %>
         </li>
         <li>
         <%= link_to favorite_items_path do %>
-        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star btn" aria-hidden="true"></i>
         <% end %>
-        <%= f.submit "投稿", class: "btn btn-light form-btn " %>
         </li>
+        <li><%= f.submit "投稿", class: "btn btn-light form-btn" %></li>
   <% end %>
-  </div>
 </ul>
