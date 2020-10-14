@@ -21,7 +21,9 @@
 
 <div class="form_body">
   <%= form_with url: search_index_path, method: :get, local: true do |f| %>
-    <%= f.text_field :name,class:'form', placeholder: "ユーザー名を入力" %>
-    <%= f.submit "検索", class: "btn btn-light" %>
+  <% if @group.present? %>
+    <%= f.hidden_field :group_id, :value => @group.id %>
+  <% end %>
+  <%= render "shared/search_form", f: f %>
   <% end %>
 </div>
