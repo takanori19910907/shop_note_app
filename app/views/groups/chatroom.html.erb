@@ -29,6 +29,7 @@
           </div>
         </div>
       </div>
+      <%= form_with url: note_path do |f| %>
               <% if @group_notes.present? %>
                 <% @group_notes.each do |note| %>
 
@@ -48,9 +49,8 @@
                   <% end %>
                   </ul>
                   <!-- </div> -->
-        <%# <%= form_with url: note_path do |f| %>
 
-                  <%= render 'shared/note_content', note: note %>
+                  <%= render 'shared/note_content', note: note, f: f %>
 
                 <% end %>
 
@@ -61,7 +61,7 @@
               <% end %>
 
         </div>
-        <%# <% end %>
+        <% end %>
 
   </div>
 </div>
