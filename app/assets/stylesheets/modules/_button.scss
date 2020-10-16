@@ -31,3 +31,13 @@
   display: none;
   z-index: 2;
 }
+
+input[type=checkbox]:checked ~ .btn {
+  opacity: 0.5;
+  background: linear-gradient(
+    #FFF6C1 47%,
+    #000000 47%,
+    #000000 52%,
+    #FFF6C1 52%,
+    // border: 1px solid black;
+  );
