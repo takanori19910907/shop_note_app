@@ -10,6 +10,7 @@
   background-color: #FFE299;
   position: relative;
   border-style: none;
+  transition: unset;
 }
 
 .own_note::before{
@@ -24,6 +25,7 @@
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   transform: rotate(130deg);
+  z-index: -1;
 }
 
 .other_note {
@@ -31,6 +33,7 @@
   border-radius: 20px;
   background-color:  #FFF375;
   position: relative;
+  transition: unset;
 }
 
 
@@ -46,6 +49,7 @@
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   transform: rotate(-130deg);
+  z-index: -1;
 }
 
 .note_body {

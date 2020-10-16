@@ -33,11 +33,18 @@
 }
 
 input[type=checkbox]:checked ~ .btn {
-  opacity: 0.5;
   background: linear-gradient(
-    #FFF6C1 47%,
-    #000000 47%,
+    #FFFFE0 48%,
+    #000000 48%,
     #000000 52%,
-    #FFF6C1 52%,
-    // border: 1px solid black;
+    #FFFFE0 52%,
   );
+}
+
+input[type=checkbox]:checked ~ .own_note::before {
+    border-top: 25px solid  #FFFFE0;
+}
+
+input[type=checkbox]:checked ~ .other_note::after {
+    border-top: 25px solid  #FFFFE0;
+}
