@@ -48,22 +48,23 @@
 
   <%= render 'shared/note_form' %>
 
-  <script type="text/javascript">
-  $('.js_count_btn').click(function() {
-  $('#count_id').val(this.value);
-  });
-  $('.js_comment_btn').on('click', function () {
-  $('#comment_id').val(this.value);
-  })
-  </script>
-
 <% else %>
 
   <h1 class="app_title">
     有吉の買い物メモ<br>アプリへようこそ
   </h1>
-
-<h3><a <%= link_to "ユーザー登録して利用開始！",new_user_registration_path %></a></h3><br />
-<h5><a <%= link_to "登録済みの方はコチラから",new_user_session_path %></a></h5>
-
+  <ul class="top_page_btn">
+    <li class="btn top_page_btn" id="new"><%= link_to "新規登録",new_user_registration_path %></li>
+    <li class="btn top_page_btn" id="login"><%= link_to "ログイン",new_user_session_path %></li>
+    <li class="btn top_page_btn" id="guest"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></li>
+  </ul>
 <% end %>
+
+<script type="text/javascript">
+$('.js_count_btn').click(function() {
+$('#count_id').val(this.value);
+});
+$('.js_comment_btn').on('click', function () {
+$('#comment_id').val(this.value);
+})
+</script>
