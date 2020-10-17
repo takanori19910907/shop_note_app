@@ -1,3 +1,8 @@
+@mixin basic_btn_style {
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+}
 
 .btn-light {
   border: none;
@@ -7,6 +12,27 @@
     background-color: #F9CB57;
     opacity: 0.8;
   }
+}
+
+.top_page_btn {
+  @include basic_btn_style;
+  margin: 5px;
+}
+
+.top_page_btn a {
+  color: #111111;
+}
+
+#new {
+  background-color: #FFF9C1;
+}
+
+#login {
+  background-color: #ffd700;
+}
+
+#guest {
+  background-color: #FFFF00;
 }
 
 #js_count {
