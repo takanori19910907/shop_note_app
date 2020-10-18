@@ -83,6 +83,7 @@ class HomeController < ApplicationController
     def note_present?
       if current_user.present?
         @own_notes = current_user.notes.includes(comments: :user)
+        @note = current_user.notes.build
       else
         @own_notes = []
       end

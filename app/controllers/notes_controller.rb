@@ -2,24 +2,19 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    if params[:content].present? || params[:image].present?                                             #取得した値にcontent、imageが含まれる場合の処理
-      params[:content].split(/[[:blank:]]+/).each do |note|                                             #値を分解、再結合し1つずつメモを作成
-        current_user.notes.create(content: note, group_id: params[:group_id], image: params[:image])
-      end
-      if params[:image].present? && params[:content] == ''                                              #imageだけでも投稿出来るようcontentが空且つimageが含まれる処理を条件分岐として定義
-        current_user.notes.create(content: '', group_id: params[:group_id], image: params[:image])
-      end
-      url = Rails.application.routes.recognize_path(request.referrer)                                   #もといたページ情報によって処理を分けるため 変数urlを定義
-      if url == {controller: 'home', action: 't_post'}
-        flash[:success] = '投稿に成功しました！'
-        redirect_to t_post_path
-      else
-        redirect_to request.referrer || root_url
-      end
-    else
-      flash[:danger] = '投稿に失敗しました'
-      redirect_to request.referrer || root_url
-    end
+    note = current_user.notes.build(note_params)
+if note.save
+  url = Rails.application.routes.recognize_path(request.referrer)
+  if url == {controller: 'home', action: 't_post'}
+    flash[:success] = '投稿に成功しました！'
+    redirect_to t_post_path
+  else
+    redirect_to request.referrer || root_url
+  end
+else
+  flash[:danger] = '投稿に失敗しました'
+  redirect_to request.referrer || root_url
+end
   end
 
   def count
@@ -42,6 +37,10 @@ class NotesController < ApplicationController
   end
 
   private
+
+  def note_params
+    params.require(:note).permit(:content,:image)
+  end
 
   def count_params
     params.permit(:count)
