@@ -31,13 +31,11 @@
 <script>
 $(function(){
   $('.checkbox-select').click(function() {
-      // if ($(this).prop('checked')) {
-        if ($(".checkbox-select:checked").length > 0) {
-         // if (check_count == 0 ){
-          $('.destroy').show();
-      } else {
-          $('.destroy').hide();
-      }
+  if ($(".checkbox-select:checked").length > 0) {
+      $('.destroy').show();
+  } else {
+  $('.destroy').hide();
+    }
   });
 });
 </script>

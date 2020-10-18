@@ -3,14 +3,13 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def create
+    binding.pry
     @comment = current_user.comments.build(comment_params)
-    @comment.note_id = params[:note_id]
-    if @comment.save
-      redirect_to request.referrer || root_url
-    else
+    # @comment.note_id = params[:note_id]
+    unless @comment.save
       flash[:danger] = '投稿に失敗しました'
-      redirect_to :back
     end
+    redirect_to request.referrer || root_url
   end
 
   def destroy
@@ -30,6 +29,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.permit(:content)
+    params.permit(:content,:note_id)
   end
 end

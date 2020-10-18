@@ -52,6 +52,7 @@
 
                   <%= render 'shared/note_content', note: note, f: f %>
 
+
                 <% end %>
 
               <% else %>
@@ -65,7 +66,6 @@
 
   </div>
 </div>
-
 <%= render 'shared/note_modal' %>
 
 <ul class="form_body">
@@ -91,13 +91,3 @@
 
     <% end %>
   </ul>
-
-
-<script type="text/javascript">
-  $('.js_count_btn').click(function() {
-  $('#count_id').val(this.value);
-  });
-  $('.js_comment_btn').on('click', function () {
-  $('#comment_id').val(this.value);
-  })
-</script>
