@@ -11,13 +11,9 @@ class FavoriteItemsController < ApplicationController
     @favorite_item = current_user.favorite_items.new
   end
 
-  def create
-    if params[:favorite_item][:name].present?
-      params[:favorite_item][:name].split(/[[:blank:]]+/).each do |item|
-        unless FavoriteItem.find_by(name: item, user_id: current_user.id).present?
-          current_user.favorite_items.create(name: item)
-        end
-      end
+  def creates
+    item = current_user.favorite_items.build(f_item_params)
+    if item.save
       url = Rails.application.routes.recognize_path(request.referrer)
       if url == { controller: 'home', action: 't_create' }
         flash[:success] = '登録に成功しました！ページ下部のリンクから次のページへ進みましょう！'
@@ -43,18 +39,17 @@ class FavoriteItemsController < ApplicationController
   def post
     params[:item][:id].each do |item_id|
       item = current_user.favorite_items.find_by(id: item_id)
-      note = Note.create(content: item.name, user_id: item.user_id, group_id: params[:group_id])
+      note = current_user.notes.create(content: item.name, group_id: params[:group_id])
     end
-    if params[:group_id].present?
-      flash[:success] = '投稿しました'
-      redirect_to chatroom_group_path(params[:group_id])
+    url = Rails.application.routes.recognize_path(request.referrer)
+    if url == { controller: 'home', action: 't_favItem_post' }
+      flash[:success] = 'これでチュートリアルは終了！ページ下のボタンで移動し、アプリを使いはじめましょう！'
+      redirect_to tutorial_4_path
     else
-      url = Rails.application.routes.recognize_path(request.referrer)
-      if url == { controller: 'home', action: 't_favItem_post' }
-        flash[:success] = 'これでチュートリアルは終了！ページ下のボタンで移動し、アプリを使いはじめましょう！'
-        redirect_to tutorial_4_path
+      flash[:success] = '投稿しました'
+      if params[:group_id].present?
+        redirect_to chatroom_group_path(params[:group_id])
       else
-        flash[:success] = '投稿しました'
         redirect_to root_url
       end
     end
@@ -114,5 +109,9 @@ class FavoriteItemsController < ApplicationController
         @other_line << item
       end
       end
+    end
+
+    def f_item_params
+      params.require(:favorite_item).permit(:name)
     end
 end
