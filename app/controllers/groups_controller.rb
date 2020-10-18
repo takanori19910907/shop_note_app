@@ -76,6 +76,7 @@ class GroupsController < ApplicationController
   def chatroom
     @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: @group.id)
     @members = @group.users.select(:name)
+    @note = current_user.notes.build
   end
 
   def request_list

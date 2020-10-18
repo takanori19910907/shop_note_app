@@ -58,6 +58,10 @@
   z-index: 2;
 }
 
+.none {
+   display: none !important;
+}
+
 input[type=checkbox]:checked ~ .btn {
   background: linear-gradient(
     #FFFFE0 48%,

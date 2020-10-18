@@ -1,7 +1,7 @@
 <ul class="form_body">
   <%= form_with model: @note do |f| %>
 
-        <li><%= f.text_field :content,class:'form form-control' , placeholder: "商品名を入力" %></li>
+        <li><%= f.text_field :content,class:'form form-control' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %></li>
         <li>
           <%= f.label :image, class:'image_form' do %>
         <label>
@@ -17,4 +17,25 @@
         </li>
         <li><%= f.submit "投稿", class: "btn btn-light form-btn" %></li>
   <% end %>
+
+  <ul>
+    <li class="js-upload-filename"></li>
 </ul>
+
+<script>
+  $(function() {
+  $('input[type=file]').change(function () {
+    let file = $(this).prop('files')[0];
+    $('.js-upload-filename').text(file.name + 'を選択中');
+    $(".js-upload-filename").after("<i class=\"fa fa-times-circle btn\"</i>");
+    $(".fa-image").attr('id', 'set_image');
+  });
+
+  $('ul').on('click','.fa-times-circle',function () {
+    $('.js-upload-file').val('');
+    $('.js-upload-filename').text('');
+    $(this).hide();
+    $('.fa-image').removeAttr('id');
+  });
+});
+</script>

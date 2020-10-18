@@ -52,6 +52,7 @@
 
                   <%= render 'shared/note_content', note: note, f: f %>
 
+
                 <% end %>
 
               <% else %>
@@ -65,14 +66,13 @@
 
   </div>
 </div>
-
 <%= render 'shared/note_modal' %>
 
 <ul class="form_body">
-    <%= form_with url: notes_path do |f| %>
+    <%= form_with model: @note ,url: notes_path do |f| %>
         <%= f.hidden_field :group_id, :value => @group.id %>
 
-        <li><%= f.text_field :content,class:'form' , placeholder: "商品名を入力(複数ある場合は間に空白を入れて入力してください)" %></li>
+        <li><%= f.text_field :content,class:'form' , placeholder: "商品名を入力" %></li>
         <li>
           <%= f.label :image, class:'image_form' do %>
         <label>
@@ -91,13 +91,3 @@
 
     <% end %>
   </ul>
-
-
-<script type="text/javascript">
-  $('.js_count_btn').click(function() {
-  $('#count_id').val(this.value);
-  });
-  $('.js_comment_btn').on('click', function () {
-  $('#comment_id').val(this.value);
-  })
-</script>

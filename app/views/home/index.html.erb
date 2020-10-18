@@ -59,12 +59,3 @@
     <li class="btn top_page_btn" id="guest"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></li>
   </ul>
 <% end %>
-
-<script type="text/javascript">
-$('.js_count_btn').click(function() {
-$('#count_id').val(this.value);
-});
-$('.js_comment_btn').on('click', function () {
-$('#comment_id').val(this.value);
-})
-</script>

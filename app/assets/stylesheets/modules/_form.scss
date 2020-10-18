@@ -35,6 +35,20 @@
   border: none;
 }
 
+Form.scss
+
+.fileclear {
+  display: none;
+  margin: 10px 0 0;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#set_image {
+  color: red;
+}
+
 @media (min-width: 767px) {
   input.form {
     width: 500px;

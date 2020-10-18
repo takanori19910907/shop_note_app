@@ -39,7 +39,7 @@ end
   private
 
   def note_params
-    params.require(:note).permit(:content,:image)
+    params.require(:note).permit(:content,:image,:group_id)
   end
 
   def count_params
