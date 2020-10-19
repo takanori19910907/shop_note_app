@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
-  
+
     root 'home#index'
     get '/tutorial_top', to: 'home#t_top'
     get '/tutorial_1', to: 'home#t_post'
@@ -29,9 +29,10 @@ Rails.application.routes.draw do
       end
       member do
         get :chatroom
-        post :invite
-        post :invite_reset
+        post :request_user
+        post :request_cancle
         post :join
+        post :refuse
       end
     end
 
