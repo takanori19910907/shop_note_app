@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
   end
 
   def index
+      binding.pry
       @group = Group.find_by(id: params[:group_id])
       if @group.present?
         @search_users = User.where('name LIKE ?', "%#{params[:name]}%")

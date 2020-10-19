@@ -7,7 +7,7 @@
         <li>
           <% if current_user.groups.present? %>
             <p>グループを選択してリクエスト</p>
-            <%= form_with url:invite_group_path(user.id) do |f| %>
+            <%= form_with url:request_user_group_path(user.id) do |f| %>
 
             <%= f.hidden_field :user_id, :value => user.id %>
 
@@ -28,7 +28,7 @@
         <ul>
           <% @group.each do |group| %>
             <li>
-              <%= form_with url:invite_reset_group_path(user.id) do |f| %>
+              <%= form_with url:request_cancle_group_path(user.id) do |f| %>
 
                 <%= f.hidden_field :group_id, :value => group.group.id %>
 

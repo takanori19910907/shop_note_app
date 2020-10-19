@@ -1,20 +1,20 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user, only: [:edit,:update,:destroy]
-  before_action :correct_user, only: [:join]
-  before_action :set_group, only: [:edit,:update,:destroy,:join,:show,:chatroom]
+  before_action :correct_user, only: [:join,:refuse]
+  before_action :set_group, only: [:edit,:update,:destroy,:join,:refuse,:show,:chatroom]
 
   def index
     @groups = current_user.groups
   end
 
   def new
-    @group = current_user.own_groups.new
+    @group = current_user.own_groups.build
   end
 
   def create
     ActiveRecord::Base.transaction do
-      @group = current_user.own_groups.new(group_params)
+      @group = current_user.own_groups.build(group_params)
       @group.save!
       group_member = @group.group_members.build(user_id: current_user.id, activated: true)
       group_member.save!
@@ -45,19 +45,18 @@ class GroupsController < ApplicationController
     redirect_to root_path
   end
 
-  def invite
+  def request_user
     if params[:id].to_i != current_user.id
       @group = Group.find(params[:group_id])
       @member = @group.group_members.create(user_id: params[:id])
       flash[:success] = "#{@member.user.name}さんを招待しました"
-      redirect_to request.referrer || root_url
     else
       flash[:danger] = '無効な処理です。自分以外のユーザーへリクエストしてください'
-      redirect_to request.referrer || root_url
     end
+    redirect_to request.referrer || root_url
   end
 
-  def invite_reset
+  def request_cancle
     @group = Group.find(params[:group_id])
     @group.group_members.find_by(user_id: params[:id]).destroy
     redirect_to request.referrer || root_url
@@ -67,6 +66,21 @@ class GroupsController < ApplicationController
     @group.group_members.find_by(user_id: params[:user_id]).update(activated: true)
     flash[:success] = 'グループに参加しました'
     redirect_to chatroom_group_path
+  end
+
+  def refuse
+    binding.pry
+    if params[:user_id].to_i == current_user.id
+      @group.group_members.find_by(user_id: current_user.id)
+      if @group.destroy
+        flash[:success] = "#{@member.user.name}さんを招待しました"
+      else
+        flash[:danger] = '処理が失敗しました。再度やり直してください'
+      end
+    else
+      flash[:danger] = '無効な処理です。自分以外のユーザーへリクエストしてください'
+    end
+    redirect_to request.referrer || root_url
   end
 
   def show
@@ -84,30 +98,30 @@ class GroupsController < ApplicationController
 
   private
 
-  def correct_user
-    unless params[:user_id].to_i == current_user.id
-      flash[:danger] = '本人でないためグループリクエストの承認が出来ません'
-      redirect_to request.referrer || root_url
+    def correct_user
+      unless params[:user_id].to_i == current_user.id
+        flash[:danger] = '本人でないためグループリクエストの承認が出来ません'
+        redirect_to request.referrer || root_url
+      end
+    end
+
+    def admin_user
+      group = current_user.groups.find(params[:id])
+      unless group.admin_user_id == current_user.id
+        flash[:danger] = '管理者権限がないため実行出来ません'
+        render 'home/index'
+      end
+    end
+
+    def set_group
+      @group = Group.find(params[:id])
+    end
+
+    def group_params
+      params.require(:group).permit(:image, :name, :profile)
+    end
+
+    def join_params
+      params.permit(:user_id)
     end
   end
-
-  def admin_user
-    group = current_user.groups.find(params[:id])
-    unless group.admin_user_id == current_user.id
-      flash[:danger] = '管理者権限がないため実行出来ません'
-      render 'home/index'
-    end
-  end
-
-  def set_group
-    @group = Group.find(params[:id])
-  end
-
-  def group_params
-    params.require(:group).permit(:image, :name, :profile)
-  end
-
-  def join_params
-    params.permit(:user_id)
-  end
-end

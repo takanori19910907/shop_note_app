@@ -13,6 +13,10 @@
             <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= f.submit "グループに入る",class: "btn btn-light" %>
           <% end %>
+          <%= form_with url:refuse_group_path(request.group_id) do |f| %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.submit "キャンセル",class: "btn btn-dark" %>
+          <% end %>
         </li>
     </ul>
   <% end %>
