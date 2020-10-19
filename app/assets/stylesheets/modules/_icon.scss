@@ -38,18 +38,11 @@
     }
 }
 
-.fa-sort {
-  position: relative;
-  right: 2px;
-  &:hover {
-  }
-}
-
+.fa-sort,
 .fa-pencil {
   position: relative;
-  right: 5px;
-  &:hover {
-  }
+  right: 2px;
+  top: -5px;
 }
 
 .fa-exclamation-circle {
