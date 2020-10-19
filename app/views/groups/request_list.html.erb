@@ -1,18 +1,20 @@
 <% if @request.present? %>
 
   <% @request.each do |request| %>
-    <ul>
+    <ul class="request_list">
       <% if request.group.image.present? %>
         <li><img src= "<%= request.group.image %>" class="image_icon"></li>
       <% else %>
         <li><img src= "/assets/default_group_icon.png" class="image_icon"></li>
       <% end %>
         <li><%= request.group.name %></li>
-        <li>
+        <li class="request_items">
           <%= form_with url:join_group_path(request.group_id) do |f| %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= f.submit "グループに入る",class: "btn btn-light" %>
           <% end %>
+        </li>
+        <li class="request_items">
           <%= form_with url:refuse_group_path(request.group_id) do |f| %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= f.submit "キャンセル",class: "btn btn-dark" %>

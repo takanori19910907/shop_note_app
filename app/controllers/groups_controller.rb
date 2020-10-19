@@ -71,9 +71,9 @@ class GroupsController < ApplicationController
   def refuse
     binding.pry
     if params[:user_id].to_i == current_user.id
-      @group.group_members.find_by(user_id: current_user.id)
-      if @group.destroy
-        flash[:success] = "#{@member.user.name}さんを招待しました"
+      target =  @group.group_members.find_by(user_id: current_user.id)
+      if target.destroy
+        flash[:success] = "リクエストをキャンセルしました"
       else
         flash[:danger] = '処理が失敗しました。再度やり直してください'
       end

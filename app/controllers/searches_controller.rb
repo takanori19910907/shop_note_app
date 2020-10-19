@@ -5,24 +5,18 @@ class SearchesController < ApplicationController
   end
 
   def index
-      binding.pry
+    if params[:group_id].present?
       @group = Group.find_by(id: params[:group_id])
-      if @group.present?
+      if params[:name].present?
         @search_users = User.where('name LIKE ?', "%#{params[:name]}%")
-        if @search_users.present? && params[:name].present?
-          @search_users
-        else
-          @search_users = []
-        end
+      else
+        flash[:danger] = '指定のユーザーは存在しません'
+        @users = User.none
+      end
     else
       @group = []
       @groups = current_user.groups.all
       @search_users = User.where('name LIKE ?', "%#{params[:name]}%")
-      if @search_users.present? && params[:name].present?
-        @search_users
-      else
-        @search_users = []
-      end
       render 'searches/index'
     end
   end
