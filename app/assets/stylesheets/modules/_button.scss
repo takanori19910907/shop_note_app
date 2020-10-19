@@ -23,6 +23,7 @@
   color: #111111;
 }
 
+
 #new {
   background-color: #FFF9C1;
 }
@@ -35,14 +36,21 @@
   background-color: #FFFF00;
 }
 
-#js_count {
-  width: 40px;
-  height: 40px;
+.note_btn {
+  float: right;
+  width: 100px;
 }
 
+.btn #js_count,
 #js_comment {
-  width: 40px;
-  height: 40px;
+  padding: 0;
+}
+
+#js_count,
+#js_comment
+ {
+  width: 20px;
+  height: 20px;
 }
 
 .delete_link a {
