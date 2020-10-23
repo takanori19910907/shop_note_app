@@ -10,7 +10,7 @@ class FavoriteItemsController < ApplicationController
     @favorite_item = current_user.favorite_items.new
   end
 
-  def creates
+  def create
     item = current_user.favorite_items.build(f_item_params)
     if item.save
       url = Rails.application.routes.recognize_path(request.referrer)
@@ -28,15 +28,15 @@ class FavoriteItemsController < ApplicationController
   end
 
   def destroy
-    params[:item][:id].each do |item_id|
-      current_user.favorite_items.find_by(id: item_id).destroy
+    params[:item_ids].each do |item_id|
+      item = current_user.favorite_items.find_by(id: item_id).destroy
     end
     flash[:warning] = 'お気に入り商品を削除しました'
     redirect_to request.referrer || new_favorite_item_path
   end
 
   def post
-    params[:item][:id].each do |item_id|
+    params[:item_ids].each do |item_id|
       item = current_user.favorite_items.find_by(id: item_id)
       note = current_user.notes.create(content: item.name, group_id: params[:group_id])
     end
@@ -57,7 +57,7 @@ class FavoriteItemsController < ApplicationController
   private
 
     def correct_user
-      item = FavoriteItem.find(params[:item][:id]).first
+      item = FavoriteItem.find(params[:item_ids]).first
       unless item.user_id == current_user.id
         flash[:danger] = '投稿者本人でないため削除出来ませんでした'
         redirect_to request.referrer || root_url
@@ -66,8 +66,8 @@ class FavoriteItemsController < ApplicationController
 
     def set_items
       favorite_items = current_user.favorite_items.all
-      @item_exists = favorite_items.present?
       @favorite_item_groups = current_user.favorite_item_groups
+      @item_exists = favorite_items.present?
     end
 
     def f_item_params
