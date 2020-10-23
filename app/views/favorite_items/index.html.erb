@@ -1,33 +1,20 @@
 <p>お気に入り商品一覧</p>
 
-<% if @favorite_items.present? %>
-  <%= form_with url: post_favorite_items_path do |f| %>
+<% if @item_exists %>
+
+<%= form_with url: post_favorite_items_path do |f| %>
 
   <%= render 'shared/favItem_list' %>
 
-      <ul class="f_item_link">
-        <li><%= link_to "登録ページへ移動",new_favorite_item_path, class:"btn btn-dark favorite_back_btn" %></li>
-        <li><%= link_to "戻る",:back , class:"btn btn-dark favorite_back_btn" %></li>
-      </ul>
-
-    <% if params[:group_id].present? %>
-
-      <%= f.hidden_field :group_id, :value => params[:group_id] %>
-
-    <% end %>
-
-  <div class= "form_body">
-      <!-- <div class="f_item_form"> -->
-      <%= f.submit "選択したお気に入り商品を投稿",class:"btn btn-light" %>
-      <!-- </div> -->
-      <% end %>
-  </div>
+<% end %>
 
 <% else %>
 
   <p>現在お気に入り商品はありません</p>
+
+<% end %>
+
   <ul class="f_item_btn">
     <li><%= link_to "登録ページへ移動",new_favorite_item_path, class:"btn btn-dark" %></li>
     <li><%= link_to "戻る",:back , class:"btn btn-dark" %></li>
   </ul>
-<% end %>

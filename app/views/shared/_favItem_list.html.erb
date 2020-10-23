@@ -1,65 +1,19 @@
-<p>-あ行-</p>
-    <% @A_line.each do |item| %>
-      <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-      <%= item.name %>
+<%= form_with url: post_favorite_items_path do |f| %>
+  <% @favorite_item_groups.each do |item_group| %>
+      <p>-<%= item_group[:idx] %>-</p>
+      <% item_group[:items].each do |item| %>
+        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
+        <%= item.name %>
     <% end %><br/>
-
-<p>-か行-</p>
-  <% @K_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-さ行-</p>
-  <% @S_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-た行-</p>
-  <% @T_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-な行-</p>
-  <% @N_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-は行-</p>
-  <% @H_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-ま行-</p>
-  <% @M_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-や行-</p>
-  <% @Y_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-ら行-</p>
-  <% @R_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-わ行-</p>
-  <% @W_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %>
-  <% end %><br/>
-
-<p>-その他-</p>
-  <% @other_line.each do |item| %>
-    <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-    <%= item.name %><br />
   <% end %>
+
+  <% if params[:group_id].present? %>
+
+    <%= f.hidden_field :group_id, :value => params[:group_id] %>
+
+  <% end %>
+
+  <div class= "form_body">
+    <%= f.submit "選択したお気に入り商品を投稿",class:"btn btn-light" %>
+  </div>
+<% end %>
