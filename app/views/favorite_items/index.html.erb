@@ -2,11 +2,11 @@
 
 <% if @item_exists %>
 
-<%= form_with url: post_favorite_items_path do |f| %>
+  <%= form_with url: post_favorite_items_path do |f| %>
 
-  <%= render 'shared/favItem_list' %>
+    <%= render 'shared/favItem_list', f: f %>
 
-<% end %>
+  <% end %>
 
 <% else %>
 
