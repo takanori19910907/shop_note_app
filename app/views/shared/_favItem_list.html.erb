@@ -1,10 +1,14 @@
-<%= form_with url: post_favorite_items_path do |f| %>
   <% @favorite_item_groups.each do |item_group| %>
-      <p>-<%= item_group[:idx] %>-</p>
-      <% item_group[:items].each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-    <% end %><br/>
+    <p>-<%= item_group[:idx] %>-</p>
+    <% item_group[:items].each do |item| %>
+      <%# <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
+      <%= f.label :item_ids do %>
+      <label>
+      <%= f.check_box :item_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{item}", multiple: true,include_hidden: false}, item.id %>
+      <%= item.name %>
+      </label>
+      <% end %>
+    <% end %>
   <% end %>
 
   <% if params[:group_id].present? %>
@@ -13,6 +17,18 @@
 
   <% end %>
 
+  <div class= "form_body">
     <%= f.submit "選択したお気に入り商品を投稿",class:"btn btn-light" %>
+  </div>
 
-<% end %>
+<script>
+$(function(){
+  $('.checkbox-select').click(function() {
+  if ($(".checkbox-select:checked").length > 0) {
+      $('.destroy').show();
+  } else {
+  $('.destroy').hide();
+    }
+  });
+});
+</script>

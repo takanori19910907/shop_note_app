@@ -1,15 +1,14 @@
 <p>お気に入り商品登録</p>
 
-<% if @favorite_items.present? %>
+<% if @item_exists %>
 
   <%= form_with url: favorite_items_path, method: :delete do |f| %>
 
-  <%= render 'shared/favItem_list' %>
+    <%= render 'shared/favItem_list', f: f %>
 
     <%= f.submit "商品をまとめて削除",class:"btn btn-warning destroy" %>
 
   <% end %>
-
 
 <% else %>
 
