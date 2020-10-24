@@ -1,79 +1,13 @@
-<% if @favorite_items.present? %>
-<div class="alert alert-success">お気に入り商品を投稿しましょう！投稿したい商品をチェックして[投稿]ボタンを押してください！</div>
+<% if @item_exists %>
 
-<p>お気に入り商品一覧</p>
+  <p>お気に入り商品を投稿しましょう！投稿したい商品をチェックして[投稿]ボタンを押してください！</p>
+
+  <p>お気に入り商品一覧</p>
+
+
   <%= form_with url: post_favorite_items_path do |f| %>
 
-    <p>-あ行-</p>
-        <% @A_line.each do |item| %>
-          <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-          <%= item.name %>
-        <% end %><br/>
-
-  　<p>-か行-</p>
-      <% @K_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-さ行-</p>
-      <% @S_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-た行-</p>
-      <% @T_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-な行-</p>
-      <% @N_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-は行-</p>
-      <% @H_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-ま行-</p>
-      <% @M_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-や行-</p>
-      <% @Y_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-ら行-</p>
-      <% @R_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-わ行-</p>
-      <% @W_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %>
-      <% end %><br/>
-
-  　<p>-その他-</p>
-      <% @other_line.each do |item| %>
-        <%= check_box_tag 'item[id][]', item.id, checked = false, :id => "item_#{item.id}" %>
-        <%= item.name %><br />
-      <% end %>
-
-    <ul>
-      <li><%= link_to "1つ前に戻る",tutorial_2_path, class:"btn btn-dark" %></li>
-      <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
-    </ul>
+    <%= render 'shared/favItem_list', f: f %>
 
     <% if params[:group_id].present? %>
 
@@ -81,17 +15,24 @@
 
     <% end %>
 
-  <div class= "form_body" id="searches_form">
-    <div class="form_title">投稿したい商品を選択し、投稿ボタンを押してください</div>
-    <div class="f_item_form"><%= f.submit "投稿",class:"btn btn-primary" %></div>
-    <% end %>
-  </div>
+    <div class= "form_body" id="searches_form">
+      <div class="form_title">投稿したい商品を選択し、投稿ボタンを押してください</div>
+      <div class="f_item_form"><%= f.submit "投稿",class:"btn btn-light" %></div>
+    </div>
+
+  <% end %>
+
+    <ul>
+      <li><%= link_to "1つ前に戻る",tutorial_2_path, class:"btn btn-dark" %></li>
+      <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
+    </ul>
 
 <% else %>
-<p>登録中の商品がありません。下記ボタンから1つ前のページに戻り、お気に入り商品を登録してください</p>
-<ul>
-  <li><%= link_to "1つ前に戻る",tutorial_2_path, class:"btn btn-dark" %></li>
-  <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
-</ul>
+
+  <p>登録中の商品がありません。下記ボタンから1つ前のページに戻り、お気に入り商品を登録してください</p>
+  <ul>
+    <li><%= link_to "1つ前に戻る",tutorial_2_path, class:"btn btn-dark" %></li>
+    <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
+  </ul>
 
 <% end %>

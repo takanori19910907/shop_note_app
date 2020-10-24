@@ -24,14 +24,14 @@
 
               <% @own_notes.each do |note| %>
 
-                  <%= render 'shared/note_content', note: note %>
+                  <%= render 'shared/note_content', note: note, f: f %>
 
               <% end %>
 
                 <%= f.submit '購入しました', class: 'btn btn btn-warning destroy' %>
 
           <% else %>
-            <div class="alert alert-success">まずはメモの投稿！ページ下の入力フォームに商品名を入力して[投稿]ボタンを押してください</div>
+            <p>まずはメモの投稿！ページ下の入力フォームに商品名を入力して[投稿]ボタンを押してください</p>
 
           <% end %>
 

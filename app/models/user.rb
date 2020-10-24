@@ -16,8 +16,7 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  # お気に入りアイテムを、日本語索引でグルーピングした配列を返す
-  # @return [Hash]
+  #お気に入りアイテムを、日本語索引でグルーピングした配列を返す
   def favorite_item_groups
     a_line = []
     k_line = []
@@ -32,30 +31,31 @@ class User < ApplicationRecord
     other_line = []
 
     favorite_items.each do |item|
-      i_initial = NKF.nkf("-h1 -w",item.name[0]).tr("A-Z0-9","Ａ-Ｚ０-９")
-        if ["あ","い","う","え","お","a","i","u","e","o","A","I","U","E","O"].include?(i_initial)
-          a_line << item
-        elsif ["か","き","く","け","こ","が","ぎ","ぐ","げ","ご","c","k","q","C","K","Q"].include?(i_initial)
-          k_line << item
-        elsif ["さ","し","す","せ","そ","ざ","じ","ず","ぜ","ぞ","s","z","S","Z"].include?(i_initial)
-          s_line << item
-        elsif ["た","ち","つ","て","と","だ","ぢ","づ","で","ど","t","d","T","D"].include?(i_initial)
-          t_line << item
-        elsif ["な","に","ぬ","ね","の","n","N"].include?(i_initial)
-          n_line << item
-        elsif ["は","ひ","ふ","へ","ほ","ば","び","ぶ","べ","ぼ","h","b","H","B"].include?(i_initial)
-          h_line << item
-        elsif ["ま","み","む","め","も","m","M"].include?(i_initial)
-          m_line << item
-        elsif ["や","ゆ","よ","y","Y"].include?(i_initial)
-          y_line << item
-        elsif ["ら","り","る","れ","ろ","l","r","L","R"].include?(i_initial)
-          r_line << item
-        elsif ["わ","を","ん"].include?(i_initial)
-          w_line << item
-        else
-          other_line << item
-        end
+      i_initial = NKF.nkf("-h1 -w",item.name[0]).tr("Ａ-Ｚ０-９","A-Z0-9").downcase
+      case
+      when ["あ","い","う","え","お","a","i","u","e","o"].include?(i_initial)
+        a_line << item
+      when ["か","き","く","け","こ","が","ぎ","ぐ","げ","ご","c","k","q"].include?(i_initial)
+        k_line << item
+      when ["さ","し","す","せ","そ","ざ","じ","ず","ぜ","ぞ","s","z"].include?(i_initial)
+        s_line << item
+      when ["た","ち","つ","て","と","だ","ぢ","づ","で","ど","t","d"].include?(i_initial)
+        t_line << item
+      when ["な","に","ぬ","ね","の","n"].include?(i_initial)
+        n_line << item
+      when ["は","ひ","ふ","へ","ほ","ば","び","ぶ","べ","ぼ","ぱ","ぴ","ぷ","ぺ","ぽ","h","b","v","p"].include?(i_initial)
+        h_line << item
+      when ["ま","み","む","め","も","m"].include?(i_initial)
+        m_line << item
+      when ["や","ゆ","よ","y"].include?(i_initial)
+        y_line << item
+      when ["ら","り","る","れ","ろ","l","r"].include?(i_initial)
+        r_line << item
+      when ["わ","を","ん","w"].include?(i_initial)
+        w_line << item
+      else
+        other_line << item
+      end
     end
 
     [
