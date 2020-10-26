@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
       flash[:success] = 'レビューを投稿しました！ご協力ありがとうございます！'
       redirect_to reviews_path
     else
-      flash[:danger] = 'レビューに失敗しました、お手数ですが再度お試しください'
+      flash[:danger] = '無効な処理です、お手数ですが再度お試しください'
       render 'reviews/new'
     end
   end
@@ -29,18 +29,19 @@ class ReviewsController < ApplicationController
   def update
     if @review.update(review_params)
       flash[:success] = 'レビュー内容を変更しました'
-      # redirect_to reviews_path
+      redirect_to reviews_path
     else
       flash[:danger] = 'レビュー内容を変更出来ませんでした、お手数ですが再度お試しください'
-      # render 'reviews/edit'
+      render 'reviews/edit'
     end
-    redirect_to reviews_path
   end
 
   def destroy
-    @review.destroy
-    flash[:success] = 'レビューを削除しました'
-    redirect_to request.referrer || root_url
+    if @review.destroy
+      flash[:success] = 'レビューを削除しました'
+      redirect_to request.referrer || root_url
+    else
+      flash[:danger] = "無効な処理です、お手数ですが再度お試しください"
   end
 
   private
