@@ -27,15 +27,3 @@
 <div class = "destroy">
   <%= f.submit '購入しました', class: 'btn btn-warning' %>
 </div>
-
-<script>
-$(function(){
-  $('.checkbox-select').click(function() {
-  if ($(".checkbox-select:checked").length > 0) {
-      $('.destroy').show();
-  } else {
-  $('.destroy').hide();
-    }
-  });
-});
-</script>
