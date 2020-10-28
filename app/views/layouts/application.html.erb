@@ -13,24 +13,6 @@
     <main>
       <%= render 'shared/error_messages' %>
       <%= yield %>
-      <div class="page_top"><a href="#"></a></div>
-      <script>
-      $(function(){
-        $(window).scroll(function() {
-        if ($(this).scrollTop() > 200) {
-            $('.page_top').fadeIn();
-        } else {
-        $('.page_top').fadeOut();
-          }
-        });
-        $('.page_top').click(function() {
-          $('body,html').animate({
-            scrollTop: 0
-        }, 500);
-        return false;
-        });
-      });
-      </script>
     </main>
 
     <div id="image_display"></div>
@@ -38,7 +20,6 @@
     <footer>
     <%= render 'layouts/footer' %>
     </footer>
-    <!-- <script src="fitty.min.js"></script>
-    <script>fitty('#note_text');</script> -->
+    <script>fitty('#note_text');</script>
   </body>
 </html>
