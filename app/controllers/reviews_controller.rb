@@ -42,6 +42,7 @@ class ReviewsController < ApplicationController
       redirect_to request.referrer || root_url
     else
       flash[:danger] = "無効な処理です、お手数ですが再度お試しください"
+    end
   end
 
   private
