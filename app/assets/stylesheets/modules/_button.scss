@@ -1,16 +1,11 @@
-@mixin basic_btn_style {
-  display: inline-block;
-  width: 200px;
-  height: 40px;
-}
+ @import "shared/mixin";
 
 .btn-light {
   border: none;
   margin: 0;
     background-color: #ffd700;
   &:hover {
-    background-color: #F9CB57;
-    opacity: 0.8;
+
   }
 }
 
@@ -23,9 +18,16 @@
   color: #111111;
 }
 
+.top_page_btn li:hover{
+  opacity: 0.6;
+}
+
+#new a {
+  color: #e6e6e6;
+}
 
 #new {
-  background-color: #FFF9C1;
+  background-color: #222222;
 }
 
 #login {
