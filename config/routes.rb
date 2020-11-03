@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
-    root 'home#index'
+    root 'notes#index'
     get '/tutorial_top', to: 'home#t_top'
     get '/tutorial_1', to: 'home#t_post'
     get '/tutorial_2', to: 'home#t_create'

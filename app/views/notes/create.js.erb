@@ -1,0 +1,11 @@
+<% if @own_notes.present? %>
+
+$("#my_notes_area").html("<%= j(render 'shared/my_content', { note: @own_notes }) %>")
+
+<% else %>
+
+$("#notes_area").html("<%= j(render 'shared/note_content', { note: @group_notes }) %>")
+
+<% end %>
+
+$("input").val('')
