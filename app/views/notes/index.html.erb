@@ -18,18 +18,11 @@
         </div>
 
           <div class="row">
-            <div class="col-md-12 note-field">
-            <%= form_with url: note_path do |f| %>
+            <div class="col-md-12 note-field" id="my_notes_area">
 
               <% if @own_notes.present? %>
 
-                <% @own_notes.each do |note| %>
-
-                    <%= render 'shared/note_content', note: note, f: f %>
-
-                <% end %>
-
-                <%= f.submit '購入しました', class: 'btn btn btn-warning destroy' %>
+                <%= render 'shared/my_content', note: @own_notes %>
 
               <% else %>
 
@@ -38,8 +31,6 @@
               <% end %>
             </div>
           </div>
-          <% end %>
-
       </div>
     </div>
   </div>

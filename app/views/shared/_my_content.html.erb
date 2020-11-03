@@ -1,0 +1,36 @@
+<%= form_with url: note_path do |f| %>
+
+  <% note.each do |note| %>
+
+    <%= f.label :note_ids do %>
+      <label>
+        <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
+
+        <% if note.user == current_user %>
+
+          <div class="btn own_note">
+
+            <%= render 'shared/note', note: note %>
+
+          </div>
+
+        <% else %>
+
+          <div class="btn other_note">
+
+           <%= render 'shared/note', note: note %>
+
+          </div>
+      </label>
+      <% end %>
+    <% end %>
+
+    <div class="time"><%= note.created_at.to_s(:datetime) %></div>
+
+  <% end %>
+
+<div class = "destroy">
+  <%= f.submit '購入しました', class: 'btn btn-warning' %>
+</div>
+
+<% end %>
