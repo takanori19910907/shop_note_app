@@ -29,41 +29,20 @@
           </div>
         </div>
       </div>
-      <%= form_with url: note_path do |f| %>
-              <% if @group_notes.present? %>
-                <% @group_notes.each do |note| %>
 
-                  <!-- <div class="row group_member_name"> -->
-                  <ul>
-                  <% unless note.user == current_user %>
-                    <li class="col-6">
-                    <li class="col-6 namespace">
-                      <%= note.user.name %>
-                      <% if note.user.image.present? %>
-                        <img src="<%= note.user.image %>" class="user_icon" >
-                      <% else %>
-                        <img src="/assets/default_user_icon.jpg" class="user_icon" >
-                      <% end %>
-                    </li>
+      <% if @group_notes.present? %>
 
-                  <% end %>
-                  </ul>
-                  <!-- </div> -->
-
-                  <%= render 'shared/chatroom_content', note: note, f: f %>
-
-
-                <% end %>
-
-              <% else %>
-
-                <p>現在買うものはありません</p>
-
-              <% end %>
-
+        <div id="chat_area">
+          <%= render 'shared/chatroom_content', note: @group_notes %>
         </div>
-        <% end %>
 
+      <% else %>
+
+        <p>現在買うものはありません</p>
+
+      <% end %>
+
+    </div>
   </div>
 </div>
 <%= render 'shared/note_modal' %>

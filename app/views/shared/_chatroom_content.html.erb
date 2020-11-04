@@ -1,6 +1,18 @@
 <%= form_with url: note_path do |f| %>
-
-  <% note.each do |note| %>
+  <% @group_notes.each do |note| %>
+    <ul>
+      <% unless note.user == current_user %>
+        <li class="col-6">
+        <li class="col-6 namespace">
+          <%= note.user.name %>
+          <% if note.user.image.present? %>
+            <img src="<%= note.user.image %>" class="user_icon" >
+          <% else %>
+            <img src="/assets/default_user_icon.jpg" class="user_icon" >
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
 
     <%= f.label :note_ids do %>
       <label>
@@ -28,9 +40,7 @@
     <div class="time"><%= note.created_at.to_s(:datetime) %></div>
 
   <% end %>
-
-<div class = "destroy">
-  <%= f.submit '購入しました', class: 'btn btn-warning' %>
-</div>
-
+  <div class = "destroy">
+    <%= f.submit '購入しました', class: 'btn btn-warning' %>
+  </div>
 <% end %>
