@@ -75,4 +75,8 @@ group :production do
   gem 'pg', '0.20.0'
 end
 
+group :production, :staging do
+    gem 'unicorn'
+end
+
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
