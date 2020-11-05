@@ -1,13 +1,10 @@
+<% if @own_notes.present? %>
 
-<% if @group_notes.present? %>
-
-<% binding.pry %>
-
-$("chat_area").html("<%= j(render 'shared/chatroom_content', { note: @group_notes }) %>")
+$("#my_notes_area").html("<%= j(render 'shared/my_content', { note: @own_notes }) %>")
 
 <% else %>
 
-$("#my_notes_area").html("<%= j(render 'shared/my_content', { note: @own_notes }) %>")
+$("#notes_area").html("<%= j(render 'shared/note_content', { note: @group_notes }) %>")
 
 <% end %>
 
