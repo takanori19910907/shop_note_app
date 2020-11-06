@@ -49,7 +49,8 @@ class NotesController < ApplicationController
     params[:note_ids].each do |note_id|
       Note.find_by(id: note_id).destroy
     end
-    redirect_to request.referrer || root_url
+    @own_notes = current_user.notes.includes(comments: :user)
+    # redirect_to request.referrer || root_url
   end
 
   private
