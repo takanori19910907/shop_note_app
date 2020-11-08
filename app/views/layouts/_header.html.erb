@@ -38,7 +38,7 @@
         <a class="dropdown-item" <%= link_to  request_list_groups_path, method: :get do %>
           グループリクエスト一覧
           <% if @request.present? %>
-            <i class="fa fa-exclamation-circle"></i>　<%= @request.count %>件</a>
+            <i class="fa fa-exclamation-circle"></i><%= @request.count %>件</a>
           <% end %>
   <% end %>
 
@@ -64,7 +64,6 @@
 
   <% end %>
 
-　　　</ul>
-　　</div>
-
+    </ul>
+  </div>
 </nav>

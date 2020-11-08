@@ -27,16 +27,16 @@ Moji.kata(Encoding::SJIS) などで取得できます。
 
   $KCODE= "UTF8"                                       # Ruby 1.9では不要
   require "moji"
-  
+
   #文字種判定。
   p Moji.type("漢")                                    # => Moji::ZEN_KANJI
   p Moji.type?("Ａ", Moji::ZEN)                        # => true
-  
+
   #文字種変換。
   p Moji.zen_to_han("Ｒｕｂｙ")                        # => "Ruby"
   p Moji.upcase("Ｒｕｂｙ")                            # => "ＲＵＢＹ"
   p Moji.kata_to_hira("ルビー")                        # => "るびー"
-  
+
   #文字種による正規表現。
   p /#{Moji.kata}+#{Moji.hira}+/ =~ "ぼくドラえもん"   # => 6
   p Regexp.last_match.to_s                             # => "ドラえもん"
@@ -107,7 +107,7 @@ Moji.kata(Encoding::SJIS) などで取得できます。
     ASCIIに含まれる半角記号とその全角版。(({HAN_ASYMBOL | ZEN_ASYMBOL}))
 --- JSYMBOL
     JISに含まれるが (({ASYMBOL})) には含まれない全角/半角記号。(({HAN_JSYMBOL | ZEN_JSYMBOL}))
---- SYMBOL 
+--- SYMBOL
     JISに含まれる全ての全角/半角記号。(({HAN_SYMBOL | ZEN_SYMBOL}))
 --- NUMBER
     全角/半角数字。(({HAN_NUMBER | ZEN_NUMBER}))
@@ -139,120 +139,120 @@ Moji.kata(Encoding::SJIS) などで取得できます。
 ==モジュール関数:
 
 --- Moji.type(ch)
-    
+
     文字 ((|ch|)) の文字種を返します。
-    
+
     「一番細かい分類」の((<定数|定数:>))のうち1つを返します。
-    
+
     上の分類に当てはまらない文字(Unicodeのハングルなど)に対しては (({nil})) を返します。
     また、UnicodeのB面以降の文字に対しても (({nil})) を返します。
-    
+
     文字が割り当てられていない文字コードに対する結果は不定です( (({nil})) を返す事もあります)。
-    
+
       p Moji.type("漢")   # => Moji::ZEN_KANJI
-    
+
 --- Moji.type?(ch, type)
-    
+
     文字 ((|ch|)) が文字種 ((|type|)) に含まれれば、 (({true})) を返します。
-    
+
     ((|type|)) には全ての((<定数|定数:>))と、それらを (({|}))
     で結んだものを使えます。
-    
+
       p Moji.type?("Ａ", Moji::ZEN)   # => true
-    
+
 --- Moji.regexp(type[, encoding])
-    
+
     文字種 ((|type|)) の1文字を表す正規表現を返します。
-    
+
     ((|type|)) には全ての((<定数|定数:>))と、それらを (({|}))
     で結んだものを使えます。
-    
+
     Ruby 1.9では ((|encoding|)) に Encoding オブジェクトを渡すと、指定のエンコーディング用の
     正規表現を返します。
     省略すると Encoding.default_internal (指定されてない場合は Encoding::UTF_8 )とみなします。
-    
+
       p Moji.regexp(Moji::HIRA)   # => /[ぁ-ん]/
-    
+
 --- Moji.zen_to_han(str[, type])
-    
+
     文字列 ((|str|)) の全角を半角に変換して返します。
-    
+
     ((|type|)) には、変換対象とする文字種を((<定数|定数:>))で指定します。
     デフォルトは (({ALL})) (全て)です。
-    
+
       p Moji.zen_to_han("Ｒｕｂｙ！？")                # => "Ruby!?"
       p Moji.zen_to_han("Ｒｕｂｙ！？", Moji::ALPHA)   # => "Ruby！？"
-    
+
 --- Moji.han_to_zen(str[, type])
-    
+
     文字列 ((|str|)) の半角を全角に変換して返します。
-    
+
     ((|type|)) には、変換対象とする文字種を((<定数|定数:>))で指定します。
     デフォルトは (({ALL})) (全て)です。
-    
+
       p Moji.han_to_zen("Ruby!?")                 # => "Ｒｕｂｙ！？"
       p Moji.han_to_zen("Ruby!?", Moji::SYMBOL)   # => "Ruby！？"
-    
+
 --- Moji.normalize_zen_han(str)
-    
+
     文字列 ((|str|)) の大文字、小文字を一般的なものに統一します。
-    
+
     具体的には、ASCIIに含まれる記号と英数字( (({ALNUM|ASYMBOL}))
     )を半角に、それ以外の記号とカタカナ( (({JSYMBOL|HAN_KATA})) )を全角に変換します。
-    
+
 --- Moji.upcase(str[, type])
-    
+
     文字列 ((|str|)) の小文字を大文字に変換して返します。
-    
+
     ((|type|)) には、変換対象とする文字種を((<定数|定数:>))で指定します。
     デフォルトは (({LOWER})) (全角/半角のアルファベット)です。
     ギリシャ文字、キリル文字には対応していません。
-    
+
       p Moji.upcase("Ｒｕｂｙ")   # => "ＲＵＢＹ"
-    
+
 --- Moji.downcase(str[, type])
-    
+
     文字列 ((|str|)) の小文字を大文字に変換して返します。
-    
+
     ((|type|)) には、変換対象とする文字種を((<定数|定数:>))で指定します。
     デフォルトは (({UPPER})) (全角/半角のアルファベット)です。
     ギリシャ文字、キリル文字には対応していません。
-    
+
       p Moji.downcase("Ｒｕｂｙ")   # => "ｒｕｂｙ"
-    
+
 --- Moji.kata_to_hira(str)
-    
+
     文字列 ((|str|)) の全角カタカナをひらがなに変換して返します。
-    
+
     半角カタカナは直接変換できません。 (({han_to_zen})) で全角にしてから変換してください。
-    
+
       p Moji.kata_to_hira("ルビー")   # => "るびー"
-    
+
 --- Moji.hira_to_kata(str)
-    
+
     文字列 ((|str|)) のひらがなを全角カタカナに変換して返します。
-    
+
       p Moji.hira_to_kata("るびー")   # => "ルビー"
-    
+
 --- Moji.han_control([encoding])
 --- Moji.han_asymbol([encoding])
 --- ...
 --- Moji.kana([encoding])
 --- ...
-    
+
     ((<定数|定数:>))それぞれに対応するメソッドが有り、
     それぞれの文字種の1文字を表す正規表現を返します。
-    
+
     例えば、 (({Moji.kana})) は (({Moji.regexp(Moji::KANA)})) と同じです。
-    
+
     Ruby 1.9では ((|encoding|)) に Encoding オブジェクトを渡すと、指定のエンコーディング用の
     正規表現を返します。
     省略すると Encoding.default_internal (指定されてない場合は Encoding::UTF_8 )とみなします。
-    
+
     以下の例のように、文字クラスっぽく使えます。
       p /#{Moji.kata}+#{Moji.hira}+/ =~ "ぼくドラえもん"   # => 6
       p Regexp.last_match.to_s                             # => "ドラえもん"
-    
+
 ==動作環境:
 
 たぶんRuby 1.8以降。
@@ -315,13 +315,13 @@ script= <<'EOS'
 
 
 module Moji
-  
+
   extend(FlagSetMaker)
-  
+
   module Detail
-    
+
     HAN_ASYMBOL_LIST= ' !"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
-    ZEN_ASYMBOL_LIST= '　！”＃＄％＆’（）＊＋，－．／：；＜＝＞？＠［￥］＾＿‘｛｜｝￣'
+    ZEN_ASYMBOL_LIST= ' ！”＃＄％＆’（）＊＋，－．／：；＜＝＞？＠［￥］＾＿‘｛｜｝￣'
     HAN_JSYMBOL1_LIST= '｡｢｣､ｰﾞﾟ･'
     ZEN_JSYMBOL1_LIST= '。「」、ー゛゜・'
     ZEN_JSYMBOL_LIST= '、。・゛゜´｀¨ヽヾゝゞ〃仝々〆〇ー―‐＼～〜∥…‥“〔〕〈〉《》「」『』【】'+
@@ -334,9 +334,9 @@ module Moji
       'バビブベボヴガギグゲゴザジズゼゾダヂヅデド',
       'パピプペポ',
     ].map(){ |s| s.split(//) }
-    
+
     if RUBY_VERSION >= "1.9.0"
-      
+
       def self.convert_encoding(str, &block)
         orig_enc = str.encoding
         if orig_enc == Encoding::UTF_8
@@ -347,17 +347,17 @@ module Moji
           return result.is_a?(String) ? result.encode(orig_enc) : result
         end
       end
-      
+
     else
-      
+
       def self.convert_encoding(str, &block)
         return yield(str)
       end
-      
+
     end
-    
+
   end
-  
+
   def self.uni_range(*args)
     if RUBY_VERSION >= "1.9.0"
       str= args.each_slice(2).map(){ |f, e| '\u%04x-\u%04x' % [f, e] }.join("")
@@ -370,13 +370,13 @@ module Moji
       return nil
     end
   end
-  
+
   make_flag_set([
     :HAN_CONTROL, :HAN_ASYMBOL, :HAN_JSYMBOL, :HAN_NUMBER, :HAN_UPPER, :HAN_LOWER, :HAN_KATA,
     :ZEN_ASYMBOL, :ZEN_JSYMBOL, :ZEN_NUMBER, :ZEN_UPPER, :ZEN_LOWER, :ZEN_HIRA, :ZEN_KATA,
     :ZEN_GREEK, :ZEN_CYRILLIC, :ZEN_LINE, :ZEN_KANJI,
   ])
-  
+
   HAN_SYMBOL= HAN_ASYMBOL | HAN_JSYMBOL
   HAN_ALPHA= HAN_UPPER | HAN_LOWER
   HAN_ALNUM= HAN_ALPHA | HAN_NUMBER
@@ -402,7 +402,7 @@ module Moji
   LINE= ZEN_LINE
   KANJI= ZEN_KANJI
   ALL= HAN | ZEN
-  
+
   CHAR_REGEXPS= {
     HAN_CONTROL => /[\x00-\x1f\x7f]/,
     HAN_ASYMBOL =>
@@ -424,7 +424,7 @@ module Moji
     ZEN_LINE => uni_range(0x2570, 0x25ff) || /[─-╂]/,
     ZEN_KANJI => uni_range(0x3400, 0x4dbf, 0x4e00, 0x9fff, 0xf900, 0xfaff) || /[亜-瑤]/,
   }
-  
+
   def type(ch)
     Detail.convert_encoding(ch) do |ch|
       ch= ch.slice(/\A./m)
@@ -438,21 +438,21 @@ module Moji
       result
     end
   end
-  
+
   def type?(ch, tp)
     Detail.convert_encoding(ch) do |ch|
       tp.include?(type(ch))
     end
   end
-  
+
   def regexp(tp, encoding= nil)
-    
+
     regs= []
     for tp2, reg in CHAR_REGEXPS
       regs.push(reg) if tp.include?(tp2)
     end
     reg= regs.size==1 ? regs[0] : Regexp.new(regs.join("|"))
-    
+
     if RUBY_VERSION >= "1.9.0" && !encoding
       encoding= Encoding.default_internal || Encoding::UTF_8
     end
@@ -461,9 +461,9 @@ module Moji
     else
       return reg
     end
-    
+
   end
-  
+
   def zen_to_han(str, tp= ALL)
     Detail.convert_encoding(str) do |str|
       if tp.include?(ZEN_KATA)
@@ -485,7 +485,7 @@ module Moji
       str
     end
   end
-  
+
   def han_to_zen(str, tp= ALL)
     Detail.convert_encoding(str) do |str|
       #[半]濁音記号がJSYMBOLに含まれるので、KATAの変換をJSYMBOLより前にやる必要あり。
@@ -507,13 +507,13 @@ module Moji
       str
     end
   end
-  
+
   def normalize_zen_han(str)
     Detail.convert_encoding(str) do |str|
       zen_to_han(han_to_zen(str, HAN_JSYMBOL|HAN_KATA), ZEN_ALNUM|ZEN_ASYMBOL)
     end
   end
-  
+
   def upcase(str, tp= LOWER)
     Detail.convert_encoding(str) do |str|
       str= str.tr("a-z", "A-Z") if tp.include?(HAN_LOWER)
@@ -521,7 +521,7 @@ module Moji
       str
     end
   end
-  
+
   def downcase(str, tp= UPPER)
     Detail.convert_encoding(str) do |str|
       str= str.tr("A-Z", "a-z") if tp.include?(HAN_UPPER)
@@ -529,37 +529,37 @@ module Moji
       str
     end
   end
-  
+
   def kata_to_hira(str)
     Detail.convert_encoding(str) do |str|
       str.tr("ァ-ン", "ぁ-ん")
     end
   end
-  
+
   def hira_to_kata(str)
     Detail.convert_encoding(str) do |str|
       str.tr("ぁ-ん", "ァ-ン")
     end
   end
-  
+
   module_function(
     :type, :type?, :regexp, :zen_to_han, :han_to_zen, :normalize_zen_han, :upcase, :downcase,
     :kata_to_hira, :hira_to_kata
   )
-  
+
   def self.define_regexp_method(name, tp)
     define_method(name) do |*args|
       regexp(tp, *args)
     end
     module_function(name)
   end
-  
+
   #han_control, han_asymbol, …などのモジュール関数を定義。
   for cons in constants
     val= const_get(cons)
     define_regexp_method(cons.downcase(), val) if val.is_a?(FlagSetMaker::Flags)
   end
-  
+
   def self.test()
     orig_str= "ドラえもん(Doraemon)は、日本で1番有名な漫画だ。"
     for encoding in RUBY_VERSION >= "1.9.0" ? [Encoding::UTF_8, Encoding::SJIS] : [nil]
@@ -584,7 +584,7 @@ module Moji
       end
     end
   end
-  
+
 end
 
 EOS

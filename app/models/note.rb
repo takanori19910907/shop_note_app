@@ -12,6 +12,6 @@ class Note < ApplicationRecord
   private
   #画像のみの投稿を有効にするため、contentが空かつimageがあるときにバリデーションを回避する
   def has_imageData?
-    content == '' && image.present?
+    content == "" && image.present?
   end
 end

@@ -8,8 +8,8 @@ $('input[type=file]').change(function () {
 });
 
 $('ul').on('click','.fa-times-circle',function () {
-  $('.js-upload-file').val('');
-  $('.js-upload-filename').text('');
+  $('.js-upload-file').val("");
+  $('.js-upload-filename').text("");
   $(this).hide();
   $('.fa-image').removeAttr('id');
   });
