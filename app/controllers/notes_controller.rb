@@ -14,12 +14,12 @@ class NotesController < ApplicationController
     note = current_user.notes.build(note_params)
       note.save
       if params[:note][:group_id].present?
-        # binding.pry
         @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: params[:note][:group_id])
       else
         @own_notes = current_user.notes.includes(comments: :user)
       end
-    #     url = Rails.application.routes.recognize_path(request.referrer)
+
+    # url = Rails.application.routes.recognize_path(request.referrer)
     #     if url == {controller: 'home', action: 't_post'}
     #       flash[:success] = '投稿に成功しました！'
     #       redirect_to t_post_path
