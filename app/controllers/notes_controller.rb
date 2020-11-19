@@ -14,7 +14,6 @@ class NotesController < ApplicationController
     note = current_user.notes.build(note_params)
       note.save
       if params[:note][:group_id].present?
-        # binding.pry
         @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: params[:note][:group_id])
       else
         @own_notes = current_user.notes.includes(comments: :user)
@@ -49,7 +48,11 @@ class NotesController < ApplicationController
     params[:note_ids].each do |note_id|
       Note.find_by(id: note_id).destroy
     end
-    @own_notes = current_user.notes.includes(comments: :user)
+    if params[:group_id].present?
+      @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: params[:note][:group_id])
+    else
+      @own_notes = current_user.notes.includes(comments: :user)
+    end
     # redirect_to request.referrer || root_url
   end
 

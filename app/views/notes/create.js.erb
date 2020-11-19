@@ -1,11 +1,16 @@
-<% if @own_notes.present? %>
+<% if @group_notes.present? %>
 
-$("#my_notes_area").html("<%= j(render 'shared/my_content', { note: @own_notes }) %>")
+$("#chat_area").html("<%= j(render 'shared/chatroom_content', { note: @group_notes }) %>")
 
 <% else %>
 
-$("#notes_area").html("<%= j(render 'shared/note_content', { note: @group_notes }) %>")
+$("#my_notes_area").html("<%= j(render 'shared/my_content', { note: @own_notes }) %>")
 
 <% end %>
 
-$("input").val("")
+$("input.note_form").val('');
+$('.js-upload-file').val('');
+$('.js-upload-filename').text('');
+$(this).hide();
+$('.fa-times-circle').hide();
+$('.fa-image').removeAttr('id');
