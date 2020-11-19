@@ -1,12 +1,14 @@
+
 <%= form_with url: note_path do |f| %>
 
   <% note.each do |note| %>
 
     <%= f.label :note_ids do %>
       <label>
-        <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
         <% if note.user == current_user %>
+
+          <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
           <div class="btn own_note">
 
@@ -16,11 +18,29 @@
 
         <% else %>
 
-          <div class="btn other_note">
+          <!-- <div class="row">
+            <div class="col-12">
+              <div class="row"> -->
 
-           <%= render 'shared/note', note: note %>
+              <div class="namespace">
+                <%= note.user.name %>
+                <% if note.user.image.present? %>
+                <img src="<%= note.user.image %>" class="user_icon" >
+                <% else %>
+                <img src="/assets/default_user_icon.jpg" class="user_icon" >
+                <% end %>
+              </div>
+                <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
+              <div class="col-8 btn other_note">
 
-          </div>
+               <%= render 'shared/note', note: note %>
+
+             </div>
+
+              <!-- </div>
+            </div>
+          </div> -->
+
       </label>
       <% end %>
     <% end %>
