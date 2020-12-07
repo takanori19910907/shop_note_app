@@ -53,6 +53,8 @@ group :development, :test do
   gem 'pry-doc'
 
   gem 'selenium-webdriver'
+
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -69,6 +71,8 @@ group :development do
   gem 'rubocop'
 
   gem 'rubocop-rails'
+
+  gem 'spring-commands-rspec'
 end
 
 group :production do
