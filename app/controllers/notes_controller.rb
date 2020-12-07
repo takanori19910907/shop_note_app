@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
 
   def index
     if current_user.present?
@@ -34,6 +34,7 @@ class NotesController < ApplicationController
   end
 
   def count
+    binding.pry
     @count = Note.find(params[:note_id])
     @count.update(count_params)
     if @count.save
