@@ -2,23 +2,33 @@ require 'rails_helper'
 
 RSpec.describe Note, type: :model do
 
-  it "content,user_idがあり、contentが30文字以内であればレコード作成出来ること" do
+  let(:user) { FactoryBot.create(:user) }
 
+  it "content,user_idがある場合は有効" do
+    note = FactoryBot.build(:note, user_id: user.id)
+    expect(note).to be_valid
   end
 
-  it "user_id,content(もしくはimage)属性が入力されていない場合エラーとなること" do
-
+  it "contentがない場合は無効" do
+    note = FactoryBot.build(:note, content: nil)
+    note.valid?
+    expect(note.errors[:content]).to include("を入力してください")
   end
 
-  it "contentがない場合無効であること" do
-
+  it "user_idがない場合は無効" do
+    note = FactoryBot.build(:note, user_id: nil)
+    note.valid?
+    expect(note.errors[:user_id]).to include("を入力してください")
   end
 
-  it "user_idがない場合無効であること" do
-
+  it "contentの文字数が31文字以下の場合は有効" do
+    note = FactoryBot.build(:note, user_id: user.id,content: "c" * 30)
+    expect(note).to be_valid
   end
 
-  it "文字数が31文字以上の場合エラーとなること" do
-
+  it "contentの文字数が31文字以上の場合は無効" do
+    note = FactoryBot.build(:note, user_id: user.id, content: "c" * 31)
+    note.valid?
+    expect(note.errors[:content]).to include("は30文字以内で入力してください")
   end
 end
