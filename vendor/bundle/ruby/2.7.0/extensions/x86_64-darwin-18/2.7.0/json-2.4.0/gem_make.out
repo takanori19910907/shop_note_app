@@ -1,0 +1,13 @@
+current directory: /Users/takanori30907/app/shop_note_app/vendor/bundle/ruby/2.7.0/gems/json-2.4.0/ext/json
+/Users/takanori30907/.rbenv/versions/2.7.0/bin/ruby -I /Users/takanori30907/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20201215-19028-uhxmfr.rb extconf.rb
+creating Makefile
+
+current directory: /Users/takanori30907/app/shop_note_app/vendor/bundle/ruby/2.7.0/gems/json-2.4.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/takanori30907/app/shop_note_app/vendor/bundle/ruby/2.7.0/gems/json-2.4.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/takanori30907/app/shop_note_app/vendor/bundle/ruby/2.7.0/gems/json-2.4.0/ext/json
+make "DESTDIR=" install
