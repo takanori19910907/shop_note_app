@@ -18,6 +18,9 @@ class NotesController < ApplicationController
       else
         @own_notes = current_user.notes.includes(comments: :user)
       end
+      render 'create.js.erb'
+    # note = current_user.notes.build(note_params)
+    # if note.save
     #     url = Rails.application.routes.recognize_path(request.referrer)
     #     if url == {controller: 'home', action: 't_post'}
     #       flash[:success] = '投稿に成功しました！'
@@ -29,12 +32,9 @@ class NotesController < ApplicationController
     #     flash[:danger] = '投稿に失敗しました'
     #     redirect_to request.referrer || root_url
     #   end
-    # binding.pry
-    # @post = Note.find(params[:post_id]) #①
   end
 
   def count
-    binding.pry
     @count = Note.find(params[:note_id])
     @count.update(count_params)
     if @count.save
@@ -54,6 +54,7 @@ class NotesController < ApplicationController
     else
       @own_notes = current_user.notes.includes(comments: :user)
     end
+    render 'destroy.js.erb'
     # redirect_to request.referrer || root_url
   end
 
