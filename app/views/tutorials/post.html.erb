@@ -1,5 +1,5 @@
 <% if @own_notes.present? %>
- <div class="alert alert-dark">
+<div class="alert alert-dark">
   <small>
     1.投稿の削除は、消したい投稿にチェックを入れて、画面下に表示される[購入しました]ボタンを押してください！<br>
     2.投稿には数量やコメントをつけることも出来ます！右側のアイコンをタップして試してみましょう♪<br/>
@@ -8,52 +8,62 @@
   </small>
 </div>
 <p>メモの投稿/削除方法が確認出来たら次のページへ！</p>
-<% end %>
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <div class="row">
 
-          <div class="col-md-2">
+          <div class="col-md-12 note-field" id="my_notes_area">
+
+              <%= render 'shared/my_content', note: @own_notes %>
+
           </div>
 
-          <div class="col-md-8 chatroom_info">
-          <%= form_with url: note_path do |f| %>
+<% else %>
 
-            <% if @own_notes.present? %>
-
-              <% @own_notes.each do |note| %>
-
-                  <%= render 'shared/note_content', note: note, f: f %>
-
-              <% end %>
-
-                <%= f.submit '購入しました', class: 'btn btn btn-warning destroy' %>
-
-          <% else %>
             <p>まずはメモの投稿！ページ下の入力フォームに商品名を入力して[投稿]ボタンを押してください</p>
 
-          <% end %>
+<% end %>
 
-        <ul>
-          <li><%= link_to "お気に入り商品 の説明に進む",tutorial_2_path, class:"btn btn-warning" %></li>
+
+        <ul class="col-md-12 note-field">
+          <li><%= link_to "お気に入り商品 の説明に進む",new_favitem_tutorials_path, class:"btn btn-warning" %></li>
           <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
         </ul>
 
-        </div>
-
-        <div class="col-md-2">
         </div>
 
       </div>
     </div>
   </div>
 
-        <% end %>
 
   <%= render 'shared/note_modal' %>
 
-  <%= render 'shared/note_form' %>
+  <ul class="form_body">
+    <%= form_with url:  create_note_tutorials_path do |f| %>
+
+          <li><%= f.text_field :content,id:'note_create_form',class:'form form-control note_form' , placeholder: "商品名を入力" %></li>
+          <li>
+            <%= f.label :image, class:'image_form' do %>
+          <label>
+            <i class="fa fa-image btn"></i>
+            <%= f.file_field :image, class: "file_field" %>
+          </label>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to favorite_items_path do %>
+          <i class="fa fa-star btn" aria-hidden="true"></i>
+          <% end %>
+          </li>
+          <li><%= f.submit "投稿", class: "btn btn-light form-btn" %></li>
+    <% end %>
+
+    <ul>
+      <li class="js-upload-filename"></li>
+  </ul>
 
   <script type="text/javascript">
   $('.js_count_btn').click(function() {

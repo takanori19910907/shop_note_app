@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 note-field" id="my_notes_area">
+
+          <% if @own_notes.present? %>
+
+            <%= render 'shared/my_content', note: @own_notes %>
+
+          <% else %>
+
+            <p>現在買うものはありません</p>
+
+          <% end %>
+
+    </div>
+
+    <ul class="col-md-12 note-field">
+            <li><%= link_to "買い物メモの説明に戻る",post_tutorials_path, class:"btn btn-dark" %></li>
+      <li><%= link_to "お気に入り商品の説明に戻る",new_favitem_tutorials_path, class:"btn btn-dark" %></li>
+      <li><%= link_to "チュートリアルを終了！",root_path, class:"btn btn-light" %></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<%= render 'shared/note_modal' %>
+
+<%= render 'shared/note_form' %>
+
+<div class="form_body" id="searches_form"></div>
+
+<script type="text/javascript">
+$('.js_count_btn').click(function() {
+$('#count_id').val(this.value);
+});
+$('.js_comment_btn').on('click', function () {
+$('#comment_id').val(this.value);
+})
+</script>

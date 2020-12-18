@@ -1,0 +1,41 @@
+<% if @item_exists %>
+  <div class="alert alert-dark">
+    <small>
+      買い物メモの投稿と同様、チェックを入れて[商品をまとめて削除]ボタンを押すことで、削除することが出来ます♪<br>
+    </small>
+</div>
+
+  <%= form_with url: favorite_items_path, method: :delete do |f| %>
+
+    <%= render 'shared/favItem_list', f: f %>
+
+    <%= f.submit "商品をまとめて削除",class:"btn btn-warning destroy" %>
+
+  <% end %>
+
+  <ul>
+    <li><%= link_to "1つ前に戻る",post_tutorials_path, class:"btn btn-dark" %></li>
+    <li><%= link_to "次の項目に進む",favitem_index_tutorials_path, class:"btn btn-warning" %></li>
+    <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
+  </ul>
+
+  <% else %>
+
+  <p>お気に入り商品を登録してみましょう！ページ下の入力フォームに入力し、[登録]ボタンを押してください</p>
+
+  <p>日頃よく買う商品を『お気に入り商品』として登録することで、投稿をスムーズに行うことが出来ます！<br/>是非一度試してみましょう♪</p>
+
+  <ul>
+    <li><%= link_to "1つ前に戻る",post_tutorials_path, class:"btn btn-dark" %></li>
+    <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
+  </ul>
+
+  <% end %>
+  <div class= "form_body">
+      <div class="f_item_form">
+        <%= form_with url: create_favitem_tutorials_path do |f| %>
+          <%= f.text_field :name, class: "form", placeholder:'商品名を入力(複数ある場合は間に空白を入れて入力してください)' %>
+          <%= f.submit "登録",class:"btn btn-light" %>
+        <% end %>
+      </div>
+  </div>
