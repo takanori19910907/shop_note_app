@@ -1,16 +1,16 @@
 <ul>
   <li class="note_content">
-      <div id="note_text"><%= note.content %></div>
-      <% if note.image.present? %>
-        <img src="<%= note.image %>"class="note_image" >
-      <% end %>
+    <div id="note_text"><%= note.content %></div>
+    <% if note.image.present? %>
+      <img src="<%= note.image %>"class="note_image" >
+    <% end %>
   </li>
   <li class="note_btn">
     <div class="item_count">
     <%= note.count %>
-      <% if note.count.present? %>
-        <span>個</span>
-      <% end %>
+    <% if note.count.present? %>
+      <span>個</span>
+    <% end %>
     </div>
 
 
@@ -23,7 +23,7 @@
   <% note.comments.each do |comment| %>
     <div class="comment_list">
       <%= link_to comment.content ,comment_path(comment.id), method: :delete,data:{confirm: "本当に削除しますか?"} %>
-        <span> : </span>
+      <span> : </span>
       <%= comment.user.name %>
     </div>
   <% end %>

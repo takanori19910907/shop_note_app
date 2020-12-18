@@ -19,12 +19,12 @@ class GroupsController < ApplicationController
       group_member = @group.group_members.build(user_id: current_user.id, activated: true)
       group_member.save!
     end
-      flash[:success] = 'グループを作成しました'
-      redirect_to group_path(@group)
+    flash[:success] = 'グループを作成しました'
+    redirect_to group_path(@group)
 
-      rescue => e
-        flash[:danger] = 'グループ作成に失敗しました。再度やり直してください'
-        render 'groups/new'
+    rescue
+      flash[:danger] = 'グループ作成に失敗しました。再度やり直してください'
+      render 'groups/new'
   end
 
   def edit
@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
     else
       flash[:danger] = "グループ情報変更に失敗しました。再度やり直してください"
     end
-      redirect_to group_path(@group)
+    redirect_to group_path(@group)
   end
 
   def destroy
@@ -98,8 +98,8 @@ class GroupsController < ApplicationController
   def create_post
     note = current_user.notes.build(note_params)
     if note.save
-      @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: params[:group_id])
-      @group = Group.find_by(params[:group_id])
+      @group = current_user.groups.find_by(params[:group_id])
+      @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: @group.id)
       render "create.js.erb"
     else
       render "create.js.erb"

@@ -2,20 +2,19 @@
 
 <% if @search_users.present? %>
 
-      <% if @group.blank? %>
+  <% if @group.blank? %>
 
-        <%= render 'shared/search_result(from_users)' %>
+    <%= render 'shared/search_result(from_users)' %>
 
-      <% else %>
+  <% else %>
 
-        <%= render 'shared/search_result(from_groups)' %>
+    <%= render 'shared/search_result(from_groups)' %>
 
-      <% end %>
+  <% end %>
 
 <% else %>
 
 <p>指定されたユーザーは存在しません</p>
-
 
 <% end %>
 

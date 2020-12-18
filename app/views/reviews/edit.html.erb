@@ -2,13 +2,13 @@
 <p>アプリの星評価と、使ってよかった点や改善すべき点がありましたらコメントをお願いします！</p>
 
 <%= form_with model: @review, local: true , url: review_path do |f| %>
-    <div class="field" id="rate">
-      <%= f.label :"アプリの評価(5段階)" %>
-      <%= f.hidden_field :rate, id: :review_rate %>
-    </div>
-         <%= f.text_field :title, :class => "form-control" %><br>
-         <%= f.text_area :content, :class => "form-control", :size => "50x20"  %><br>
-         <%= f.submit "レビュー評価", :class => "btn btn-primary" %>
+  <div class="field" id="rate">
+    <%= f.label :"アプリの評価(5段階)" %>
+    <%= f.hidden_field :rate, id: :review_rate %>
+  </div>
+    <%= f.text_field :title, :class => "form-control" %><br>
+    <%= f.text_area :content, :class => "form-control", :size => "50x20"  %><br>
+    <%= f.submit "レビュー評価", :class => "btn btn-primary" %>
 <% end %>
 
 
