@@ -9,7 +9,7 @@ RSpec.describe "Notes", type: :system do
   end
 
   describe "#create" do
-    
+
     it "買い物メモを投稿する", js: true do
       expect {
         fill_in "note_create_form", with: "肉"
@@ -42,14 +42,17 @@ RSpec.describe "Notes", type: :system do
 
     context "メモが複数の時" do
       it "指定した複数の買い物メモを削除する",js: true do
-        notes = FactoryBot.create_list(:note, 5 ,user_id: user.id)
+        FactoryBot.create(:note, user_id: user.id, content: "買うもの1")
+        FactoryBot.create(:note, user_id: user.id, content: "買うもの2")
+        FactoryBot.create(:note, user_id: user.id, content: "買うもの3")
         visit root_path
         expect{
-        check "買うもの2"
-        check "買うもの5"
+        check "買うもの1"
+        check "買うもの3"
         click_button "購入しました"
-        expect(page).to_not have_content "買うもの2"
-        expect(page).to_not have_content "買うもの5"
+        expect(page).to_not have_content "買うもの1"
+        expect(page).to_not have_content "買うもの3"
+        expect(page).to have_content "買うもの2"
       }.to change(Note, :count).by(-2)
       end
     end
