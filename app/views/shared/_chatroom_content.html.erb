@@ -1,12 +1,16 @@
 
-<%= form_with url: note_path do |f| %>
+<%= form_with url: destroy_post_group_path do |f| %>
 
-  <% note.each do |note| %>
+<%= f.hidden_field :group_id, :value => @group.id %>
+
+  <% notes.each do |note| %>
+
 
     <%= f.label :note_ids do %>
       <label>
 
         <% if note.user == current_user %>
+
 
           <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 

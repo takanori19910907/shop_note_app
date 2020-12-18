@@ -1,5 +1,5 @@
 
-$("#my_notes_area").html("<%= j(render 'shared/my_content', { note: @own_notes }) %>")
+$("#chat_area").html("<%= j(render 'shared/chatroom_content', { notes: @group_notes }) %>")
 
 $("input.note_form").val('');
 $('.js-upload-file').val('');

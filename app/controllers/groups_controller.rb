@@ -95,6 +95,26 @@ class GroupsController < ApplicationController
   def request_list
   end
 
+  def create_post
+    note = current_user.notes.build(note_params)
+    if note.save
+      @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: params[:group_id])
+      @group = Group.find_by(params[:group_id])
+      render "create.js.erb"
+    else
+      render "create.js.erb"
+    end
+  end
+
+  def destroy_post
+    params[:note_ids].each do |note_id|
+      Note.find_by(id: note_id).destroy
+    end
+    @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: params[:group_id])
+    @group = Group.find_by(params[:group_id])
+    render 'destroy.js.erb'
+  end
+
   private
 
     def correct_user
@@ -122,5 +142,9 @@ class GroupsController < ApplicationController
 
     def join_params
       params.permit(:user_id)
+    end
+
+    def note_params
+      params.permit(:content,:image,:group_id)
     end
   end
