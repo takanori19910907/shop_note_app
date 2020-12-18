@@ -3,22 +3,22 @@
   <% note.each do |note| %>
 
     <%= f.label :note_ids do %>
-      <label>
-        <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
+    <label>
+      <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
-        <% if note.user == current_user %>
+      <% if note.user == current_user %>
 
-          <div class="btn own_note">
+        <div class="btn own_note">
 
-            <%= render 'shared/note', note: note %>
+          <%= render 'shared/note', note: note %>
 
-          </div>
+        </div>
 
-        <% else %>
+      <% else %>
 
-          <div class="btn other_note">
+        <div class="btn other_note">
 
-           <%= render 'shared/note', note: note %>
+         <%= render 'shared/note', note: note %>
 
           </div>
       </label>

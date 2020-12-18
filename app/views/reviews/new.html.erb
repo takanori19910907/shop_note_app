@@ -6,11 +6,12 @@
     <%= f.label :"アプリの評価(5段階)(任意)" %>
     <%= f.hidden_field :rate, id: :review_rate %>
   </div>
-  <%= f.text_field :content, class:'form-control' , placeholder: "レビュータイトルを入力(任意)" %><br>
+    <%= f.text_field :content, class:'form-control' , placeholder: "レビュータイトルを入力(任意)" %><br>
     <%= f.text_area :content, class:'form-control', size: "50x20",placeholder: "レビュー内容を入力(必須)" %><br>
     <%= f.submit "レビュー評価", :class => "btn btn-light" %>
 <% end %>
 </div>
+
 <script>
 $('#rate').raty({
   size     : 36,

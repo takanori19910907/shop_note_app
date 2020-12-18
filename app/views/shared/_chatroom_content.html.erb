@@ -7,46 +7,37 @@
 
 
     <%= f.label :note_ids do %>
-      <label>
+    <label>
+      <% if note.user == current_user %>
 
-        <% if note.user == current_user %>
+        <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
+        <div class="btn own_note">
 
-          <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
+          <%= render 'shared/note', note: note %>
 
-          <div class="btn own_note">
+        </div>
 
-            <%= render 'shared/note', note: note %>
+      <% else %>
 
-          </div>
+        <div class="namespace">
+          <%= note.user.name %>
+          <% if note.user.image.present? %>
+            <img src="<%= note.user.image %>" class="user_icon" >
+          <% else %>
+            <img src="/assets/default_user_icon.jpg" class="user_icon" >
+          <% end %>
+        </div>
 
-        <% else %>
+        <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
-          <!-- <div class="row">
-            <div class="col-12">
-              <div class="row"> -->
+        <div class="col-8 btn other_note">
 
-              <div class="namespace">
-                <%= note.user.name %>
-                <% if note.user.image.present? %>
-                <img src="<%= note.user.image %>" class="user_icon" >
-                <% else %>
-                <img src="/assets/default_user_icon.jpg" class="user_icon" >
-                <% end %>
-              </div>
-                <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
-              <div class="col-8 btn other_note">
+          <%= render 'shared/note', note: note %>
 
-               <%= render 'shared/note', note: note %>
-
-             </div>
-
-              <!-- </div>
-            </div>
-          </div> -->
-
-      </label>
+        </div>
       <% end %>
+    </label>
     <% end %>
 
     <div class="time"><%= note.created_at.to_s(:datetime) %></div>

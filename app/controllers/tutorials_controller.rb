@@ -17,18 +17,18 @@ class TutorialsController < ApplicationController
     end
   end
 
-  def favitem_index
-  end
-
   def create_favitem
     item = current_user.favorite_items.build(f_item_params)
     if item.save
-        flash[:success] = '登録に成功しました！ページ下部のリンクから次のページへ進みましょう！'
-        redirect_to new_favitem_tutorials_path
+      flash[:success] = '登録に成功しました！ページ下部のリンクから次のページへ進みましょう！'
+      redirect_to new_favitem_tutorials_path
     else
       flash[:danger] = '登録に失敗しました'
       redirect_to request.referrer || root_url
     end
+  end
+
+  def favitem_index
   end
 
   def post_favitem

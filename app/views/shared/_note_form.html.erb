@@ -1,21 +1,20 @@
 <ul class="form_body">
   <%= form_with model: @note do |f| %>
-
-        <li><%= f.text_field :content,id:'note_create_form',class:'form form-control note_form' , placeholder: "商品名を入力" %></li>
-        <li>
-          <%= f.label :image, class:'image_form' do %>
-        <label>
-          <i class="fa fa-image btn"></i>
-          <%= f.file_field :image, class: "file_field" %>
-        </label>
-        <% end %>
-        </li>
-        <li>
-        <%= link_to favorite_items_path do %>
-        <i class="fa fa-star btn" aria-hidden="true"></i>
-        <% end %>
-        </li>
-        <li><%= f.submit "投稿", class: "btn btn-light form-btn" %></li>
+    <li><%= f.text_field :content,id:'note_create_form',class:'form form-control note_form' , placeholder: "商品名を入力" %></li>
+    <li>
+      <%= f.label :image, class:'image_form' do %>
+      <label>
+        <i class="fa fa-image btn"></i>
+        <%= f.file_field :image, class: "file_field" %>
+      </label>
+      <% end %>
+    </li>
+    <li>
+    <%= link_to favorite_items_path do %>
+      <i class="fa fa-star btn" aria-hidden="true"></i>
+    <% end %>
+    </li>
+    <li><%= f.submit "投稿", class: "btn btn-light form-btn" %></li>
   <% end %>
 
   <ul>

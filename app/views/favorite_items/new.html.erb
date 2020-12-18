@@ -20,10 +20,10 @@
     <li><%= link_to "戻る",:back , class:"btn btn-dark" %></li>
   </ul>
   <div class= "form_body">
-      <div class="f_item_form">
-        <%= form_with model: @favorite_item do |f| %>
-          <%= f.text_field :name, class: "form", placeholder:'商品名を入力(複数ある場合は間に空白を入れて入力してください)' %>
-          <%= f.submit "登録",class:"btn btn-light" %>
-        <% end %>
-      </div>
+
+  <%= form_with model: @favorite_item do |f| %>
+    <%= f.text_field :name, class: "form", placeholder:'商品名を入力(複数ある場合は間に空白を入れて入力してください)' %>
+    <%= f.submit "登録",class:"btn btn-light" %>
+  <% end %>
+  
   </div>
