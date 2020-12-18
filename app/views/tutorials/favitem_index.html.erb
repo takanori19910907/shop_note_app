@@ -5,7 +5,7 @@
   <p>お気に入り商品一覧</p>
 
 
-  <%= form_with url: post_favorite_items_path do |f| %>
+  <%= form_with url: post_favitem_tutorials_path do |f| %>
 
     <%= render 'shared/favItem_list', f: f %>
 
@@ -23,7 +23,7 @@
   <% end %>
 
     <ul>
-      <li><%= link_to "1つ前に戻る",tutorial_2_path, class:"btn btn-dark" %></li>
+      <li><%= link_to "1つ前に戻る",new_favitem_tutorials_path, class:"btn btn-dark" %></li>
       <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
     </ul>
 
@@ -31,7 +31,7 @@
 
   <p>登録中の商品がありません。下記ボタンから1つ前のページに戻り、お気に入り商品を登録してください</p>
   <ul>
-    <li><%= link_to "1つ前に戻る",tutorial_2_path, class:"btn btn-dark" %></li>
+    <li><%= link_to "1つ前に戻る",new_favitem_tutorials_path, class:"btn btn-dark" %></li>
     <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
   </ul>
 
