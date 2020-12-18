@@ -12,13 +12,13 @@ class NotesController < ApplicationController
 
   def create
     note = current_user.notes.build(note_params)
-      note.save
-      if params[:note][:group_id].present?
-        @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: params[:note][:group_id])
-      else
+      if note.save
         @own_notes = current_user.notes.includes(comments: :user)
+        render 'create.js.erb'
+      else
+        flash[:danger] = "投稿に失敗しました"
+        render 'notes/index'
       end
-      render 'create.js.erb'
     # note = current_user.notes.build(note_params)
     # if note.save
     #     url = Rails.application.routes.recognize_path(request.referrer)
@@ -55,7 +55,6 @@ class NotesController < ApplicationController
       @own_notes = current_user.notes.includes(comments: :user)
     end
     render 'destroy.js.erb'
-    # redirect_to request.referrer || root_url
   end
 
   private

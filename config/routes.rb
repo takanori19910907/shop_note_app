@@ -33,6 +33,8 @@ Rails.application.routes.draw do
         post :request_cancle
         post :join
         post :refuse
+        post :create_post
+        post :destroy_post
       end
     end
 
