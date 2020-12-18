@@ -69,7 +69,6 @@ class GroupsController < ApplicationController
   end
 
   def refuse
-    binding.pry
     if params[:user_id].to_i == current_user.id
       target =  @group.group_members.find_by(user_id: current_user.id)
       if target.destroy
