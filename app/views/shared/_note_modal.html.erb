@@ -2,7 +2,7 @@
 <div class="modal fade" id="count_Modal" tabindex="-1" role="dialog" aria-labelledby="count_ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_with url: count_path do |f| %>
+      <%= form_with url: count_path,local:true do |f| %>
         <h4 class="modal-title" id="comment_ModalLabel">数量入力欄</h4>
           <div class="modal-body">
             <%= hidden_field_tag :note_id, "", {id: "count_id"} %>
@@ -22,7 +22,7 @@
 <div class="modal fade" id="comment_Modal" tabindex="-1" role="dialog" aria-labelledby="comment_ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_with url: comments_path do |f| %>
+      <%= form_with url: comments_path, local:true do |f| %>
         <h4 class="modal-title" id="comment_ModalLabel">コメント入力欄</h4>
         <div class="modal-body">
           <%= hidden_field_tag :note_id, "", {id: "comment_id"} %>
