@@ -41,6 +41,8 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'jbuilder', '~> 2.5'
 
+gem 'dotenv-rails'
+
 group :development, :test do
   gem 'sqlite3', '1.3.13'
 
