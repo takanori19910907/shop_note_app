@@ -11,27 +11,14 @@ class NotesController < ApplicationController
   end
 
   def create
-    note = current_user.notes.build(note_params)
-      if note.save
-        @own_notes = current_user.notes.includes(comments: :user)
-        render 'create.js.erb'
-      else
-        flash[:danger] = "投稿に失敗しました"
-        render 'notes/index'
-      end
-    # note = current_user.notes.build(note_params)
-    # if note.save
-    #     url = Rails.application.routes.recognize_path(request.referrer)
-    #     if url == {controller: 'home', action: 't_post'}
-    #       flash[:success] = '投稿に成功しました！'
-    #       redirect_to t_post_path
-    #     else
-    #       redirect_to request.referrer || root_url
-    #     end
-    #   else
-    #     flash[:danger] = '投稿に失敗しました'
-    #     redirect_to request.referrer || root_url
-    #   end
+  note = current_user.notes.build(note_params)
+    if note.save
+      @own_notes = current_user.notes.includes(comments: :user)
+      render 'create.js.erb'
+    else
+      flash[:danger] = "投稿に失敗しました"
+      render 'notes/index'
+    end
   end
 
   def count
