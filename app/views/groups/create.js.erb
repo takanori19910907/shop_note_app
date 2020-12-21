@@ -1,9 +1,9 @@
 
-$("#chat_area").html("<%= j(render 'shared/chatroom_content', { notes: @group_notes }) %>")
+$("#chat_area").html("<%= j(render "shared/chatroom_content", { notes: @group_notes }) %>")
 
-$("input.note_form").val('');
-$('.js-upload-file').val('');
-$('.js-upload-filename').text('');
+$("input.note_form").val("");
+$(".js-upload-file").val("");
+$(".js-upload-filename").text("");
 $(this).hide();
-$('.fa-times-circle').hide();
-$('.fa-image').removeAttr('id');
+$(".fa-times-circle").hide();
+$(".fa-image").removeAttr("id");

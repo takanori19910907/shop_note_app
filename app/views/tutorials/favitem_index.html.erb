@@ -5,9 +5,9 @@
   <p>お気に入り商品一覧</p>
 
 
-  <%= form_with url: post_favitem_tutorials_path do |f| %>
+  <%= form_with url: post_favitem_tutorials_path, local:true do |f| %>
 
-    <%= render 'shared/favItem_list', f: f %>
+    <%= render "shared/favItem_list", f: f %>
 
     <% if params[:group_id].present? %>
 

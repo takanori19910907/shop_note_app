@@ -6,7 +6,7 @@
         <h4 class="modal-title" id="comment_ModalLabel">数量入力欄</h4>
           <div class="modal-body">
             <%= hidden_field_tag :note_id, "", {id: "count_id"} %>
-            <%= f.select :count, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10]],
+            <%= f.select :count, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8], ["9", 9], ["10", 10]],
                 { include_blank: true, selected: 1 }, { id: "user_id", class: "user_class" } %>
           </div>
           <div class="modal-footer">

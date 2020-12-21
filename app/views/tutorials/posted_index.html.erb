@@ -4,7 +4,7 @@
 
           <% if @own_notes.present? %>
 
-            <%= render 'shared/my_content', note: @own_notes %>
+            <%= render "shared/my_content", note: @own_notes %>
 
           <% else %>
 
@@ -24,17 +24,17 @@
 
 
 
-<%= render 'shared/note_modal' %>
+<%= render "shared/note_modal" %>
 
-<%= render 'shared/note_form' %>
+<%= render "shared/note_form" %>
 
 <div class="form_body" id="searches_form"></div>
 
 <script type="text/javascript">
-$('.js_count_btn').click(function() {
-$('#count_id').val(this.value);
+$(".js_count_btn").click(function() {
+$("#count_id").val(this.value);
 });
-$('.js_comment_btn').on('click', function () {
-$('#comment_id').val(this.value);
+$(".js_comment_btn").on("click", function () {
+$("#comment_id").val(this.value);
 })
 </script>

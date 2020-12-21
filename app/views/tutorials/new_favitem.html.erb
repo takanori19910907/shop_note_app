@@ -5,9 +5,9 @@
     </small>
 </div>
 
-  <%= form_with url: favorite_items_path, method: :delete do |f| %>
+  <%= form_with url: favorite_items_path, method: :delete, local:true do |f| %>
 
-    <%= render 'shared/favItem_list', f: f %>
+    <%= render "shared/favItem_list", f: f %>
 
     <%= f.submit "商品をまとめて削除",class:"btn btn-warning destroy" %>
 
@@ -33,8 +33,8 @@
   <% end %>
   <div class= "form_body">
       <div class="f_item_form">
-        <%= form_with url: create_favitem_tutorials_path do |f| %>
-          <%= f.text_field :name, class: "form", placeholder:'商品名を入力(複数ある場合は間に空白を入れて入力してください)' %>
+        <%= form_with url: create_favitem_tutorials_path, local:true do |f| %>
+          <%= f.text_field :name, class: "form", placeholder:"商品名を入力(複数ある場合は間に空白を入れて入力してください)" %>
           <%= f.submit "登録",class:"btn btn-light" %>
         <% end %>
       </div>

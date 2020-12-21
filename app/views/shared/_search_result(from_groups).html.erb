@@ -8,7 +8,7 @@
 
       <% unless user.group_members.find_by(group_id: @group.id).present? %>
         <li class="s_user_info">
-          <%= form_with url:request_user_group_path(user.id) do |f| %>
+          <%= form_with url:request_user_group_path(user.id), local:true do |f| %>
 
           <%= f.hidden_field :group_id, :value => @group.id %>
 
@@ -21,7 +21,7 @@
 
         <% unless user.group_members.find_by(group_id: @group.id).activated.present? %>
           <li>
-            <%= form_with url:request_cancle_group_path(user.id) do |f| %>
+            <%= form_with url:request_cancle_group_path(user.id), local:true do |f| %>
 
             <%= f.hidden_field :user_id, :value => user.id %>
 

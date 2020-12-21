@@ -5,7 +5,7 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <%= render'shared/registrations_form', f: f %>
+      <%= render"shared/registrations_form", f: f %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -41,7 +41,7 @@
     <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete, class:"btn btn-danger" %></p>
   </div>
     <script type="text/javascript">
-    $('.custom-file-input').on('change',function(){
-      $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+    $(".custom-file-input").on("change",function(){
+      $(this).next(".custom-file-label").html($(this)[0].files[0].name);
     })
     </script>

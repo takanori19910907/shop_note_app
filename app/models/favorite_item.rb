@@ -1,4 +1,4 @@
-require 'nkf'
+require "nkf"
 
 class FavoriteItem < ApplicationRecord
   belongs_to :user

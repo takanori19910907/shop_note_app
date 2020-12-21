@@ -14,10 +14,10 @@ class NotesController < ApplicationController
   note = current_user.notes.build(note_params)
     if note.save
       @own_notes = current_user.notes.includes(comments: :user)
-      render 'create.js.erb'
+      render "create.js.erb"
     else
       flash[:danger] = "投稿に失敗しました"
-      render 'notes/index'
+      render "notes/index"
     end
   end
 
@@ -27,8 +27,8 @@ class NotesController < ApplicationController
     if @count.save
       redirect_to request.referrer || root_url
     else
-      flash[:danger] = '投稿に失敗しました'
-      render 'home/index'
+      flash[:danger] = "投稿に失敗しました"
+      render "home/index"
     end
   end
 
@@ -41,7 +41,7 @@ class NotesController < ApplicationController
     else
       @own_notes = current_user.notes.includes(comments: :user)
     end
-    render 'destroy.js.erb'
+    render "destroy.js.erb"
   end
 
   private

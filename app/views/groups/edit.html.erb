@@ -2,16 +2,16 @@
 <p>下記項目を入力してグループ情報変更ボタンを押してください</p>
 <div class="form">
 
-  <%= form_with model: @group do |f| %>
+  <%= form_with model: @group, local:true do |f| %>
 
     <div>
       <%= f.label :"名前" %>
-      <%= f.text_field :name, class:'form-control' %>
+      <%= f.text_field :name, class:"form-control" %>
     </div>
 
     <div>
       <%= f.label :"グループプロフィール" %>
-      <%= f.text_area :profile, class:'form-control' %><br />
+      <%= f.text_area :profile, class:"form-control" %><br />
     </div>
 
     <div class="custom_file_title">アイコン画像</div>
@@ -30,7 +30,7 @@
 </div>
 
 <script type="text/javascript">
-$('.custom-file-input').on('change',function(){
-  $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+$(".custom-file-input").on("change",function(){
+  $(this).next(".custom-file-label").html($(this)[0].files[0].name);
 })
 </script>

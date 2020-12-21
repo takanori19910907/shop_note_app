@@ -19,12 +19,12 @@ class GroupsController < ApplicationController
       group_member = @group.group_members.build(user_id: current_user.id, activated: true)
       group_member.save!
     end
-    flash[:success] = 'グループを作成しました'
+    flash[:success] = "グループを作成しました"
     redirect_to group_path(@group)
 
     rescue
-      flash[:danger] = 'グループ作成に失敗しました。再度やり直してください'
-      render 'groups/new'
+      flash[:danger] = "グループ作成に失敗しました。再度やり直してください"
+      render "groups/new"
   end
 
   def edit
@@ -51,7 +51,7 @@ class GroupsController < ApplicationController
       @member = @group.group_members.create(user_id: params[:id])
       flash[:success] = "#{@member.user.name}さんを招待しました"
     else
-      flash[:danger] = '無効な処理です。自分以外のユーザーへリクエストしてください'
+      flash[:danger] = "無効な処理です。自分以外のユーザーへリクエストしてください"
     end
     redirect_to request.referrer || root_url
   end
@@ -64,7 +64,7 @@ class GroupsController < ApplicationController
 
   def join
     @group.group_members.find_by(user_id: params[:user_id]).update(activated: true)
-    flash[:success] = 'グループに参加しました'
+    flash[:success] = "グループに参加しました"
     redirect_to chatroom_group_path
   end
 
@@ -74,10 +74,10 @@ class GroupsController < ApplicationController
       if target.destroy
         flash[:success] = "リクエストをキャンセルしました"
       else
-        flash[:danger] = '処理が失敗しました。再度やり直してください'
+        flash[:danger] = "処理が失敗しました。再度やり直してください"
       end
     else
-      flash[:danger] = '無効な処理です。自分以外のユーザーへリクエストしてください'
+      flash[:danger] = "無効な処理です。自分以外のユーザーへリクエストしてください"
     end
     redirect_to request.referrer || root_url
   end
@@ -112,14 +112,14 @@ class GroupsController < ApplicationController
     end
     @group_notes = Note.includes(comments: :user).includes(:user).where(group_id: params[:group_id])
     @group = Group.find_by(params[:group_id])
-    render 'destroy.js.erb'
+    render "destroy.js.erb"
   end
 
   private
 
     def correct_user
       unless params[:user_id].to_i == current_user.id
-        flash[:danger] = '本人でないためグループリクエストの承認が出来ません'
+        flash[:danger] = "本人でないためグループリクエストの承認が出来ません"
         redirect_to request.referrer || root_url
       end
     end
@@ -127,8 +127,8 @@ class GroupsController < ApplicationController
     def admin_user
       group = current_user.groups.find(params[:id])
       unless group.admin_user_id == current_user.id
-        flash[:danger] = '管理者権限がないため実行出来ません'
-        render 'home/index'
+        flash[:danger] = "管理者権限がないため実行出来ません"
+        render "home/index"
       end
     end
 

@@ -9,11 +9,11 @@
       <div>評価：<%= review.rate %>点 </div>
       <div id="star-rate-<%= review.id %>"></div>
       <script>
-        $('#star-rate-<%= review.id %>').raty({
+        $("#star-rate-<%= review.id %>").raty({
           size: 36,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
+          starOff:  "<%= asset_path("star-off.png") %>",
+          starOn : "<%= asset_path("star-on.png") %>",
+          starHalf: "<%= asset_path("star-half.png") %>",
           half: true,
           readOnly: true,
           score: <%= review.rate %>,

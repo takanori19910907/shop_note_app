@@ -16,7 +16,7 @@
 
           <div class="col-md-12 note-field" id="my_notes_area">
 
-              <%= render 'shared/my_content', note: @own_notes %>
+              <%= render "shared/my_content", note: @own_notes %>
 
           </div>
 
@@ -39,14 +39,14 @@
   </div>
 
 
-  <%= render 'shared/note_modal' %>
+  <%= render "shared/note_modal" %>
 
   <ul class="form_body">
     <%= form_with url:  create_note_tutorials_path do |f| %>
 
-          <li><%= f.text_field :content,id:'note_create_form',class:'form form-control note_form' , placeholder: "商品名を入力" %></li>
+          <li><%= f.text_field :content,id:"note_create_form",class:"form form-control note_form" , placeholder: "商品名を入力" %></li>
           <li>
-            <%= f.label :image, class:'image_form' do %>
+            <%= f.label :image, class:"image_form" do %>
           <label>
             <i class="fa fa-image btn"></i>
             <%= f.file_field :image, class: "file_field" %>
@@ -66,10 +66,10 @@
   </ul>
 
   <script type="text/javascript">
-  $('.js_count_btn').click(function() {
-  $('#count_id').val(this.value);
+  $(".js_count_btn").click(function() {
+  $("#count_id").val(this.value);
   });
-  $('.js_comment_btn').on('click', function () {
-  $('#comment_id').val(this.value);
+  $(".js_comment_btn").on("click", function () {
+  $("#comment_id").val(this.value);
   })
   </script>
