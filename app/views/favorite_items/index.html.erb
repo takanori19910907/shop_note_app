@@ -2,9 +2,9 @@
 
 <% if @item_exists %>
 
-  <%= form_with url: post_favorite_items_path do |f| %>
+  <%= form_with url: post_favorite_items_path, local:true do |f| %>
 
-    <%= render 'shared/favItem_list', f: f %>
+    <%= render "shared/favItem_list", f: f %>
 
     <div class= "form_body">
       <%= f.submit "選択したお気に入り商品を投稿",class:"btn btn-light" %>

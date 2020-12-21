@@ -4,11 +4,11 @@
 
   <% if @group.blank? %>
 
-    <%= render 'shared/search_result(from_users)' %>
+    <%= render "shared/search_result(from_users)" %>
 
   <% else %>
 
-    <%= render 'shared/search_result(from_groups)' %>
+    <%= render "shared/search_result(from_groups)" %>
 
   <% end %>
 
@@ -19,7 +19,7 @@
 <% end %>
 
 <div class="form_body">
-  <%= form_with url: search_index_path, method: :get, local: true do |f| %>
+  <%= form_with url: search_index_path, method: :get, local:true do |f| %>
   <%= render "shared/search_form", f: f %>
   <% end %>
 </div>

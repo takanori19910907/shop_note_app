@@ -10,20 +10,20 @@ class TutorialsController < ApplicationController
     note = current_user.notes.build(note_params)
     if note.save
       @own_notes = current_user.notes.includes(comments: :user)
-      render 'create.js.erb'
+      render "create.js.erb"
     else
       flash[:danger] = "投稿に失敗しました"
-      render 'tutorial/index'
+      render "tutorial/index"
     end
   end
 
   def create_favitem
     item = current_user.favorite_items.build(f_item_params)
     if item.save
-      flash[:success] = '登録に成功しました！ページ下部のリンクから次のページへ進みましょう！'
+      flash[:success] = "登録に成功しました！ページ下部のリンクから次のページへ進みましょう！"
       redirect_to new_favitem_tutorials_path
     else
-      flash[:danger] = '登録に失敗しました'
+      flash[:danger] = "登録に失敗しました"
       redirect_to request.referrer || root_url
     end
   end
@@ -37,7 +37,7 @@ class TutorialsController < ApplicationController
         item = current_user.favorite_items.find_by(id: item_id)
         note = current_user.notes.create!(content: item.name, group_id: params[:group_id])
       end
-      flash[:success] = 'これでチュートリアルは終了！ページ下のボタンで移動し、アプリを使いはじめましょう！'
+      flash[:success] = "これでチュートリアルは終了！ページ下のボタンで移動し、アプリを使いはじめましょう！"
       redirect_to posted_index_tutorials_path
 
     rescue

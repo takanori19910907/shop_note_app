@@ -5,7 +5,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <%= render'shared/registrations_form', f: f %>
+  <%= render"shared/registrations_form", f: f %>
 
   <div class="field">
     <%= f.label :パスワード %>
@@ -29,7 +29,7 @@
 </div>
 
 <script type="text/javascript">
-$('.custom-file-input').on('change',function(){
-  $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+$(".custom-file-input").on("change",function(){
+  $(this).next(".custom-file-label").html($(this)[0].files[0].name);
 })
 </script>

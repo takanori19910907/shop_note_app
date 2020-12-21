@@ -35,7 +35,7 @@
       <% if @group_notes.present? %>
 
         <div id="chat_area">
-          <%= render 'shared/chatroom_content', notes: @group_notes %>
+          <%= render "shared/chatroom_content", notes: @group_notes %>
         </div>
 
       <% else %>
@@ -47,15 +47,15 @@
     </div>
   </div>
 </div>
-<%= render 'shared/note_modal' %>
+<%= render "shared/note_modal" %>
 
 <ul class="form_body">
     <%= form_with url: create_post_group_path do |f| %>
         <%= f.hidden_field :group_id, :value => @group.id %>
 
-        <li><%= f.text_field :content, id: "note_create_form", class:'form' , placeholder: "商品名を入力" %></li>
+        <li><%= f.text_field :content, id: "note_create_form", class:"form" , placeholder: "商品名を入力" %></li>
         <li>
-          <%= f.label :image, class:'image_form' do %>
+          <%= f.label :image, class:"image_form" do %>
         <label>
           <i class="fa fa-image btn"></i>
           <%= f.file_field :image, class: "file_field" %>

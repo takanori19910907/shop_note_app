@@ -2,24 +2,24 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= render 'layouts/default' %>
+    <%= render "layouts/default" %>
   </head>
   <body>
 
     <header>
-      <%= render 'layouts/header' %>
+      <%= render "layouts/header" %>
     </header>
 
     <main>
-      <%= render 'shared/error_messages' %>
+      <%= render "shared/error_messages" %>
       <%= yield %>
     </main>
 
     <div id="image_display"></div>
 
     <footer>
-    <%= render 'layouts/footer' %>
+    <%= render "layouts/footer" %>
     </footer>
-    <script>fitty('#note_text');</script>
+    <script>fitty("#note_text");</script>
   </body>
 </html>

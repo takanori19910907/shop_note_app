@@ -1,7 +1,7 @@
 <h1>レビュー編集</h1>
 <p>アプリの星評価と、使ってよかった点や改善すべき点がありましたらコメントをお願いします！</p>
 
-<%= form_with model: @review, local: true , url: review_path do |f| %>
+<%= form_with model: @review, local:true, url: review_path do |f| %>
   <div class="field" id="rate">
     <%= f.label :"アプリの評価(5段階)" %>
     <%= f.hidden_field :rate, id: :review_rate %>
@@ -16,10 +16,10 @@
 
 
 <script>
-$('#rate').raty({
+$("#rate").raty({
   size     : 36,
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  scoreName: 'review[rate]'
+  starOff:  "<%= asset_path("star-off.png") %>",
+  starOn : "<%= asset_path("star-on.png") %>",
+  scoreName: "review[rate]"
 });
 </script>

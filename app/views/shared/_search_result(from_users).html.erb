@@ -7,13 +7,13 @@
         <li>
           <% if current_user.groups.present? %>
             <p>グループを選択してリクエスト</p>
-            <%= form_with url:request_user_group_path(user.id) do |f| %>
+            <%= form_with url:request_user_group_path(user.id), local:true do |f| %>
 
             <%= f.hidden_field :user_id, :value => user.id %>
 
               <%= f.label :"都道府県" %>
 
-              <%= f.collection_select :group_id,current_user.groups.order(id: :desc),:id,:name,{ prompt: true }, { id: 'my-custom-class' } %>
+              <%= f.collection_select :group_id,current_user.groups.order(id: :desc),:id,:name,{ prompt: true }, { id: "my-custom-class" } %>
 
               <%= f.submit "グループ招待する",class: "btn btn-light" %>
 
@@ -30,7 +30,7 @@
         <ul>
           <% @group.each do |group| %>
             <li>
-              <%= form_with url:request_cancle_group_path(user.id) do |f| %>
+              <%= form_with url:request_cancle_group_path(user.id), local:true do |f| %>
 
                 <%= f.hidden_field :group_id, :value => group.group.id %>
 

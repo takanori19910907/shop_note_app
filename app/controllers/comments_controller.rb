@@ -5,14 +5,14 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     unless @comment.save
-      flash[:danger] = '投稿に失敗しました'
+      flash[:danger] = "投稿に失敗しました"
     end
     redirect_to request.referrer || root_url
   end
 
   def destroy
     Comment.find(params[:id]).destroy
-    flash[:success] = '削除しました'
+    flash[:success] = "削除しました"
     redirect_to request.referrer || root_url
   end
 
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   def correct_user
     comment = Comment.find(params[:id])
     unless comment.user_id == current_user.id
-      flash[:danger] = '投稿者本人でないため削除出来ませんでした'
+      flash[:danger] = "投稿者本人でないため削除出来ませんでした"
       redirect_to request.referrer || root_url
     end
   end

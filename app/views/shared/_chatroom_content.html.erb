@@ -10,11 +10,11 @@
     <label>
       <% if note.user == current_user %>
 
-        <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
+        <%= f.check_box :note_ids, {type: "checkbox", class: "checkbox-select", id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
         <div class="btn own_note">
 
-          <%= render 'shared/note', note: note %>
+          <%= render "shared/note", note: note %>
 
         </div>
 
@@ -29,11 +29,11 @@
           <% end %>
         </div>
 
-        <%= f.check_box :note_ids, {type: 'checkbox', class: 'checkbox-select', id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
+        <%= f.check_box :note_ids, {type: "checkbox", class: "checkbox-select", id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
         <div class="col-8 btn other_note">
 
-          <%= render 'shared/note', note: note %>
+          <%= render "shared/note", note: note %>
 
         </div>
       <% end %>
@@ -45,7 +45,7 @@
   <% end %>
 
 <div class = "destroy">
-  <%= f.submit '購入しました', class: 'btn btn-warning' %>
+  <%= f.submit "購入しました", class: "btn btn-warning" %>
 </div>
 
 <% end %>

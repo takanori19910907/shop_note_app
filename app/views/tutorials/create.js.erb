@@ -1,9 +1,9 @@
 
-$("#my_notes_area").html("<%= j(render 'shared/my_content', { note: @own_notes }) %>")
+$("#my_notes_area").html("<%= j(render "shared/my_content", { note: @own_notes }) %>")
 
-$("input.note_form").val('');
-$('.js-upload-file').val('');
-$('.js-upload-filename').text('');
+$("input.note_form").val("");
+$(".js-upload-file").val("");
+$(".js-upload-filename").text("");
 $(this).hide();
-$('.fa-times-circle').hide();
-$('.fa-image').removeAttr('id');
+$(".fa-times-circle").hide();
+$(".fa-image").removeAttr("id");
