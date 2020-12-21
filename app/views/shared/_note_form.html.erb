@@ -1,6 +1,9 @@
 <ul class="form_body">
   <%= form_with model: @note do |f| %>
+    <label>
+    <i class="fa fa-image btn"></i>
     <li><%= f.text_field :content,id:"note_create_form",class:"form form-control note_form" , placeholder: "商品名を入力" %></li>
+    </label>
     <li>
       <%= f.label :image, class:"image_form" do %>
       <label>

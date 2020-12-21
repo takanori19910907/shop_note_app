@@ -8,6 +8,7 @@
  bottom: 0;
  width: 100%;
  height: 100px;
+ padding: 5px;
  z-index: 1;
  background-color: #f8f9fa;
  border-top: thin solid #dcdcdc;
@@ -19,6 +20,10 @@
 
 .file_field {
   display: none;
+}
+
+.note_form {
+  display: none; 
 }
 
 .note_form_contents {
