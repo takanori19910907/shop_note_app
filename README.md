@@ -1,24 +1,11 @@
-# README
+# 概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリ名 : グループチャット型買い物メモ
 
-Things you may want to cover:
+簡単な作成経緯
 
-* Ruby version
+### URL
 
-* System dependencies
+http://18.177.6.24/
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### テストアカウント
