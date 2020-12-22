@@ -2,7 +2,7 @@
 # アプリ名 : グループチャット型買い物メモ
 
 ### アプリのイメージ画像
-![alt](画像URL)
+![alt](C:\Users\Takanori\Desktop)
 
 ### URL
 
