@@ -1,7 +1,5 @@
 
 # アプリ名 : SHOP_NOTE_APP
-
-### アプリのイメージ画像
 ![alt](https://user-images.githubusercontent.com/60740632/102938844-69a20e00-44f0-11eb-9839-b8483b80f3d2.png)
 
 
