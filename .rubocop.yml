@@ -1,0 +1,34 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.7
+  TargetRailsVersion: 5.1
+  Exclude:
+
+#自動生成されるファイルは対象から除外
+    - "bin/*"
+    - "db/schema.rb"
+    - "vendor/**/*"
+
+#Rails規約もチェックする
+Rails:
+  Enabled: true
+
+#日本度のコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+#ダブルクオートで記述
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+
+# 桁揃えが綺麗にならないことが多いので migration は除外
+Layout/ExtraSpacing:
+  Exclude:
+    - "db/migrate/*.rb"
+
+# private/protected は一段深くインデントする
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
