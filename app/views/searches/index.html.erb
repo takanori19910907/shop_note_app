@@ -1,5 +1,7 @@
-<p>検索結果一覧</p>
-
+<div class="container">
+<div class="row">
+  <div class= "col-12">
+    <p>検索結果一覧</p>
 <% if @search_users.present? %>
 
   <% if @group.blank? %>
@@ -18,8 +20,13 @@
 
 <% end %>
 
-<div class="form_body">
-  <%= form_with url: search_index_path, method: :get, local:true do |f| %>
-  <%= render "shared/search_form", f: f %>
-  <% end %>
+<%= paginate @search_users %>
+  </div>
+  </div>
 </div>
+
+  <div class="form_body">
+    <%= form_with url: search_index_path, method: :get, local:true do |f| %>
+    <%= render "shared/search_form", f: f %>
+    <% end %>
+  </div>

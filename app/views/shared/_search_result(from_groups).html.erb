@@ -2,37 +2,45 @@
 
   <% if user.id != current_user.id %>
 
-    <ul class="s_users_list">
-      <li class="s_user_info"><%= user.name %></li>
-      <li class="s_user_info">id : <%= user.id %></li>
-
-      <% unless user.group_members.find_by(group_id: @group.id).present? %>
-        <li class="s_user_info">
-          <%= form_with url:request_user_group_path(user.id), local:true do |f| %>
-
-          <%= f.hidden_field :group_id, :value => @group.id %>
-
-          <%= f.submit "グループ招待する",class: "btn btn-light" %>
-
+    <div class="row">
+      <ul class="col-12 s_users_list">
+        <div class="row">
+        <li class="col-8 s_user_info"><%= user.name %>
+          <% if user.image.present? %>
+            <img src="<%= note.user.image %>" class="user_icon" >
+          <% else %>
+            <img src="/assets/default_user_icon.jpg" class="user_icon" >
           <% end %>
         </li>
-
-      <% else %>
-
-        <% unless user.group_members.find_by(group_id: @group.id).activated.present? %>
-          <li>
-            <%= form_with url:request_cancle_group_path(user.id), local:true do |f| %>
-
-            <%= f.hidden_field :user_id, :value => user.id %>
+        <% unless user.group_members.find_by(group_id: @group.id).present? %>
+          <li class="col-4 s_user_info">
+            <%= form_with url:request_user_group_path(user.id), local:true do |f| %>
 
             <%= f.hidden_field :group_id, :value => @group.id %>
 
-            <%= f.submit "リクエストを解除",class: "btn btn-dark" %>
+            <%= f.submit "グループ招待する",class: "btn btn-light" %>
 
             <% end %>
           </li>
+
+        <% else %>
+
+          <% unless user.group_members.find_by(group_id: @group.id).activated.present? %>
+            <li class="col-4 s_user_info">
+              <%= form_with url:request_cancle_group_path(user.id), local:true do |f| %>
+
+              <%= f.hidden_field :user_id, :value => user.id %>
+
+              <%= f.hidden_field :group_id, :value => @group.id %>
+
+              <%= f.submit "リクエストを解除",class: "btn btn-dark" %>
+
+              <% end %>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
+        </div>
+      </ul>
+    </div>
   <% end %>
 <% end %>
