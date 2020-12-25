@@ -20,15 +20,13 @@
 
 <% end %>
 
-<div class="form_body">
-  <%= form_with url: search_index_path, method: :get, local:true do |f| %>
-  <%= render "shared/search_form", f: f %>
-  <% end %>
-</div>
-<div class="row">
-  <div class="col-12">
 <%= paginate @search_users %>
   </div>
   </div>
 </div>
-</div>
+
+  <div class="form_body">
+    <%= form_with url: search_index_path, method: :get, local:true do |f| %>
+    <%= render "shared/search_form", f: f %>
+    <% end %>
+  </div>

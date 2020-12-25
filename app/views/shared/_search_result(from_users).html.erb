@@ -1,26 +1,31 @@
 <% if @search_users.present? %>
   <% @search_users.each do |user| %>
-    <div class="users_list">
-      <ul>
-        <li class="s_users_info"><%= user.name %></li>
+    <div class="row">
+    <div class="col-12 users_list">
+      <ul class="row">
+        <li class="col-6 s_users_info"><%= user.name %>
         <% if user.image.present? %>
           <img src="<%= note.user.image %>" class="user_icon" >
         <% else %>
           <img src="/assets/default_user_icon.jpg" class="user_icon" >
         <% end %>
-        <li>
+        </li>
+        <li class="col-6">
+          <div class="row">
           <% if current_user.groups.present? %>
-            <p>グループを選択してリクエスト</p>
+            <!-- <p>グループを選択してリクエスト</p> -->
             <%= form_with url:request_user_group_path(user.id), local:true do |f| %>
 
             <%= f.hidden_field :user_id, :value => user.id %>
 
-              <%= f.collection_select :group_id,current_user.groups.order(id: :desc),:id,:name,{ prompt: true }, { id: "my-custom-class" } %>
+              <%= f.collection_select :group_id,current_user.groups.order(id: :desc),:id,:name,{ prompt: "選択" }, { id: "my-custom-class" } %>
 
-              <%= f.submit "グループ招待する",class: "btn btn-light" %>
+
+              <%= f.submit "グループ招待",class: "btn btn-light request_submit" %>
 
             <% end %>
           <% end %>
+          </div>
         </li>
       </ul>
 
@@ -44,11 +49,12 @@
         </ul>
       <% end %>
     </div>
+    </div>
   <% end %>
 <% else %>
 
 <p>指定されたユーザーは存在しません</p>
-
-<p><%= link_to "ユーザー一覧",signup_path %>を表示</p>
-
+<div class="row">
+  <p class="col-12"><%= link_to "ユーザー一覧",signup_path %>を表示</p>
+</div>
 <% end %>
