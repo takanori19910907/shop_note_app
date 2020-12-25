@@ -2,8 +2,7 @@
 
   <% if user.id != current_user.id %>
 
-    <div class="row">
-      <ul class="col-12 s_users_list">
+      <ul class="s_users_list">
         <div class="row">
         <li class="col-8 s_user_info"><%= user.name %>
           <% if user.image.present? %>
@@ -18,7 +17,7 @@
 
             <%= f.hidden_field :group_id, :value => @group.id %>
 
-            <%= f.submit "グループ招待する",class: "btn btn-light" %>
+            <%= f.submit "グループ招待",class: "btn btn-light request_submit" %>
 
             <% end %>
           </li>
@@ -33,7 +32,7 @@
 
               <%= f.hidden_field :group_id, :value => @group.id %>
 
-              <%= f.submit "リクエストを解除",class: "btn btn-dark" %>
+              <%= f.submit "リクエストを解除",class: "btn btn-dark request_submit" %>
 
               <% end %>
             </li>
@@ -41,6 +40,5 @@
         <% end %>
         </div>
       </ul>
-    </div>
   <% end %>
 <% end %>

@@ -1,42 +1,41 @@
 <% if @own_notes.present? %>
-<div class="alert alert-dark">
-  <small>
-    1.投稿の削除は、消したい投稿にチェックを入れて、画面下に表示される[購入しました]ボタンを押してください！<br>
-    2.投稿には数量やコメントをつけることも出来ます！右側のアイコンをタップして試してみましょう♪<br/>
-    (コメントは、削除したいものをタップすることで削除することが出来ます)<br/>
-    3.画像投稿を行うことも可能です！投稿フォーム下のアイコンをタップして試してみましょう♪
-  </small>
-</div>
-<p>メモの投稿/削除方法が確認出来たら次のページへ！</p>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="row">
+  <div class="alert alert-dark">
+    <small>
+      1.投稿の削除は、消したい投稿にチェックを入れて、画面下に表示される[購入しました]ボタンを押してください！<br>
+      2.投稿には数量やコメントをつけることも出来ます！右側のアイコンをタップして試してみましょう♪<br/>
+      (コメントは、削除したいものをタップすることで削除することが出来ます)<br/>
+      3.画像投稿を行うことも可能です！投稿フォーム下のアイコンをタップして試してみましょう♪
+    </small>
+  </div>
 
-          <div class="col-md-12 note-field" id="my_notes_area">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+
+            <div class="col-md-12 note-field" id="my_notes_area">
 
               <%= render "shared/my_content", note: @own_notes %>
 
-          </div>
+            </div>
 
 <% else %>
 
-            <p>まずはメモの投稿！ページ下の入力フォームに商品名を入力して[投稿]ボタンを押してください</p>
+            <p id="my_notes_area" class="tutorial_info">まずはメモの投稿！ページ下の入力フォームに商品名を入力して[投稿]ボタンを押してください</p>
 
 <% end %>
 
-
-        <ul class="col-md-12 note-field">
-          <li class="f_items_link"><%= link_to "お気に入り商品 の説明に進む",new_favitem_tutorials_path, class:"btn btn-warning" %></li>
-          <li class="f_items_link"><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
-        </ul>
-
+          </div>
         </div>
-
       </div>
     </div>
-  </div>
+
+  <ul class="tutorial_links">
+    <li><%= link_to "お気に入り商品 の説明に進む",new_favitem_tutorials_path, class:"btn btn-light" %></li>
+    <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
+  </ul>
+
 
 
   <%= render "shared/note_modal" %>

@@ -1,6 +1,7 @@
 <h1>アプリレビュー一覧</h1>
 <% if @reviews.present? %>
   <% @reviews.each do |review| %>
+  <div class="reviews_field">
     <div class="time"><%= review.created_at.to_s(:datetime) %></div>
     <div class="review">
       <div class="review_title">レビュータイトル : <%= review.title %></div>
@@ -23,6 +24,7 @@
         <p>評価なし</p>
       <% end %>
     </div>
+  </div>
 
     <% if review.user_id == current_user.id %>
       <ul>
