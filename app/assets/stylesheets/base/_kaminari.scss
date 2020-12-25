@@ -1,0 +1,21 @@
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #a9a9a9;
+  &:hover {
+    color: #444444;
+  }
+}
+
+.pagination>.page-item.active>a {
+  background: #ffd700;
+  border-radius: 50%;
+  color: #444444;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}

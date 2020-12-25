@@ -8,6 +8,7 @@
  @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap");
  @import "base/common";
  @import "base/devise";
+ @import "base/kaminari";
  @import "modules/button";
  @import "modules/form";
  @import "modules/icon";
@@ -21,4 +22,3 @@
  @import "templates/reviews";
  @import "templates/searches";
  @import "templates/tutorials";
- // @import "custom";

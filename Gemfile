@@ -81,6 +81,8 @@ group :development do
   gem 'rubocop-rails'
 
   gem 'spring-commands-rspec'
+
+  gem 'faker'
 end
 
 group :production do
