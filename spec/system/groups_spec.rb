@@ -65,10 +65,10 @@ RSpec.describe "Groups", type: :system do
     context "グループ詳細画面から移動し招待する場合" do
       it "other_userをgroupに招待する" do
         visit group_path(group)
-        fill_in "search_form", with: "嫁"
+        fill_in "search_text_field", with: "嫁"
         click_button "検索"
         expect {
-        click_button "グループ招待する"
+        click_button "グループ招待"
       }.to change(group.group_members, :count).by(1)
         expect(page).to have_selector(".alert-success", text: "#{other_user.name}さんを招待しました")
         expect(page).to have_button "リクエストを解除"
@@ -82,11 +82,11 @@ RSpec.describe "Groups", type: :system do
 
         it "other_userへのグループ招待を取り消す" do
           visit group_path(group)
-          fill_in "search_form", with: "嫁"
+          fill_in "search_text_field", with: "嫁"
           click_button "検索"
           expect {
           click_button "リクエストを解除"
-          expect(page).to have_button "グループ招待する"
+          expect(page).to have_button "グループ招待"
         }.to change(other_user.group_members, :count).by(-1)
         end
       end
@@ -155,8 +155,9 @@ RSpec.describe "Groups", type: :system do
     describe "#destroy" do
       context "メモがひとつの時" do
         it "買い物メモを削除する", js: true do
-          group_note = FactoryBot.create(:note, user_id: user.id, content: "果物")
-          visit root_path
+          group = FactoryBot.create(:group, admin_user_id: user.id)
+          group_note = FactoryBot.create(:note, user_id: user.id, group_id: group.id, content: "果物")
+          visit chatroom_group_path(group.id)
           expect{
           check "果物"
           click_button "購入しました"
@@ -167,10 +168,11 @@ RSpec.describe "Groups", type: :system do
 
       context "メモが複数の時" do
         it "指定した複数の買い物メモを削除する",js: true do
-          FactoryBot.create(:note, user_id: user.id, content: "買うもの1")
-          FactoryBot.create(:note, user_id: user.id, content: "買うもの2")
-          FactoryBot.create(:note, user_id: user.id, content: "買うもの3")
-          visit root_path
+          group = FactoryBot.create(:group, admin_user_id: user.id)
+          FactoryBot.create(:note, user_id: user.id, group_id: group.id, content: "買うもの1")
+          FactoryBot.create(:note, user_id: user.id, group_id: group.id, content: "買うもの2")
+          FactoryBot.create(:note, user_id: user.id, group_id: group.id, content: "買うもの3")
+          visit chatroom_group_path(group.id)
           expect{
           check "買うもの1"
           check "買うもの3"
