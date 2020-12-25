@@ -1,27 +1,27 @@
 <div class="container">
-<div class="row">
-  <div class= "col-12">
-    <p>検索結果一覧</p>
-<% if @search_users.present? %>
+  <div class="row">
+    <div class= "col-12">
+      <h3>検索結果一覧</h3>
+      <% if @search_users.present? %>
 
-  <% if @group.blank? %>
+        <% if @group.blank? %>
 
-    <%= render "shared/search_result(from_users)" %>
+          <%= render "shared/search_result(from_users)" %>
 
-  <% else %>
+        <% else %>
 
-    <%= render "shared/search_result(from_groups)" %>
+          <%= render "shared/search_result(from_groups)" %>
 
-  <% end %>
+        <% end %>
 
-<% else %>
+      <% else %>
 
-<p>指定されたユーザーは存在しません</p>
+        <p>指定されたユーザーは存在しません</p>
 
-<% end %>
+      <% end %>
 
-<%= paginate @search_users %>
-  </div>
+    <%= paginate @search_users %>
+    </div>
   </div>
 </div>
 

@@ -26,7 +26,7 @@
 
               <% else %>
 
-                <p>現在買うものはありません</p>
+                <p id="my_notes_area">現在買うものはありません</p>
 
               <% end %>
             </div>
@@ -41,14 +41,4 @@
 
   <div class="page_top"><a href="#"><i class="fa fa-angle-double-up"></i></a></div>
 
-<% else %>
-
-  <h1 class="app_title">
-    有吉の買い物メモ<br>アプリへようこそ
-  </h1>
-  <ul class="top_page_btn">
-    <li class="btn top_page_btn" id="new"><%= link_to "新規登録",new_user_registration_path %></li>
-    <li class="btn top_page_btn" id="login"><%= link_to "ログイン",new_user_session_path %></li>
-    <li class="btn top_page_btn" id="guest"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %></li>
-  </ul>
 <% end %>

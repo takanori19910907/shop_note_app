@@ -9,7 +9,7 @@
 
 <p>所属メンバー名</p>
   <% @members.each do |member| %>
-    <ul>
+    <ul class="group_members_list">
       <li><%= member.user.name %></li>
       <% if member.user.image.present? %>
         <li><img src= "<%= member.user.image %>" class="image_icon"></li>

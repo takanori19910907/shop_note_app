@@ -16,11 +16,16 @@ class SearchesController < ApplicationController
         @search_users = User.none.page(params[:page])
       end
     else
-      @group = []
-      @groups = current_user.groups.all
-      # @search_users = User.where("name LIKE ?", "%#{params[:name]}%")
-      @search_users = User.where("name LIKE ?", "%#{params[:name]}%").page(params[:page]).per(10)
-
+      if params[:name].present?
+        @group = []
+        @groups = current_user.groups.all
+        # @search_users = User.where("name LIKE ?", "%#{params[:name]}%")
+        @search_users = User.where("name LIKE ?", "%#{params[:name]}%").page(params[:page]).per(10)
+      else
+        flash[:danger] = "指定のユーザーは存在しません"
+        @users = User.none
+        @search_users = User.none.page(params[:page])
+      end
       render "searches/index"
     end
   end
