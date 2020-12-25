@@ -13,6 +13,7 @@ class SearchesController < ApplicationController
       else
         flash[:danger] = "指定のユーザーは存在しません"
         @users = User.none
+        @search_users = User.none.page(params[:page])
       end
     else
       @group = []
