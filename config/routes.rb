@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   root 'home#top'
+  get  'start_page', to: 'home#index'
   get  'help', to: 'home#help'
   get  'index', to: 'notes#index'
   post 'notes', to: 'notes#create'
@@ -16,8 +17,6 @@ Rails.application.routes.draw do
   post 'count', to: 'notes#count'
   get  'search_top', to: 'searches#top'
   get  'search_index', to: 'searches#index'
-
-  resources :home
 
   resources :comments, only: [:create, :destroy]
 
@@ -43,11 +42,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reviews
+  resources :reviews, except: [:show]
 
-  resources :tutorials do
+  resources :tutorials, only: [:index] do
     collection do
-      get :post
       get :new_favitem
       get :favitem_index
       get :posted_index
