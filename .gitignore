@@ -12,7 +12,7 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/vendor/a.rb
+/vendor/bundle
 /log/*
 /tmp/*
 !/log/.keep
