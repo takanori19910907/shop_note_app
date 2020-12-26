@@ -17,7 +17,7 @@
   <% if user_signed_in? %>
 
       <li class="nav-item"><a class="nav-link" <%= link_to "#{current_user.name}さんがログイン中",edit_user_registration_path(current_user) %></a></li>
-      <li class="nav-item"><a class="nav-link" href="/">ホーム</a></li>
+      <li class="nav-item"><a class="nav-link" <%= link_to "ホーム",index_path %></a></li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onfocus="this.blur();" >ユーザー情報</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
