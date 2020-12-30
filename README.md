@@ -97,3 +97,5 @@
 ## DB設計
 
 ### ER図
+<img width="510" alt="shop_note_app_ER図" src="https://user-images.githubusercontent.com/60740632/103337822-d5234700-4abf-11eb-9c33-6b83cd644139.png">
+
