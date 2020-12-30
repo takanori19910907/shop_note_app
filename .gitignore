@@ -5,11 +5,11 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 #リモートリポジトリに不要なファイルを除外
-/vendor/bundle/
-/public/uploads/
+#/vendor/bundle/
+#/public/uploads/
 
 #セキュリティ強化のため.env形式のファイルを除外
-*.env
+#*.env
 
 # Ignore bundler config.
 /.bundle
