@@ -4,6 +4,13 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+#リモートリポジトリに不要なファイルを除外
+/vendor/bundle/
+/public/uploads/
+
+#セキュリティ強化のため.env形式のファイルを除外
+*.env
+
 # Ignore bundler config.
 /.bundle
 
@@ -12,7 +19,6 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/vendor/a.rb
 /log/*
 /tmp/*
 !/log/.keep
