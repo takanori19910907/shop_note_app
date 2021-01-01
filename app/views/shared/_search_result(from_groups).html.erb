@@ -8,7 +8,7 @@
           <% if user.image.present? %>
             <img src="<%= note.user.image %>" class="user_icon" >
           <% else %>
-            <img src="/assets/default_user_icon.jpg" class="user_icon" >
+            <img src="/default_user_icon.jpg" class="user_icon" >
           <% end %>
         </li>
         <% unless user.group_members.find_by(group_id: @group.id).present? %>

@@ -3,7 +3,7 @@
   <% if @group.image.present? %>
     <li><img src= "<%= @group.image %>" class="image_icon"></li>
   <% else %>
-    <li><img src= "/assets/default_group_icon.png" class="_show_group_icon"></li>
+    <li><img src= "/default_group_icon.png" class="_show_group_icon"></li>
   <% end %>
 </ul>
 
@@ -14,7 +14,7 @@
       <% if member.user.image.present? %>
         <li><img src= "<%= member.user.image %>" class="image_icon"></li>
       <% else %>
-        <li><img src= "/assets/default_user_icon.jpg" class="image_icon"></li>
+        <li><img src= "/default_user_icon.jpg" class="image_icon"></li>
       <% end %>
     </ul>
   <% end %>
