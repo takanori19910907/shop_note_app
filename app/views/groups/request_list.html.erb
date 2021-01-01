@@ -5,7 +5,7 @@
       <% if request.group.image.present? %>
         <li><img src= "<%= request.group.image %>" class="image_icon"></li>
       <% else %>
-        <li><img src= "/assets/default_group_icon.png" class="image_icon"></li>
+        <li><img src= "/default_group_icon.png" class="image_icon"></li>
       <% end %>
         <li><%= request.group.name %></li>
         <li class="request_items">
