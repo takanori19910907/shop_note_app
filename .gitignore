@@ -9,7 +9,7 @@
 #/public/uploads/
 
 #セキュリティ強化のため.env形式のファイルを除外
-#*.env
+*.env
 
 # Ignore bundler config.
 /.bundle
