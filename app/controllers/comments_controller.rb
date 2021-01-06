@@ -11,16 +11,19 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    flash[:success] = "削除しました"
+    if @comment.destroy
+      flash[:success] = "コメントを削除しました"
+    else
+      flash[:danger] = "コメントの削除に失敗しました"
+    end
     redirect_to request.referrer || root_url
   end
 
   private
 
   def correct_user
-    comment = Comment.find(params[:id])
-    unless comment.user_id == current_user.id
+    @comment = Comment.find(params[:id])
+    unless @comment.user_id == current_user.id
       flash[:danger] = "投稿者本人でないため削除出来ませんでした"
       redirect_to request.referrer || root_url
     end

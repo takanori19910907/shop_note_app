@@ -7,26 +7,31 @@ class FavoriteItemsController < ApplicationController
   end
 
   def new
-    @favorite_item = current_user.favorite_items.new
+    @favorite_item = current_user.favorite_items.build
   end
 
   def create
     item = current_user.favorite_items.build(f_item_params)
     if item.save
       flash[:success] = "お気に入り商品を登録しました"
-      redirect_to request.referrer || favorite_items_path
     else
-      flash[:danger] = "登録に失敗しました"
-      redirect_to request.referrer || root_url
+      flash[:danger] = "登録に失敗しました、再度やり直してください"
     end
+    redirect_to request.referrer || root_url
   end
 
   def destroy
-    params[:item_ids].each do |item_id|
-      item = current_user.favorite_items.find_by(id: item_id).destroy
+    begin
+      params[:item_ids].each do |item_id|
+        item = current_user.favorite_items.find_by(id: item_id).destroy!
+      end
+      flash[:success] = "お気に入り商品を削除しました"
+      redirect_to request.referrer || new_favorite_item_path
+
+    rescue
+      flash[:danger] = "お気に入り商品の削除に失敗しました、再度やり直してください"
+      redirect_to request.referrer || new_favorite_item_path
     end
-    flash[:warning] = "お気に入り商品を削除しました"
-    redirect_to request.referrer || new_favorite_item_path
   end
 
   def post
