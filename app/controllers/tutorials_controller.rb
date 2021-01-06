@@ -1,6 +1,6 @@
 class TutorialsController < ApplicationController
   before_action :authenticate_user!
-  before_action :note_present?, only: [:post,:posted_note_index,:favitem_index,:posted_index]
+  before_action :note_present?, only: [:index,:post,:posted_note_index,:favitem_index,:posted_index]
   before_action :set_items, only: [:new_favitem,:create_favitem,:favitem_index]
 
   def index

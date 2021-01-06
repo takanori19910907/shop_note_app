@@ -1,5 +1,6 @@
 <% if @own_notes.present? %>
 
+
   <div class="alert alert-dark">
     <small>
       1.投稿の削除は、消したい投稿にチェックを入れて、画面下に表示される[購入しました]ボタンを押してください！<br>
@@ -22,7 +23,7 @@
 
 <% else %>
 
-            <p id="my_notes_area" class="tutorial_info">まずはメモの投稿！ページ下の入力フォームに商品名を入力して[投稿]ボタンを押してください</p>
+  <p id="my_notes_area" class="tutorial_info">まずはメモの投稿！ページ下の入力フォームに商品名を入力して[投稿]ボタンを押してください</p>
 
 <% end %>
 
@@ -33,7 +34,7 @@
 
   <ul class="tutorial_links">
     <li><%= link_to "お気に入り商品 の説明に進む",new_favitem_tutorials_path, class:"btn btn-light" %></li>
-    <li><%= link_to "チュートリアルを終了",root_path, class:"btn btn-dark" %></li>
+    <li><%= link_to "チュートリアルを終了",index_path, class:"btn btn-dark" %></li>
   </ul>
 
 

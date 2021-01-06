@@ -42,16 +42,20 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     flash[:success] = "グループを削除しました"
-    redirect_to root_path
+    redirect_to index_path
   end
 
   def request_user
-    if params[:id].to_i != current_user.id
-      @group = Group.find(params[:group_id])
-      @member = @group.group_members.create(user_id: params[:id])
-      flash[:success] = "#{@member.user.name}さんを招待しました"
-    else
-      flash[:danger] = "無効な処理です。自分以外のユーザーへリクエストしてください"
+    #自分自身への招待リクエストが発生しないようにuser_idを確認
+    if params[:user_id] != current_user.id
+      begin
+        @group = Group.find(params[:group_id])
+        @member = @group.group_members.create!(user_id: params[:id])
+        flash[:success] = "#{@member.user.name}さんを招待しました"
+
+      rescue
+        flash[:danger] = "無効な処理です。リクエストを再度やり直してください"
+      end
     end
     redirect_to request.referrer || root_url
   end
