@@ -46,8 +46,8 @@
   - RSpec v3.10
   
 - インフラ
-  - AWS (VPC,EC2,RDS)
-  (S3,route53,ALBについては今後実装予定)
+  - AWS (VPC,EC2,RDS,route53,ALBを使用)
+  (S3については今後実装予定)
   - mysql v5.7.32
   - unicorn v5.7.0
   - nginx v1.12.2
