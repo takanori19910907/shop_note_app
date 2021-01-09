@@ -27,36 +27,18 @@ RSpec.describe "Groups", type: :system do
 
   let!(:group) {FactoryBot.create(:group, admin_user_id: user.id)}
 
-    it "グループ情報を変更する" do
-      group.group_members.create(group_id: group.id, user_id: user.id)
+  it "グループ情報を変更する" do
+    group.group_members.create(group_id: group.id, user_id: user.id)
 
-      visit edit_group_path(group)
-      fill_in "group[name]", with: "有吉家の買い物メモ"
-      fill_in "group[profile]", with: "結婚に伴い改名します！"
-      click_button "グループ情報変更"
-      expect(page).to have_selector(".alert-success", text: "グループ情報を変更しました")
-      expect(page).to have_content "グループ名:有吉家の買い物メモ"
-      expect(page).to have_content "結婚に伴い改名します！"
-
-    end
+    visit edit_group_path(group)
+    fill_in "group[name]", with: "有吉家の買い物メモ"
+    fill_in "group[profile]", with: "結婚に伴い改名します！"
+    click_button "グループ情報変更"
+    expect(page).to have_selector(".alert-success", text: "グループ情報を変更しました")
+    expect(page).to have_content "グループ名:有吉家の買い物メモ"
+    expect(page).to have_content "結婚に伴い改名します！"
   end
-
-  describe "#destroy" do
-    it "グループを削除する", js: true do
-      group = FactoryBot.create(:group, admin_user_id: user.id)
-      group.group_members.create(group_id: group.id, user_id: user.id)
-      visit edit_group_path(user.id)
-
-    # expect {
-      # page.accept_confirm "本当に削除しますか?"
-      # expect(page).to have_content "Task was successfully destroyed."
-    # }.to change(Group, :count).by(-1)
-      # expect{
-      #   expect(page.accept_confirm).to eq "本当に削除しますか？"
-      #   expect(page).to have_content "グループを削除しました"
-      #   }. to change(user.groups, :count).by(-1)
-    end
-  end
+end
 
   describe "#group_request" do
     let!(:group) { FactoryBot.create(:group, admin_user_id: user.id, name: "家族グループ") }
@@ -89,16 +71,6 @@ RSpec.describe "Groups", type: :system do
           expect(page).to have_button "グループ招待"
         }.to change(other_user.group_members, :count).by(-1)
         end
-      end
-    end
-
-    context "ユーザー検索画面から移動し招待する場合" do
-      it "other_userをgroupに招待する" do
-        # visit root_path
-        # click_link "ユーザー検索"
-        # fill_in "search_form", with: "嫁"
-        # click_button "検索"
-        # select "家族グループ", from: "group_id"
       end
     end
   end

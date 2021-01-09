@@ -17,14 +17,6 @@ RSpec.describe "Notes", type: :system do
         expect(page).to have_content "肉"
       }.to change(Note, :count).by(1)
     end
-
-    it "画像付きの買い物メモを投稿する" do
-
-    end
-
-    it "画像のみの買い物メモを投稿する" do
-
-    end
   end
 
   describe "#destroy" do
@@ -55,23 +47,6 @@ RSpec.describe "Notes", type: :system do
         expect(page).to have_content "買うもの2"
       }.to change(Note, :count).by(-2)
       end
-    end
-  end
-
-  describe "#count" do
-    it "投稿済みの買い物メモに対して購入数を指定する", js:true do
-      # note = FactoryBot.create(:note, user_id: user.id)
-      # visit root_path
-      # expect(page).to have_selector('.modal', visible: false)
-      # page.evaluate_script('$(".fade").removeClass("fade")')
-      # within '買うもの1' do
-      #   find_button('カード情報を編集する').click
-      # end
-      # save_screenshot
-      # click_button "#count_Modal"
-      # select 2 ,from: "数量入力欄"
-      # click_button "投稿する"
-      # page.should have_content('a_modal_content_here')
     end
   end
 end
