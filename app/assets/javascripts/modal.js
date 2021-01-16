@@ -1,8 +1,8 @@
 $(function() {
-$(".js_count_btn").on("click",function() {
+$(document).on("click",".js_count_btn",function() {
 $("#count_id").val(this.value);
 });
-$(".js_comment_btn").on("click", function () {
+$(document).on("click",".js_comment_btn",function () {
 $("#comment_id").val(this.value);
 });
 });
