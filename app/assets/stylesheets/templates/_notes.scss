@@ -113,3 +113,9 @@
   width: 90%;
   height: 60%;
 }
+
+@media (min-width: 767px) {
+  #image_display img {
+  width: 60%;
+  }
+}
