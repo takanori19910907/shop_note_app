@@ -7,8 +7,21 @@
 }
 
 .top_page_btn {
-  @include basic_btn_style;
+  position: absolute;
+  top: 60%;
+  z-index: 1;
   margin: 5px;
+}
+
+.top_page_btn li {
+  display: list-item;
+  width: 150px;
+  height: 35px;
+  margin: 5px;
+  border-radius: 5px;
+  text-align:center;
+  line-height:35px;
+
 }
 
 .top_page_btn a {
@@ -21,6 +34,7 @@
 
 #new a {
   color: #e6e6e6;
+  padding: 5px;
 }
 
 #new {
@@ -104,7 +118,7 @@
 }
 
 .none {
-   display: none !important;
+  display: none !important;
 }
 
 input[type=checkbox]:checked ~ .btn {
@@ -122,4 +136,14 @@ input[type=checkbox]:checked ~ .own_note::before {
 
 input[type=checkbox]:checked ~ .other_note::after {
     border-top: 25px solid  #FFFFE0;
+}
+
+@media (min-width: 767px) {
+  .top_page_btn {
+    position: absolute;
+    top: 60%;
+    left: 20%;
+
+  }
+  
 }
