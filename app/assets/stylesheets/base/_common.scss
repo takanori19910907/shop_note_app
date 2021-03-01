@@ -30,3 +30,9 @@ li {
 label {
   margin-bottom: 0;;
 }
+
+.alert {
+  position: absolute;
+  top: 20px;
+  z-index: 1;
+}

@@ -1,15 +1,14 @@
 
 .group_info {
   border-bottom: thin solid #dcdcdc;
-  margin: 10px;
+  margin: 10px 10%;
+  width: 80%;
   height: 50px;
+  display: inline-block;
 }
 
-.group_name {
-  display: block;
-  text-align: left;
-  position: relative;
-  left: 50px;
+li.group_name {
+  float: left;
 }
 
 .group_members_list {
@@ -20,16 +19,7 @@
 }
 
 .index_group_profile {
-  position: relative;
-  // display: block;
-  text-align: left;
-  padding: 0 10px 0;
-  bottom: 30px;
-  left: 40%;
-  width: 500px;
-  height: 50px;
-  border-radius: 5%;
-  overflow: scroll;
+float: left;
   }
 
 .group_profile {
@@ -90,4 +80,8 @@
     font-size: 16px;
     text-align: right;
   }
+
+  .index_group_profile {
+    margin-left: 200px;
+      }
 }
