@@ -11,10 +11,11 @@
 .promo_bg {
   margin-top: 5px;
   position: fixed;
+  background-color: aliceblue;
   border: 1px solid;
   border-color: #111111;
   border-radius: 5px;
-  height: 400px;
+  height: 450px;
 }
 
 .promo_bg.left {
@@ -23,4 +24,14 @@
 
 .promo_bg.right {
  right: 10px;
+}
+
+.promo_image {
+  width: 250px;
+  height: 300px;
+}
+
+.promo_info2 {
+  font-size: 5px;
+  margin-top: 15px;
 }
