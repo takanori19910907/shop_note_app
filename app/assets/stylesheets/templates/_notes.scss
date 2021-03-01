@@ -78,13 +78,15 @@
   }
 }
 
-.comment {
-  font-size: 10px;
+.time {
+  margin-bottom: 0.5rem;
 }
 
 .comment_list {
   list-style: none;
   text-align: left;
+  font-size: 12px;
+  padding: 3px;
 }
 
 .drop-hover:hover > .dropdown-menu {
