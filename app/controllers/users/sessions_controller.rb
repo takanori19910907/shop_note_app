@@ -9,6 +9,16 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to chatroom_group_path(current_user.groups.first), notice: "ゲストユーザーとしてログインしました"
   end
 
+  #ログイン後のリダイレクト先
+def after_sign_in_path_for(resource)
+  index_path
+end 
+#ログアウト後のリダイレクト先
+def after_sign_out_path_for(resource)
+  root_path
+end 
+
+
   #
   # GET /resource/sign_in
   # def new
