@@ -1,14 +1,15 @@
   <% @favorite_item_groups.each do |item_group| %>
-    <p>-<%= item_group[:idx] %>-</p>
+    <p class="fav_group_title">-<%= item_group[:idx] %>-</p>
+    <div class="item_field">
     <% item_group[:items].each do |item| %>
-
-      <%= f.label :item_ids do %>
-      <label>
-      <%= f.check_box :item_ids, {type: "checkbox", class: "checkbox-select", id: "checkbox#{item}", multiple: true,include_hidden: false}, item.id %>
-      <%= item.name %>
-      </label>
+        <%= f.label :item_ids do %>
+        <label class="item">
+        <%= f.check_box :item_ids, {type: "checkbox", class: "checkbox-select", id: "checkbox#{item}", multiple: true,include_hidden: false}, item.id %>
+        <%= item.name %>
+        </label>
+        <% end %>
       <% end %>
-    <% end %>
+      </div>
   <% end %>
 
   <% if params[:group_id].present? %>
