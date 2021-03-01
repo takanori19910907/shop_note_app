@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   def new_guest
     user = User.guest
     sign_in user
-    redirect_to index_path, notice: "ゲストユーザーとしてログインしました"
+    redirect_to chatroom_group_path(9), notice: "ゲストユーザーとしてログインしました"
   end
 
   #
