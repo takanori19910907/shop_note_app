@@ -3,7 +3,7 @@
   border-bottom: thin solid #dcdcdc;
   margin: 10px 10%;
   width: 80%;
-  height: 50px;
+  min-height: 50px;
   display: inline-block;
 }
 
@@ -19,7 +19,8 @@ li.group_name {
 }
 
 .index_group_profile {
-float: left;
+// float: left;
+word-break: break-word;
   }
 
 .group_profile {
