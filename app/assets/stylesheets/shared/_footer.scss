@@ -1,4 +1,9 @@
 .footer_item {
   width: 100vw;
-  font-size: 8px;
+  font-size: 12px;
+}
+
+@media (min-width: 767px) {
+  width: 100vw;
+  font-size: 12px;
 }
