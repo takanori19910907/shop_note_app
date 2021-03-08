@@ -50,15 +50,10 @@
 }
 
 .note_btn {
+  display: inline-block;
+  text-align: right;
   float: right;
-  width: 100px;
-}
-
-#js_count,
-#js_comment
- {
-  width: 20px;
-  height: 20px;
+  padding-right: 10px;
 }
 
 .delete_link {

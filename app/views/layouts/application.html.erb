@@ -5,7 +5,7 @@
     <%= render "layouts/default" %>
   </head>
   <body>
-
+    <div id="image_display"></div>
     <header>
       <%= render "layouts/header" %>
     </header>
@@ -15,11 +15,8 @@
       <%= yield %>
     </main>
 
-    <div id="image_display"></div>
-
     <footer>
     <%= render "layouts/footer" %>
     </footer>
-    <script>fitty("#note_text");</script>
   </body>
 </html>

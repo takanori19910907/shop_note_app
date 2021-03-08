@@ -1,33 +1,38 @@
-<ul>
-  <li class="note_content">
-    <div id="note_text"><%= note.content %></div>
-    <% if note.image.present? %>
-      <img src="<%= note.image %>"class="note_image" >
-    <% end %>
-  </li>
-  <li class="note_btn">
-    <div class="item_count">
+<div class="row">
+  <div class="col-12 note_content">
+    <%= note.content %>
+  </div>
+</div>
+
+<% if note.image.present? %>
+<div class="row image_field">
+  <img src="<%= note.image %>"class="note_image" >
+</div>
+<% end %>
+<div class="row">
+  <div class="col-12">
     <%= note.count %>
     <% if note.count.present? %>
-      <span>個</span>
+      個
     <% end %>
-    </div>
-
-
-    <button type="button" class="btn js_count_btn" data-toggle="modal" data-target="#count_Modal" value="<%= note.id %>" id="js_count"><i class="fa fa-sort" aria-hidden="true"></i></button>
-    <button type="button" class="btn js_comment_btn" data-toggle="modal" data-target="#comment_Modal" value="<%= note.id %>" id="js_comment"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-  </li>
-</ul>
-
-<div class="comment">
-  <% note.comments.each do |comment| %>
-    <div class="comment_list">
-    <%= comment.user.name %>
-      <span> : </span>
-      <%= comment.content %>
-      <%= link_to comment_path(comment.id), method: :delete,data:{confirm: "本当に削除しますか?"} do %>
-        <i class="fa fa-trash-o"></i>
-      <% end %>
-    </div>
-  <% end %>
+  </div>
 </div>
+
+<ul class="row comment_area">
+    <% note.comments.each do |comment| %>
+      <li class="col-10 comment">
+        <%= comment.user.name %>
+        <span> : </span>
+        <%= comment.content %>
+      </li>
+      <li class="col-2"><%= link_to comment_path(comment.id), method: :delete,data:{confirm: "本当に削除しますか?"} do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </li>
+    <% end %>  
+  </ul>
+
+    <div class="row note_btn">
+    <button type="button" class="col-1 btn js_count_btn" data-toggle="modal" data-target="#count_Modal" value="<%= note.id %>" id="js_count"><i class="fa fa-sort" aria-hidden="true"></i></button>
+    <button type="button" class="col-1 btn js_comment_btn" data-toggle="modal" data-target="#comment_Modal" value="<%= note.id %>" id="js_comment"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+    </div>

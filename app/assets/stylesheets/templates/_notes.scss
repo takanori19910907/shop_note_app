@@ -4,12 +4,10 @@
 }
 
 .own_note {
-  width: 250px;
-  border-radius: 20px;
-  color: #111111;
-  background-color: #FFE299;
   position: relative;
-  border-style: none;
+  max-width: 90%;
+  border-radius: 20px;
+  background-color: #FFE299;
   transition: unset;
 }
 
@@ -29,13 +27,12 @@
 }
 
 .other_note {
-  width: 250px;
+  position: relative;
+  max-width: 90%;
   border-radius: 20px;
   background-color:  #FFF375;
-  position: relative;
   transition: unset;
 }
-
 
 .other_note::after{
   content: "";
@@ -54,28 +51,22 @@
 
 .note_content {
   font-size: 20px;
-  max-width: 100px;
-}
-
-#note_text {
-  max-width: 120px;
-  height: 40px;
 }
 
 .item_count {
-  display: inline;
-  position: relative;
-  top: 10px;
-  width: 20px;
-  margin-right: 5px;
+  display: inline-block;
+  float: right;
 }
 
-.note {
-  color: rgba(255, 255, 255, 0.5);
-  &:hover {
-    color: rgba(255, 255, 255, 0.5);
-    opacity: 0.6;
-  }
+.comment_area {
+  margin-top: 10px, 0;
+}
+
+.comment {
+  text-align: left;
+  font-size: 14px;
+  font-weight: lighter;
+  color: #666666;
 }
 
 .no_content {
@@ -90,21 +81,19 @@
   margin-bottom: 0.5rem;
 }
 
-.comment_list {
-  list-style: none;
-  text-align: left;
-  font-size: 12px;
-  padding: 3px;
-}
-
 .drop-hover:hover > .dropdown-menu {
   display: block !important;
 }
 
+.image_field {
+  display: inline-block;
+  text-align: center;
+}
+
 .note_image {
-  height :65px;
-  width :65px;
-  border-radius: 15px;
+  width :80px;
+  height :auto;
+  border-radius: 10px;
   padding-bottom: 5px;
 }
 
@@ -117,16 +106,26 @@
   max-width: 100%!important;
   height: 100%;
   background: rgba(0,0,0,0.45);
+  z-index: 1500;
 }
+
 #image_display img {
-  top: 120px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 90%;
-  height: 60%;
+  height: auto;
+  max-height: 100%;
 }
 
 @media (min-width: 767px) {
   #image_display img {
   width: 60%;
   }
-  
+  .note_field {
+  display: inline-block;
+  text-align: center;
+  width: 50%;
+  }
 }

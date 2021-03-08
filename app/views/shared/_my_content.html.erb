@@ -3,6 +3,7 @@
   <% note.each do |note| %>
 
     <%= f.label :note_ids do %>
+    
     <label>
       <%= f.check_box :note_ids, {type: "checkbox", class: "checkbox-select", id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
@@ -18,9 +19,9 @@
 
         <div class="btn other_note">
 
-         <%= render "shared/note", note: note %>
+          <%= render "shared/note", note: note %>
 
-          </div>
+        </div>
       </label>
       <% end %>
     <% end %>
