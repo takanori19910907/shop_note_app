@@ -36,3 +36,31 @@ label {
   top: 20px;
   z-index: 1;
 }
+
+.fade-in {
+  opacity: 0;
+  animation-name: fade-in;
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  
+  50% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+
+  75% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
