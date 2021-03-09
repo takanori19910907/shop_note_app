@@ -67,7 +67,7 @@ word-break: break-word;
 }
 
 .namespace {
-  width: 300px;
+  text-align: right;
   height: 30px;
   font-size: 8px;
   text-align: right;
@@ -76,10 +76,7 @@ word-break: break-word;
 @media (min-width: 767px) {
 
   .namespace {
-    width: 400px;
-    height: 30px;
     font-size: 16px;
-    text-align: right;
   }
 
   .index_group_profile {

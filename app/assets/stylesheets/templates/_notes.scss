@@ -58,8 +58,12 @@
   float: right;
 }
 
-.comment_area {
-  margin-top: 10px, 0;
+.row.comment_area {
+  margin-top: 10px;
+}
+
+.count {
+  margin: 5px 10px;
 }
 
 .comment {

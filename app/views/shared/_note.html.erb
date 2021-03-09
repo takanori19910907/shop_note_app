@@ -10,13 +10,20 @@
 </div>
 <% end %>
 <div class="row">
-  <div class="col-12">
+  <ul class="col-12">
+  <li class="count">
     <%= note.count %>
     <% if note.count.present? %>
       個
     <% end %>
-  </div>
+  </li>
+  <li class="note_btn">
+    <button type="button" class="btn js_count_btn" data-toggle="modal" data-target="#count_Modal" value="<%= note.id %>" id="js_count"><i class="fa fa-sort" aria-hidden="true"></i></button>
+    <button type="button" class="btn js_comment_btn" data-toggle="modal" data-target="#comment_Modal" value="<%= note.id %>" id="js_comment"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+    </li>
+  </ul>
 </div>
+
 
 <ul class="row comment_area">
     <% note.comments.each do |comment| %>
@@ -31,8 +38,3 @@
       </li>
     <% end %>  
   </ul>
-
-    <div class="row note_btn">
-    <button type="button" class="col-1 btn js_count_btn" data-toggle="modal" data-target="#count_Modal" value="<%= note.id %>" id="js_count"><i class="fa fa-sort" aria-hidden="true"></i></button>
-    <button type="button" class="col-1 btn js_comment_btn" data-toggle="modal" data-target="#comment_Modal" value="<%= note.id %>" id="js_comment"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-    </div>
