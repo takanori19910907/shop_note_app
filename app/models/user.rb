@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+        :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:twitter]
 
   has_many :notes, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -81,4 +81,8 @@ class User < ApplicationRecord
     end
   end
 
+  #取得したSNSアカウントでユーザー登録されているか確認
+  def self.from_omniauth(auth)
+    User.where(provider: auth.provider, uid: auth.uid).first
+  end
 end
