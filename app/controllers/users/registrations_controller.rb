@@ -11,9 +11,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    @user.uid = params[:user][:uid]
+    @user.provider = params[:user][:provider]
+    @user.save
+  end
 
   # GET /resource/edit
   # def edit

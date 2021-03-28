@@ -8,6 +8,9 @@
   <%= render"shared/registrations_form", f: f %>
 
   <div class="field">
+
+    <%= f.hidden_field :uid, :value => @user.uid %>
+    <%= f.hidden_field :provider, :value => @user.provider %>
     <%= f.label :パスワード %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
