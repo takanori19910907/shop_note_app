@@ -1,4 +1,4 @@
- @import "shared/mixin";
+@import "shared/mixin";
 
 .btn-light {
   border: none;
@@ -131,11 +131,11 @@ input[type=checkbox]:checked ~ .btn {
 }
 
 input[type=checkbox]:checked ~ .own_note::before {
-    border-top: 25px solid  #FFFFE0;
+  border-top: 25px solid  #FFFFE0;
 }
 
 input[type=checkbox]:checked ~ .other_note::after {
-    border-top: 25px solid  #FFFFE0;
+  border-top: 25px solid  #FFFFE0;
 }
 
 @media (min-width: 767px) {

@@ -19,8 +19,8 @@ li.group_name {
 }
 
 .index_group_profile {
-float: left;
-word-break: break-word;
+  float: left;
+  word-break: break-word;
   }
 
 .group_profile {
@@ -74,12 +74,11 @@ word-break: break-word;
 }
 
 @media (min-width: 767px) {
-
   .namespace {
     font-size: 16px;
   }
 
   .index_group_profile {
     margin-left: 200px;
-      }
+  }
 }
