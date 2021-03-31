@@ -9,6 +9,7 @@
   border-radius: 20px;
   background-color: #FFE299;
   transition: unset;
+  padding: 5px 20px;
 }
 
 .own_note::before{
@@ -56,10 +57,6 @@
 .item_count {
   display: inline-block;
   float: right;
-}
-
-.row.comment_area {
-  margin-top: 10px;
 }
 
 .count {
@@ -131,5 +128,9 @@
   display: inline-block;
   text-align: center;
   width: 50%;
+  }
+  .own_note {
+    max-width: 600px;
+    min-width: 200px;
   }
 }
