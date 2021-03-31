@@ -33,6 +33,7 @@
   border-radius: 20px;
   background-color:  #FFF375;
   transition: unset;
+  padding: 5px 20px;
 }
 
 .other_note::after{
@@ -129,7 +130,8 @@
   text-align: center;
   width: 50%;
   }
-  .own_note {
+  .own_note,
+  .other_note {
     max-width: 600px;
     min-width: 200px;
   }
