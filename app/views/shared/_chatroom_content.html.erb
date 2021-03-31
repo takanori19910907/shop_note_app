@@ -31,7 +31,7 @@
 
         <%= f.check_box :note_ids, {type: "checkbox", class: "checkbox-select", id: "checkbox#{note}", multiple: true,include_hidden: false}, note.id %>
 
-        <div class="col-8 btn other_note">
+        <div class="btn other_note">
 
           <%= render "shared/note", note: note %>
 
