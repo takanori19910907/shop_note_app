@@ -7,7 +7,7 @@ class Users::SessionsController < Devise::SessionsController
     user = User.guest
     sign_in user
     flash[:success] = "ゲストユーザーとしてログインしました"
-    redirect_to index_path
+    redirect_to  chatroom_group_path(Group.first)
   end
 
   #ログイン後のリダイレクト先
