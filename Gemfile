@@ -35,7 +35,7 @@ gem 'carrierwave'
 
 gem 'rmagick'
 
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 4.3'
 
 gem 'sass-rails', '~> 5.0'
 
